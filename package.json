@@ -1,0 +1,25 @@
+{
+  "name": "resume-as-code",
+  "version": "1.0.0",
+  "description": "Zero-Touch CI/CD pipeline for architecture portfolios",
+  "main": "scripts/assemble.js",
+  "scripts": {
+    "build": "node scripts/update-stats.js && node scripts/assemble.js && node scripts/mermaid-render.js && node scripts/inject-links.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "resume",
+    "markdown",
+    "pandoc",
+    "devops"
+  ],
+  "author": "Ryan Bumstead",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.8.0",
+    "puppeteer": "^22.0.0"
+  }
+}
