@@ -72,7 +72,7 @@ jobs:
           NAME_PREFIX=$(node scripts/get-name.js)
           mkdir -p pdf
 
-          HEAD_INCLUDES='-V header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}'
+          LATEX_HEADER="\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}"
 
           pandoc "temp_md/Resume_Recruiter.md" \
             -V geometry:margin=0.5in \
@@ -80,7 +80,7 @@ jobs:
             -V sansfont="FreeSans" \
             -V fontsize=10pt \
             -V linestretch=1.15 \
-            $HEAD_INCLUDES \
+            -V header-includes="$LATEX_HEADER" \
             --resource-path="temp_md" \
             -V linkcolor=blue -V urlcolor=blue \
             --pdf-engine=xelatex \
@@ -92,7 +92,7 @@ jobs:
             -V sansfont="FreeSans" \
             -V fontsize=10pt \
             -V linestretch=1.15 \
-            $HEAD_INCLUDES \
+            -V header-includes="$LATEX_HEADER" \
             --resource-path="temp_md" \
             -V linkcolor=blue -V urlcolor=blue \
             --pdf-engine=xelatex \
@@ -104,7 +104,7 @@ jobs:
             -V sansfont="FreeSans" \
             -V fontsize=10pt \
             -V linestretch=1.15 \
-            $HEAD_INCLUDES \
+            -V header-includes="$LATEX_HEADER" \
             --resource-path="temp_md" \
             -V linkcolor=blue -V urlcolor=blue \
             --pdf-engine=xelatex \
