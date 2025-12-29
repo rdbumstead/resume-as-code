@@ -9,25 +9,25 @@
 
 Every commit to `main` triggers a GitHub Actions workflow that executes the following pipeline:
 
-````mermaid
+```mermaid
 graph TD
     subgraph Input ["Source Layer"]
-        MD[Markdown Content]
-        Conf[resume.config.json]
-        Sec[GitHub Secrets (PII)]
+        MD["Markdown Content"]
+        Conf["resume.config.json"]
+        Sec["GitHub Secrets (PII)"]
     end
 
     subgraph Process ["Build Layer (Node.js)"]
-        Fetch[update-stats.js<br/>(Fetch GitHub API Data)]
-        Assemble[assemble.js<br/>(Inject Header & Secrets)]
-        Render[mermaid-render.js<br/>(Render Diagrams to PNG)]
-        Audit[inject-links.js<br/>(Link Governance & Audit)]
+        Fetch["update-stats.js<br/>(Fetch GitHub API Data)"]
+        Assemble["assemble.js<br/>(Inject Header & Secrets)"]
+        Render["mermaid-render.js<br/>(Render Diagrams to PNG)"]
+        Audit["inject-links.js<br/>(Link Governance & Audit)"]
     end
 
     subgraph Output ["Presentation Layer"]
-        Pandoc[Pandoc / XeLaTeX]
-        PDF1[Recruiter Resume.pdf]
-        PDF2[Comprehensive Resume.pdf]
+        Pandoc["Pandoc / XeLaTeX"]
+        PDF1["Recruiter Resume.pdf"]
+        PDF2["Comprehensive Resume.pdf"]
     end
 
     MD --> Fetch
@@ -39,7 +39,7 @@ graph TD
     Audit --> Pandoc
     Pandoc --> PDF1
     Pandoc --> PDF2
-    ```
+```
 
 1.  **Cleanup:** Removes previous build artifacts and temporary files to ensure a clean slate.
 2.  **Data Fetching (`update-stats.js`):** Queries the GitHub API to fetch live statistics (e.g., number of Architectural Decision Records) and updates the source files dynamically.
@@ -98,4 +98,4 @@ RESUME_PHONE=555-0100
 RESUME_EMAIL=jane@example.com
 RESUME_LOCATION=New York, NY
 RESUME_GITHUB_USER=janedoe
-````
+```
