@@ -1,6 +1,5 @@
 # --- DEPENDENCIES ---
 node_modules/
-package-lock.json
 
 # --- BUILD ARTIFACTS ---
 # Intermediate folder for assembled markdown & images
