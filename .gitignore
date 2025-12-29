@@ -8,8 +8,8 @@ temp_md/
 # Generated Puppeteer config
 puppeteer-config.json
 
-# --- CONFIGURATION (SECRETS) ---
-resume.config.json
+# --- SECRETS ---
+.env
 
 # --- SYSTEM FILES ---
 .DS_Store
