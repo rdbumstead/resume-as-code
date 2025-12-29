@@ -68,14 +68,11 @@ jobs:
         run: node scripts/inject-links.js temp_md
 
       - name: Compile PDFs
-        env:
-          RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
-          RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
           mkdir -p pdf
 
-          HEAD_OPTS="-V header-includes=\\usepackage{enumitem} \\usepackage[none]{hyphenat} \\raggedright \\setlist{nosep,leftmargin=*}"
+          HEAD_INCLUDES='-V header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}'
 
           pandoc "temp_md/Resume_Recruiter.md" \
             -V geometry:margin=0.5in \
@@ -83,7 +80,7 @@ jobs:
             -V sansfont="FreeSans" \
             -V fontsize=10pt \
             -V linestretch=1.15 \
-            $HEAD_OPTS \
+            $HEAD_INCLUDES \
             --resource-path="temp_md" \
             -V linkcolor=blue -V urlcolor=blue \
             --pdf-engine=xelatex \
@@ -95,7 +92,7 @@ jobs:
             -V sansfont="FreeSans" \
             -V fontsize=10pt \
             -V linestretch=1.15 \
-            $HEAD_OPTS \
+            $HEAD_INCLUDES \
             --resource-path="temp_md" \
             -V linkcolor=blue -V urlcolor=blue \
             --pdf-engine=xelatex \
@@ -107,7 +104,7 @@ jobs:
             -V sansfont="FreeSans" \
             -V fontsize=10pt \
             -V linestretch=1.15 \
-            $HEAD_OPTS \
+            $HEAD_INCLUDES \
             --resource-path="temp_md" \
             -V linkcolor=blue -V urlcolor=blue \
             --pdf-engine=xelatex \
