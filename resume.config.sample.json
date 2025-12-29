@@ -1,0 +1,20 @@
+{
+    "meta": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "githubUser": "janedoe",
+        "repoName": "resume-as-code",
+        "adrPath": "docs/adr"
+    },
+    "header": {
+        "title": "Senior Solution Architect",
+        "location": "San Francisco, CA",
+        "phone": "555-0199",
+        "email": "jane@example.com"
+    },
+    "links": {
+        "LinkedIn": "https://linkedin.com/in/janedoe",
+        "Portfolio": "https://janedoe.com",
+        "GitHub Repository": "https://github.com/janedoe/resume-as-code"
+    }
+}

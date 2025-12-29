@@ -1,0 +1,130 @@
+name: Build Resume as Code
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "markdown/**"
+      - "scripts/**"
+      - "resume.config.json"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: |
+          npm init -y
+          npm install @mermaid-js/mermaid-cli puppeteer
+          echo "$(npm bin)" >> $GITHUB_PATH
+
+      - name: Install Pandoc & LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended fonts-freefont-ttf
+
+      # --- 1. CLEANUP (The Fix) ---
+      - name: Clean Old Artifacts
+        run: |
+          # Remove all PDFs from the tracked folder so they are marked as 'deleted' by git
+          # Force remove (-f) to avoid errors if folder is empty
+          rm -f pdf/*.pdf
+
+      # --- 2. FETCH STATS ---
+      - name: Update Portfolio Stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/update-stats.js markdown
+
+      # --- 3. ASSEMBLE & RENDER ---
+      - name: Assemble & Render
+        run: |
+          mkdir -p temp_md
+          echo '{"args": ["--no-sandbox"]}' > puppeteer-config.json
+
+          # Iterate over the files defined in your project
+          # (We hardcode the list here or loop the markdown folder)
+          for file in markdown/*.md; do
+            filename=$(basename "$file")
+            
+            # 1. Assemble (Add Header)
+            node scripts/assemble.js temp_md "$file" "$filename"
+            
+            # 2. Render Diagrams
+            node scripts/mermaid-render.js "temp_md/$filename"
+          done
+
+      # --- 4. INJECT LINKS ---
+      - name: Audit & Inject Links
+        run: node scripts/inject-links.js temp_md
+
+      # --- 5. COMPILE PDFs ---
+      - name: Compile PDFs
+        run: |
+          # Use the helper script to get the dynamic name prefix (e.g., "JaneDoe")
+          NAME_PREFIX=$(node scripts/get-name.js)
+          echo "Generating resumes for: $NAME_PREFIX"
+
+          mkdir -p pdf
+
+          HEAD_OPTS="-V header-includes=\\usepackage{enumitem} \\usepackage[none]{hyphenat} \\raggedright \\setlist{nosep,leftmargin=*}"
+
+          # Recruiter Resume
+          pandoc "temp_md/Resume_Recruiter.md" \
+            -V geometry:margin=0.5in \
+            -V mainfont="FreeSerif" \
+            -V sansfont="FreeSans" \
+            -V fontsize=10pt \
+            -V linestretch=1.15 \
+            $HEAD_OPTS \
+            --resource-path="temp_md" \
+            -V linkcolor=blue -V urlcolor=blue \
+            --pdf-engine=xelatex \
+            -o "pdf/${NAME_PREFIX}_Resume_Recruiter.pdf"
+
+          # Full Resume
+          pandoc "temp_md/Resume.md" \
+            -V geometry:margin=0.5in \
+            -V mainfont="FreeSerif" \
+            -V sansfont="FreeSans" \
+            -V fontsize=10pt \
+            -V linestretch=1.15 \
+            $HEAD_OPTS \
+            --resource-path="temp_md" \
+            -V linkcolor=blue -V urlcolor=blue \
+            --pdf-engine=xelatex \
+            -o "pdf/${NAME_PREFIX}_Resume.pdf"
+
+          # Comprehensive Resume
+          pandoc "temp_md/Resume_Comprehensive.md" \
+            -V geometry:margin=0.5in \
+            -V mainfont="FreeSerif" \
+            -V sansfont="FreeSans" \
+            -V fontsize=10pt \
+            -V linestretch=1.15 \
+            $HEAD_OPTS \
+            --resource-path="temp_md" \
+            -V linkcolor=blue -V urlcolor=blue \
+            --pdf-engine=xelatex \
+            -o "pdf/${NAME_PREFIX}_Resume_Comprehensive.pdf"
+
+      # --- 6. COMMIT ---
+      - name: Commit Artifacts
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Generate PDFs for ${{ github.actor }} [skip ci]"
+          file_pattern: "pdf/*.pdf markdown/*.md"

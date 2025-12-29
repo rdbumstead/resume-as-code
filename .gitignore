@@ -1,0 +1,20 @@
+# --- DEPENDENCIES ---
+node_modules/
+package-lock.json
+
+# --- BUILD ARTIFACTS ---
+# Intermediate folder for assembled markdown & images
+temp_md/
+# Generated Puppeteer config
+puppeteer-config.json
+
+# --- CONFIGURATION (SECRETS) ---
+resume.config.json
+
+# --- SYSTEM FILES ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- LOCAL BUILDER ---
+build_resumes.bat
