@@ -3,10 +3,11 @@
         "repoName": "salesforce-platform-architect-portfolio",
         "adrPath": "docs/adr"
     },
-    "links": {
-        "LinkedIn": "https://linkedin.com/in/ryanbumstead",
-        "Portfolio": "https://ryanbumstead.com",
-        "GitHub Repository": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio",
+	"links": {
+		"LinkedIn": "https://linkedin.com/in/ryanbumstead",
+		"Portfolio": "https://ryanbumstead.com",
+		"Portfolio Repository": "https://github.com/rdbumstead/salesforce-reference-architecture",
+		"Resume Repository": "https://github.com/rdbumstead/resume-as-code",
         "SAS": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md",
         "Program Charter": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md",
         "Technical Guide": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/04-Technical-Guide.md",
