@@ -33,9 +33,9 @@ const linkedIn = l.LinkedIn ? `[LinkedIn](${l.LinkedIn})` : "";
 const portfolio = l.Portfolio ? `[Portfolio](${l.Portfolio})` : "";
 
 const nameLine = `# ${firstName.toUpperCase()} ${lastName.toUpperCase()}\n`;
-const titleLine = `**${title}**\n`;
 
-const contactItems = [
+const headerItems = [
+    `**${title}**`,
     location,
     phone,
     email,
@@ -43,8 +43,8 @@ const contactItems = [
     portfolio
 ].filter(Boolean);
 
-const contactLine = contactItems.join(" | ");
-const fullHeader = `${nameLine}${titleLine}${contactLine}\n\n---\n\n`;
+const infoLine = headerItems.join(" | ");
+const fullHeader = `${nameLine}${infoLine}\n\n---\n\n`;
 
 const bodyPath = path.resolve(SOURCE_FILE);
 let bodyContent = "";
