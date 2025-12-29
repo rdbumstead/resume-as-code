@@ -28,8 +28,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm init -y
-          npm install @mermaid-js/mermaid-cli puppeteer
+          npm ci
           echo "$(npm bin)" >> $GITHUB_PATH
 
       - name: Install Pandoc & LaTeX
@@ -37,53 +36,47 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended fonts-freefont-ttf
 
-      # --- 1. CLEANUP (The Fix) ---
       - name: Clean Old Artifacts
         run: |
-          # Remove all PDFs from the tracked folder so they are marked as 'deleted' by git
-          # Force remove (-f) to avoid errors if folder is empty
           rm -f pdf/*.pdf
 
-      # --- 2. FETCH STATS ---
       - name: Update Portfolio Stats
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
         run: node scripts/update-stats.js markdown
 
-      # --- 3. ASSEMBLE & RENDER ---
       - name: Assemble & Render
+        env:
+          RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
+          RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
+          RESUME_TITLE: ${{ secrets.RESUME_TITLE }}
+          RESUME_LOCATION: ${{ secrets.RESUME_LOCATION }}
+          RESUME_PHONE: ${{ secrets.RESUME_PHONE }}
+          RESUME_EMAIL: ${{ secrets.RESUME_EMAIL }}
         run: |
           mkdir -p temp_md
           echo '{"args": ["--no-sandbox"]}' > puppeteer-config.json
 
-          # Iterate over the files defined in your project
-          # (We hardcode the list here or loop the markdown folder)
           for file in markdown/*.md; do
             filename=$(basename "$file")
-            
-            # 1. Assemble (Add Header)
             node scripts/assemble.js temp_md "$file" "$filename"
-            
-            # 2. Render Diagrams
             node scripts/mermaid-render.js "temp_md/$filename"
           done
 
-      # --- 4. INJECT LINKS ---
       - name: Audit & Inject Links
         run: node scripts/inject-links.js temp_md
 
-      # --- 5. COMPILE PDFs ---
       - name: Compile PDFs
+        env:
+          RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
+          RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
         run: |
-          # Use the helper script to get the dynamic name prefix (e.g., "JaneDoe")
           NAME_PREFIX=$(node scripts/get-name.js)
-          echo "Generating resumes for: $NAME_PREFIX"
-
           mkdir -p pdf
 
           HEAD_OPTS="-V header-includes=\\usepackage{enumitem} \\usepackage[none]{hyphenat} \\raggedright \\setlist{nosep,leftmargin=*}"
 
-          # Recruiter Resume
           pandoc "temp_md/Resume_Recruiter.md" \
             -V geometry:margin=0.5in \
             -V mainfont="FreeSerif" \
@@ -96,7 +89,6 @@ jobs:
             --pdf-engine=xelatex \
             -o "pdf/${NAME_PREFIX}_Resume_Recruiter.pdf"
 
-          # Full Resume
           pandoc "temp_md/Resume.md" \
             -V geometry:margin=0.5in \
             -V mainfont="FreeSerif" \
@@ -109,7 +101,6 @@ jobs:
             --pdf-engine=xelatex \
             -o "pdf/${NAME_PREFIX}_Resume.pdf"
 
-          # Comprehensive Resume
           pandoc "temp_md/Resume_Comprehensive.md" \
             -V geometry:margin=0.5in \
             -V mainfont="FreeSerif" \
@@ -122,7 +113,6 @@ jobs:
             --pdf-engine=xelatex \
             -o "pdf/${NAME_PREFIX}_Resume_Comprehensive.pdf"
 
-      # --- 6. COMMIT ---
       - name: Commit Artifacts
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 
@@ -7,40 +8,45 @@ let config;
 try {
     config = require(configPath);
 } catch (e) {
-    console.error("Error: Could not find resume.config.json in root directory.");
+    console.error("Error loading config");
     process.exit(1);
 }
 
 const LINKS = config.links || {};
 const TARGET_DIR = process.argv[2];
 
-if (!TARGET_DIR) {
-    console.error("Error: No target directory provided.");
-    process.exit(1);
-}
+if (!TARGET_DIR) process.exit(1);
+if (Object.keys(LINKS).length === 0) process.exit(0);
 
-console.log(`\n--- SMART LINK AUDIT ---`);
+let stats = {
+    filesProcessed: 0,
+    linksVerified: 0,
+    linksInjected: 0
+};
 
-if (Object.keys(LINKS).length === 0) {
-    console.log("ℹ️  No links configured in resume.config.json.");
-    console.log("   Skipping link injection.");
-    process.exit(0);
-}
+console.log("--- SMART LINK AUDIT ---");
 
 fs.readdir(TARGET_DIR, (err, files) => {
-    if (err) return console.error("Could not list files:", err);
+    if (err) return;
 
     files.forEach(file => {
         if (path.extname(file) === '.md') {
+            stats.filesProcessed++;
             processFile(path.join(TARGET_DIR, file), file);
         }
     });
-    console.log(`---------------------------\n`);
+
+    console.log(`\nAudit Complete:`);
+    console.log(`   Files:    ${stats.filesProcessed}`);
+    console.log(`   Verified: ${stats.linksVerified}`);
+    console.log(`   Injected: ${stats.linksInjected}`);
+    console.log("------------------------");
 });
 
 function processFile(filePath, fileName) {
+    console.log(`📄 Document: ${fileName}`);
     let content = fs.readFileSync(filePath, 'utf8');
-    let logs = [];
+    let injectedInFile = 0;
     
     content = content.replace(/\[([\s\S]*?)\]\(([\s\S]*?)\)/g, (match, text, currentUrl) => {
         const cleanText = text.replace(/[*_]/g, '').trim();
@@ -51,16 +57,15 @@ function processFile(filePath, fileName) {
         if (matchedKey) {
             const targetUrl = LINKS[matchedKey];
             if (currentUrl.trim() !== targetUrl) {
-                logs.push(`   [UPDATED]    "${cleanText}"\n                -> ${targetUrl}`);
+                console.log(`   [FIXED]      "${cleanText}" (Updated URL)`);
                 return `[${text}](${targetUrl})`;
             } else {
-                logs.push(`   [VERIFIED]   "${cleanText}"\n                -> ${targetUrl}`);
+                stats.linksVerified++;
+                console.log(`   [VERIFIED]   "${cleanText}"`);
                 return match; 
             }
-        } else {
-            logs.push(`   [UNMANAGED] "${cleanText}"\n                -> ${currentUrl}`);
-            return match;
         }
+        return match;
     });
 
     const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
@@ -97,7 +102,9 @@ function processFile(filePath, fileName) {
                     if (/^\s*#/.test(linePrefix)) return match;
                 }
 
-                logs.push(`   [INJECTED]   "${match}"\n                -> ${LINKS[keyword]}`);
+                injectedInFile++;
+                stats.linksInjected++;
+                console.log(`   [INJECTED]   "${match}"`);
                 return `[${match}](${LINKS[keyword]})`;
             });
         });
@@ -105,11 +112,9 @@ function processFile(filePath, fileName) {
     });
 
     const finalContent = processedParts.join('');
-    console.log(`Document: ${fileName}`);
-    if (logs.length > 0) logs.forEach(log => console.log(log));
-    else console.log(`   [INFO] All clean.`);
-
-    if (content !== finalContent) fs.writeFileSync(filePath, finalContent, 'utf8');
+    if (content !== finalContent) {
+        fs.writeFileSync(filePath, finalContent, 'utf8');
+    }
 }
 
 function escapeRegExp(string) {
