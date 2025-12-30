@@ -29,14 +29,22 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra fonts-inter
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra wget unzip fontconfig
 
-      - name: Install Source Serif 4 Font
+      - name: Install Fonts (Source Serif 4 and Inter)
         run: |
           mkdir -p ~/.fonts
-          cd ~/.fonts
-          wget https://github.com/adobe-fonts/source-serif/releases/download/4.005R/TTF-source-serif-4.005R.zip
-          unzip -o TTF-source-serif-4.005R.zip
+          cd /tmp
+
+          # Download Source Serif 4 from Google Fonts
+          wget -O SourceSerif4.zip "https://fonts.google.com/download?family=Source%20Serif%204"
+          unzip -o SourceSerif4.zip -d ~/.fonts/
+
+          # Download Inter from Google Fonts
+          wget -O Inter.zip "https://fonts.google.com/download?family=Inter"
+          unzip -o Inter.zip -d ~/.fonts/
+
+          # Refresh font cache
           fc-cache -f -v
 
       - name: Install Mermaid CLI
