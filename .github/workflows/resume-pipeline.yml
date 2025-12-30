@@ -29,7 +29,15 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra fonts-inter
+
+      - name: Install Source Serif 4 Font
+        run: |
+          mkdir -p ~/.fonts
+          cd ~/.fonts
+          wget https://github.com/adobe-fonts/source-serif/releases/download/4.005R/TTF-source-serif-4.005R.zip
+          unzip -o TTF-source-serif-4.005R.zip
+          fc-cache -f -v
 
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
