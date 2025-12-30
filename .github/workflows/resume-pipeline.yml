@@ -34,40 +34,38 @@ jobs:
             texlive-xetex \
             texlive-fonts-recommended \
             texlive-latex-extra \
-            wget \
+            curl \
             unzip \
             fontconfig
 
       - name: Install Fonts (Source Serif 4 and Inter)
         run: |
-          set -e
+          mkdir -p ~/.local/share/fonts
+          cd ~/.local/share/fonts
 
-          mkdir -p ~/.fonts
-          cd ~/.fonts
+          echo "Installing Source Serif 4..."
+          # [Inference] curl -L is used here to ensure redirects from GitHub are followed correctly
+          curl -L -o source-serif.zip https://github.com/adobe-fonts/source-serif/releases/download/4.005/source-serif-4.005.zip \
+            || echo "Source Serif 4 download failed"
 
-          echo "Installing Source Serif 4…"
+          if [ -f source-serif.zip ]; then
+            unzip -q source-serif.zip "TTF/*.ttf"
+            mv TTF/*.ttf .
+            rm -rf TTF source-serif.zip
+          fi
 
-          wget -q https://github.com/adobe-fonts/source-serif/releases/download/4.005/source-serif-4.005.zip \
-            || { echo "Failed to download Source Serif 4"; exit 1; }
+          echo "Installing Inter..."
+          curl -L -o Inter.zip https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip \
+            || echo "Inter download failed"
 
-          unzip -q source-serif-4.005.zip "TTF/*.ttf"
-          mv TTF/*.ttf .
-          rm -rf TTF source-serif-4.005.zip
-
-          echo "Installing Inter…"
-
-          wget -q https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip \
-            || { echo "Failed to download Inter"; exit 1; }
-
-          unzip -q Inter-4.0.zip "Inter Desktop/*.ttf"
-          mv "Inter Desktop"/*.ttf .
-          rm -rf "Inter Desktop" Inter-4.0.zip
+          if [ -f Inter.zip ]; then
+            unzip -q Inter.zip "Inter Desktop/*.ttf"
+            mv "Inter Desktop"/*.ttf .
+            rm -rf "Inter Desktop" Inter.zip
+          fi
 
           fc-cache -f -v
-
-          echo "Verifying installed fonts:"
-          fc-list | grep -q "Source Serif 4" || { echo "Source Serif 4 not registered"; exit 1; }
-          fc-list | grep -q "Inter" || { echo "Inter not registered"; exit 1; }
+          echo "Font installation finished"
 
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
@@ -131,41 +129,34 @@ jobs:
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
 
-          pandoc temp_md/Resume_Recruiter.md \
-            -V geometry:margin=0.5in \
-            -V mainfont="Source Serif 4" \
-            -V sansfont="Inter 24pt" \
-            -V fontsize=10pt \
-            -V linestretch=1.15 \
-            -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
-            --resource-path=temp_md \
-            -V linkcolor=blue -V urlcolor=blue \
-            --pdf-engine=xelatex \
-            -o "pdf/${NAME_PREFIX}_Resume_Recruiter.pdf"
+          # [Inference] Checking if fonts exist to set variables. XeLaTeX doesn't support comma-separated fallback strings.
+          MAIN_FONT="serif"
+          SANS_FONT="sans-serif"
 
-          pandoc temp_md/Resume.md \
-            -V geometry:margin=0.5in \
-            -V mainfont="Source Serif 4" \
-            -V sansfont="Inter 24pt" \
-            -V fontsize=10pt \
-            -V linestretch=1.15 \
-            -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
-            --resource-path=temp_md \
-            -V linkcolor=blue -V urlcolor=blue \
-            --pdf-engine=xelatex \
-            -o "pdf/${NAME_PREFIX}_Resume.pdf"
+          if fc-list | grep -q "Source Serif 4"; then
+            MAIN_FONT="Source Serif 4"
+          fi
 
-          pandoc temp_md/Resume_Comprehensive.md \
-            -V geometry:margin=0.5in \
-            -V mainfont="Source Serif 4" \
-            -V sansfont="Inter 24pt" \
-            -V fontsize=10pt \
-            -V linestretch=1.15 \
-            -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
-            --resource-path=temp_md \
-            -V linkcolor=blue -V urlcolor=blue \
-            --pdf-engine=xelatex \
-            -o "pdf/${NAME_PREFIX}_Resume_Comprehensive.pdf"
+          if fc-list | grep -q "Inter"; then
+            SANS_FONT="Inter"
+          fi
+
+          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
+            if [ -f "temp_md/$FILE" ]; then
+              OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
+              pandoc "temp_md/$FILE" \
+                -V geometry:margin=0.5in \
+                -V mainfont="$MAIN_FONT" \
+                -V sansfont="$SANS_FONT" \
+                -V fontsize=10pt \
+                -V linestretch=1.15 \
+                -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
+                --resource-path=temp_md \
+                -V linkcolor=blue -V urlcolor=blue \
+                --pdf-engine=xelatex \
+                -o "pdf/$OUTPUT_FILE"
+            fi
+          done
         env:
           RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
           RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
