@@ -41,11 +41,13 @@ jobs:
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
 
-      - name: Create Output Directories
+      - name: Create and Clear Output Directories
         run: |
           mkdir -p pdf
           mkdir -p temp_md
           mkdir -p temp_links
+          # [Inference] This removes existing PDFs from the runner workspace
+          rm -f pdf/*.pdf
 
       - name: Update Stats
         run: node scripts/update-stats.js markdown
@@ -68,14 +70,6 @@ jobs:
           cp temp_links/Resume.md markdown/Resume.md
           cp temp_links/Resume_Comprehensive.md markdown/Resume_Comprehensive.md
           echo "Source files updated with injected links"
-
-      - name: Commit Updated Markdown Files
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add markdown/*.md
-          git diff --staged --quiet || git commit -m "chore: update markdown files with injected links [skip ci]"
-          git push
 
       - name: Assemble Resumes with PII Headers
         run: |
@@ -124,6 +118,26 @@ jobs:
         env:
           RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
           RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
+
+      - name: Commit and Push Updated Files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # [Inference] This adds all markdown changes and handles the PDF folder sync
+          git add markdown/*.md
+
+          # Stage all current PDFs and remove any that no longer exist
+          if [ -d "pdf" ]
+          then
+            git add pdf/*.pdf
+          fi
+
+          # Use git add -A to ensure deletions in the pdf/ folder are staged
+          git add -A pdf/
+
+          git diff --staged --quiet || git commit -m "chore: update resumes and sync pdf artifacts [skip ci]"
+          git push
 
       - name: Upload PDF Artifacts
         uses: actions/upload-artifact@v4
