@@ -77,6 +77,8 @@ jobs:
             echo "Processing $f"
             node scripts/mermaid-render.js "$f"
           done
+          echo "Listing temp_md contents:"
+          ls -la temp_md/
 
       - name: Build PDFs with Pandoc
         run: |
