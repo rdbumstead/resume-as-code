@@ -1,0 +1,63 @@
+name: Import Legacy Resume
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "imports/**.docx"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert-and-replace:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+          npm install -g prettier
+
+      - name: Convert Documents
+        run: |
+          git config --global user.name "Resume-Import-Bot"
+          git config --global user.email "bot@noreply.github.com"
+
+          has_changes=false
+
+          for file in imports/*.docx; do
+            [ -e "$file" ] || continue
+
+            filename=$(basename -- "$file")
+            name_no_ext="${filename%.*}"
+            target="markdown/$name_no_ext.md"
+
+            echo "Converting $filename to $target..."
+
+            pandoc "$file" -f docx -t gfm --standalone=false -o "$target"
+
+            sed -i -n '/^## /,$p' "$target" || echo "Warning: No header found, skipping strip."
+
+            prettier --write "$target"
+
+            git rm "$file"
+            git add "$target"
+
+            has_changes=true
+          done
+
+          if [ "$has_changes" = true ]; then
+             echo "Changes detected. Committing..."
+             git commit -m "feat(import): convert docx to clean markdown [skip ci]"
+             git push
+          else
+             echo "No .docx files found to convert."
+          fi
