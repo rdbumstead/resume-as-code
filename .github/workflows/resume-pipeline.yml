@@ -29,24 +29,40 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra wget fontconfig
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-extra \
+            wget \
+            unzip \
+            fontconfig
 
       - name: Install Fonts (Source Serif 4 and Inter)
         run: |
+          set -e
+
           mkdir -p ~/.fonts
           cd ~/.fonts
 
-          # Download Source Serif 4 TTF files from release branch
-          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-Regular.ttf
-          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-Bold.ttf
-          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-It.ttf
-          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-BoldIt.ttf
+          echo "Installing Source Serif 4…"
 
-          # Download Inter font files from release branch  
-          wget https://github.com/rsms/inter/raw/master/docs/font-files/Inter-Regular.ttf
-          wget https://github.com/rsms/inter/raw/master/docs/font-files/Inter-Bold.ttf
+          wget -q https://github.com/adobe-fonts/source-serif/releases/download/4.005/source-serif-4.005.zip \
+            || { echo "❌ Failed to download Source Serif 4"; exit 1; }
 
-          # Refresh font cache
+          unzip -q source-serif-4.005.zip "TTF/*.ttf"
+          mv TTF/*.ttf .
+          rm -rf TTF source-serif-4.005.zip
+
+          echo "Installing Inter…"
+
+          wget -q https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip \
+            || { echo "❌ Failed to download Inter"; exit 1; }
+
+          unzip -q Inter-4.0.zip "Inter Desktop/*.ttf"
+          mv "Inter Desktop"/*.ttf .
+          rm -rf "Inter Desktop" Inter-4.0.zip
+
           fc-cache -f -v
 
       - name: Install Mermaid CLI
@@ -103,21 +119,14 @@ jobs:
 
       - name: Render Mermaid Diagrams
         run: |
-          if [ -f temp_md/Resume_Recruiter.md ]; then
-            node scripts/mermaid-render.js temp_md/Resume_Recruiter.md || true
-          fi
-          if [ -f temp_md/Resume.md ]; then
-            node scripts/mermaid-render.js temp_md/Resume.md || true
-          fi
-          if [ -f temp_md/Resume_Comprehensive.md ]; then
-            node scripts/mermaid-render.js temp_md/Resume_Comprehensive.md || true
-          fi
+          [ -f temp_md/Resume_Recruiter.md ] && node scripts/mermaid-render.js temp_md/Resume_Recruiter.md || true
+          [ -f temp_md/Resume.md ] && node scripts/mermaid-render.js temp_md/Resume.md || true
+          [ -f temp_md/Resume_Comprehensive.md ] && node scripts/mermaid-render.js temp_md/Resume_Comprehensive.md || true
 
       - name: Build PDFs with Pandoc
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
 
-          # Build Recruiter Resume
           pandoc temp_md/Resume_Recruiter.md \
             -V geometry:margin=0.5in \
             -V mainfont="Source Serif 4" \
@@ -130,7 +139,6 @@ jobs:
             --pdf-engine=xelatex \
             -o "pdf/${NAME_PREFIX}_Resume_Recruiter.pdf"
 
-          # Build Full Resume
           pandoc temp_md/Resume.md \
             -V geometry:margin=0.5in \
             -V mainfont="Source Serif 4" \
@@ -143,7 +151,6 @@ jobs:
             --pdf-engine=xelatex \
             -o "pdf/${NAME_PREFIX}_Resume.pdf"
 
-          # Build Comprehensive Resume
           pandoc temp_md/Resume_Comprehensive.md \
             -V geometry:margin=0.5in \
             -V mainfont="Source Serif 4" \
