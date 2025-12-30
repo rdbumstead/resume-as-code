@@ -81,6 +81,9 @@ function processFile(filePath, fileName) {
             const keywordRegex = new RegExp(`\\b(${escapeRegExp(keyword)})\\b`, 'gi');
             
             textBlock = textBlock.replace(keywordRegex, (match, p1, offset, fullString) => {
+                
+                if (keyword === 'Portfolio') return match;
+
                 let start = offset;
                 while (start > 0 && !/\s/.test(fullString[start - 1])) start--;
                 let end = offset + match.length;
@@ -92,14 +95,6 @@ function processFile(filePath, fileName) {
                     surroundingWord.includes('.com/') ||
                     surroundingWord.includes('github.com')) {
                     return match;
-                }
-
-                if (keyword === 'Portfolio') {
-                    const lookback = fullString.substring(Math.max(0, offset - 20), offset);
-                    if (/Architect\s*[*_]*\s*$/i.test(lookback)) return match;
-                    const lineStart = fullString.lastIndexOf('\n', offset) + 1;
-                    const linePrefix = fullString.substring(lineStart, offset);
-                    if (/^\s*#/.test(linePrefix)) return match;
                 }
 
                 injectedInFile++;

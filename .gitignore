@@ -4,8 +4,6 @@ node_modules/
 # --- BUILD ARTIFACTS ---
 # Intermediate folder for assembled markdown & images
 temp_md/
-# Generated Puppeteer config
-puppeteer-config.json
 
 # --- SECRETS ---
 .env

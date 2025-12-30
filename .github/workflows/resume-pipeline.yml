@@ -1,52 +1,68 @@
-name: Build Resume as Code
+name: Build and Deploy Resume PDFs
 
 on:
   push:
-    branches: ["main"]
-    paths:
-      - "markdown/**"
-      - "scripts/**"
-      - "resume.config.json"
-      - ".github/workflows/**"
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  build-and-publish:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "18"
 
       - name: Install Dependencies
-        run: |
-          npm ci
-          echo "$(npm bin)" >> $GITHUB_PATH
+        run: npm install
 
-      - name: Install Pandoc & LaTeX
+      - name: Install Pandoc, LaTeX, and Fonts
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended fonts-freefont-ttf
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-extra \
+            fontconfig \
+            fonts-liberation \
+            fonts-dejavu
 
-      - name: Clean Old Artifacts
+      - name: Install Mermaid CLI
+        run: npm install -g @mermaid-js/mermaid-cli
+
+      - name: Prepare Directories
         run: |
+          mkdir -p pdf temp_md temp_links
           rm -f pdf/*.pdf
 
-      - name: Update Portfolio Stats
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
+      - name: Update Stats
         run: node scripts/update-stats.js markdown
+        env:
+          RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
 
-      - name: Assemble & Render
+      - name: Copy Source Files
+        run: cp markdown/*.md temp_links/
+
+      - name: Inject Links
+        run: node scripts/inject-links.js temp_links
+
+      - name: Copy Link-Injected Files Back
+        run: cp temp_links/*.md markdown/
+
+      - name: Assemble Resumes with PII Headers
+        run: |
+          for file in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
+            node scripts/assemble.js temp_md "markdown/$file" "$file"
+          done
         env:
           RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
           RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
@@ -54,64 +70,54 @@ jobs:
           RESUME_LOCATION: ${{ secrets.RESUME_LOCATION }}
           RESUME_PHONE: ${{ secrets.RESUME_PHONE }}
           RESUME_EMAIL: ${{ secrets.RESUME_EMAIL }}
+
+      - name: Render Mermaid Diagrams
         run: |
-          mkdir -p temp_md
-          echo '{"args": ["--no-sandbox"]}' > puppeteer-config.json
-
-          for file in markdown/*.md; do
-            filename=$(basename "$file")
-            node scripts/assemble.js temp_md "$file" "$filename"
-            node scripts/mermaid-render.js "temp_md/$filename"
+          for f in temp_md/*.md; do
+            echo "Processing $f"
+            node scripts/mermaid-render.js "$f"
           done
+          echo "Listing temp_md contents:"
+          ls -la temp_md/
 
-      - name: Audit & Inject Links
-        run: node scripts/inject-links.js temp_md
-
-      - name: Compile PDFs
+      - name: Build PDFs with Pandoc
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
-          mkdir -p pdf
+          MAIN_FONT="Liberation Serif"
+          SANS_FONT="Liberation Sans"
 
-          LATEX_HEADER="\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}"
+          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
+            if [ -f "temp_md/$FILE" ]; then
+              OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
+              pandoc "temp_md/$FILE" \
+                -V geometry:margin=0.5in \
+                -V mainfont="$MAIN_FONT" \
+                -V sansfont="$SANS_FONT" \
+                -V fontsize=10pt \
+                -V linestretch=1.15 \
+                -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
+                --resource-path=temp_md \
+                -V linkcolor=blue -V urlcolor=blue \
+                --pdf-engine=xelatex \
+                -o "pdf/$OUTPUT_FILE"
+            fi
+          done
 
-          pandoc "temp_md/Resume_Recruiter.md" \
-            -V geometry:margin=0.5in \
-            -V mainfont="FreeSerif" \
-            -V sansfont="FreeSans" \
-            -V fontsize=10pt \
-            -V linestretch=1.15 \
-            -V header-includes="$LATEX_HEADER" \
-            --resource-path="temp_md" \
-            -V linkcolor=blue -V urlcolor=blue \
-            --pdf-engine=xelatex \
-            -o "pdf/${NAME_PREFIX}_Resume_Recruiter.pdf"
+      - name: Commit and Push Updates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add markdown/*.md pdf/
+          git diff --staged --quiet || git commit -m "chore: update resumes and sync pdf artifacts [skip ci]"
+          git push
 
-          pandoc "temp_md/Resume.md" \
-            -V geometry:margin=0.5in \
-            -V mainfont="FreeSerif" \
-            -V sansfont="FreeSans" \
-            -V fontsize=10pt \
-            -V linestretch=1.15 \
-            -V header-includes="$LATEX_HEADER" \
-            --resource-path="temp_md" \
-            -V linkcolor=blue -V urlcolor=blue \
-            --pdf-engine=xelatex \
-            -o "pdf/${NAME_PREFIX}_Resume.pdf"
-
-          pandoc "temp_md/Resume_Comprehensive.md" \
-            -V geometry:margin=0.5in \
-            -V mainfont="FreeSerif" \
-            -V sansfont="FreeSans" \
-            -V fontsize=10pt \
-            -V linestretch=1.15 \
-            -V header-includes="$LATEX_HEADER" \
-            --resource-path="temp_md" \
-            -V linkcolor=blue -V urlcolor=blue \
-            --pdf-engine=xelatex \
-            -o "pdf/${NAME_PREFIX}_Resume_Comprehensive.pdf"
-
-      - name: Commit Artifacts
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Upload PDF Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          commit_message: "chore: Generate PDFs for ${{ github.actor }} [skip ci]"
-          file_pattern: "pdf/*.pdf markdown/*.md"
+          name: resume-pdfs
+          path: pdf/*.pdf
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -rf temp_md temp_links
