@@ -82,7 +82,8 @@ function processFile(filePath, fileName) {
             
             textBlock = textBlock.replace(keywordRegex, (match, p1, offset, fullString) => {
                 
-                if (keyword === 'Portfolio') return match;
+                // Don't inject links for these keywords - they appear in other contexts
+                if (keyword === 'Portfolio' || keyword === 'GitHub') return match;
 
                 let start = offset;
                 while (start > 0 && !/\s/.test(fullString[start - 1])) start--;
