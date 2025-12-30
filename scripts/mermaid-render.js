@@ -33,7 +33,9 @@ const newText = mdText.replace(mermaidRegex, (match, mermaidCode) => {
 
     try {
         execSync('mmdc --version', { stdio: 'pipe' });
-        execSync(`mmdc -i - -o "${pngPath}" -b transparent -s 4`, {
+        
+        const configPath = path.join(process.cwd(), 'puppeteer-config.json');
+        execSync(`mmdc -i - -o "${pngPath}" -b transparent -s 4 -p "${configPath}"`, {
             input: mermaidCode,
             stdio: ['pipe', 'pipe', 'pipe'],
             env: {
