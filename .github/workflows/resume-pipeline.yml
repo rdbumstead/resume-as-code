@@ -34,38 +34,7 @@ jobs:
             texlive-xetex \
             texlive-fonts-recommended \
             texlive-latex-extra \
-            curl \
-            unzip \
             fontconfig
-
-      - name: Install Fonts (Source Serif 4 and Inter)
-        run: |
-          mkdir -p ~/.local/share/fonts
-          cd ~/.local/share/fonts
-
-          echo "Installing Source Serif 4..."
-          # [Inference] curl -L is used here to ensure redirects from GitHub are followed correctly
-          curl -L -o source-serif.zip https://github.com/adobe-fonts/source-serif/releases/download/4.005/source-serif-4.005.zip \
-            || echo "Source Serif 4 download failed"
-
-          if [ -f source-serif.zip ]; then
-            unzip -q source-serif.zip "TTF/*.ttf"
-            mv TTF/*.ttf .
-            rm -rf TTF source-serif.zip
-          fi
-
-          echo "Installing Inter..."
-          curl -L -o Inter.zip https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip \
-            || echo "Inter download failed"
-
-          if [ -f Inter.zip ]; then
-            unzip -q Inter.zip "Inter Desktop/*.ttf"
-            mv "Inter Desktop"/*.ttf .
-            rm -rf "Inter Desktop" Inter.zip
-          fi
-
-          fc-cache -f -v
-          echo "Font installation finished"
 
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
@@ -129,20 +98,14 @@ jobs:
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
 
-          # [Inference] Checking if fonts exist to set variables. XeLaTeX doesn't support comma-separated fallback strings.
-          MAIN_FONT="serif"
-          SANS_FONT="sans-serif"
+          # [Inference] DejaVu Serif and Ubuntu are pre-installed on GitHub Ubuntu runners
+          MAIN_FONT="DejaVu Serif"
+          SANS_FONT="Ubuntu"
 
-          if fc-list | grep -q "Source Serif 4"; then
-            MAIN_FONT="Source Serif 4"
-          fi
-
-          if fc-list | grep -q "Inter"; then
-            SANS_FONT="Inter"
-          fi
-
-          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
-            if [ -f "temp_md/$FILE" ]; then
+          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md
+          do
+            if [ -f "temp_md/$FILE" ]
+            then
               OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
               pandoc "temp_md/$FILE" \
                 -V geometry:margin=0.5in \
