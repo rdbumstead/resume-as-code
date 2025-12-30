@@ -29,6 +29,7 @@ const phone = process.env.RESUME_PHONE || "555-0100";
 const email = process.env.RESUME_EMAIL || "email@example.com";
 
 const l = config.links || {};
+const github = l.GitHub ? `[GitHub](${l.GitHub})` : "";
 const linkedIn = l.LinkedIn ? `[LinkedIn](${l.LinkedIn})` : "";
 const portfolio = l.Portfolio ? `[Portfolio](${l.Portfolio})` : "";
 
@@ -37,10 +38,11 @@ const nameLine = `# ${firstName.toUpperCase()} ${lastName.toUpperCase()}\n`;
 const headerItems = [
     `**${title}**`,
     location,
-    phone,
     email,
+    github,
+    portfolio,
     linkedIn,
-    portfolio
+    phone
 ].filter(Boolean);
 
 const infoLine = headerItems.join(" | ");
