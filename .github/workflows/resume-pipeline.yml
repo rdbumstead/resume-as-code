@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -26,7 +24,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Pandoc, LaTeX, and Guaranteed Fonts
+      - name: Install Pandoc, LaTeX, and Fonts
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -41,11 +39,9 @@ jobs:
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
 
-      - name: Create and Clear Output Directories
+      - name: Prepare Directories
         run: |
-          mkdir -p pdf
-          mkdir -p temp_md
-          mkdir -p temp_links
+          mkdir -p pdf temp_md temp_links
           rm -f pdf/*.pdf
 
       - name: Update Stats
@@ -53,28 +49,20 @@ jobs:
         env:
           RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
 
-      - name: Copy Source Files to temp_links
-        run: |
-          cp markdown/Resume_Recruiter.md temp_links/Resume_Recruiter.md
-          cp markdown/Resume.md temp_links/Resume.md
-          cp markdown/Resume_Comprehensive.md temp_links/Resume_Comprehensive.md
+      - name: Copy Source Files
+        run: cp markdown/*.md temp_links/
 
       - name: Inject Links
         run: node scripts/inject-links.js temp_links
 
-      - name: Copy Link-Injected Files Back to Source
-        run: |
-          echo "Copying link-injected files back to source..."
-          cp temp_links/Resume_Recruiter.md markdown/Resume_Recruiter.md
-          cp temp_links/Resume.md markdown/Resume.md
-          cp temp_links/Resume_Comprehensive.md markdown/Resume_Comprehensive.md
-          echo "Source files updated with injected links"
+      - name: Copy Link-Injected Files Back
+        run: cp temp_links/*.md markdown/
 
       - name: Assemble Resumes with PII Headers
         run: |
-          node scripts/assemble.js temp_md markdown/Resume_Recruiter.md Resume_Recruiter.md
-          node scripts/assemble.js temp_md markdown/Resume.md Resume.md
-          node scripts/assemble.js temp_md markdown/Resume_Comprehensive.md Resume_Comprehensive.md
+          for file in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
+            node scripts/assemble.js temp_md "markdown/$file" "$file"
+          done
         env:
           RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
           RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
@@ -85,35 +73,20 @@ jobs:
 
       - name: Render Mermaid Diagrams
         run: |
-          echo "Checking for Mermaid diagrams..."
-          if [ -f temp_md/Resume_Recruiter.md ]; then
-            echo "Processing Resume_Recruiter.md"
-            node scripts/mermaid-render.js temp_md/Resume_Recruiter.md || echo "No Mermaid in Recruiter"
-          fi
-          if [ -f temp_md/Resume.md ]; then
-            echo "Processing Resume.md"
-            node scripts/mermaid-render.js temp_md/Resume.md || echo "No Mermaid in Resume"
-          fi
-          if [ -f temp_md/Resume_Comprehensive.md ]; then
-            echo "Processing Resume_Comprehensive.md"
-            node scripts/mermaid-render.js temp_md/Resume_Comprehensive.md || echo "No Mermaid in Comprehensive"
-          fi
-          echo "Listing temp_md contents:"
-          ls -la temp_md/
+          for f in temp_md/*.md; do
+            echo "Processing $f"
+            node scripts/mermaid-render.js "$f"
+          done
 
       - name: Build PDFs with Pandoc
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
-
           MAIN_FONT="Liberation Serif"
           SANS_FONT="Liberation Sans"
 
-          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md
-          do
-            if [ -f "temp_md/$FILE" ]
-            then
+          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
+            if [ -f "temp_md/$FILE" ]; then
               OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
-              
               pandoc "temp_md/$FILE" \
                 -V geometry:margin=0.5in \
                 -V mainfont="$MAIN_FONT" \
@@ -128,17 +101,11 @@ jobs:
             fi
           done
 
-      - name: Commit and Push Updated Files
+      - name: Commit and Push Updates
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-
-          git add markdown/*.md
-
-          if [ -d "pdf" ]; then
-            git add -A pdf/
-          fi
-
+          git add markdown/*.md pdf/
           git diff --staged --quiet || git commit -m "chore: update resumes and sync pdf artifacts [skip ci]"
           git push
 
@@ -151,5 +118,4 @@ jobs:
       - name: Cleanup
         if: always()
         run: |
-          rm -rf temp_md
-          rm -rf temp_links
+          rm -rf temp_md temp_links
