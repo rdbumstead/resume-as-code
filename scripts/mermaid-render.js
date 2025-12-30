@@ -55,9 +55,13 @@ let newText = mdText.replace(/```mermaid([\s\S]*?)```/g, (match, mermaidCode) =>
             throw new Error('mmdc not installed');
         }
         
-        execSync(`mmdc -i - -o "${pngPath}" -b transparent -s 4`, { 
+        execSync(`mmdc -i - -o "${pngPath}" -b transparent -s 4 --puppeteerConfigFile /dev/null`, { 
             input: mermaidCode,
-            stdio: ['pipe', 'pipe', 'pipe']
+            stdio: ['pipe', 'pipe', 'pipe'],
+            env: {
+                ...process.env,
+                PUPPETEER_ARGS: '--no-sandbox --disable-setuid-sandbox'
+            }
         });
         
         if (fs.existsSync(pngPath)) {
