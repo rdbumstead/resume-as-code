@@ -46,7 +46,6 @@ jobs:
           mkdir -p pdf
           mkdir -p temp_md
           mkdir -p temp_links
-          # [Inference] This removes existing PDFs from the runner workspace
           rm -f pdf/*.pdf
 
       - name: Update Stats
@@ -93,6 +92,8 @@ jobs:
       - name: Build PDFs with Pandoc
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
+          FULL_NAME="${{ secrets.RESUME_FIRST_NAME }} ${{ secrets.RESUME_LAST_NAME }}"
+          BUILD_DATE=$(date +'%B %Y')
 
           MAIN_FONT="Liberation Serif"
           SANS_FONT="Liberation Sans"
@@ -102,6 +103,19 @@ jobs:
             if [ -f "temp_md/$FILE" ]
             then
               OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
+              
+              case "$FILE" in
+                *Recruiter*)
+                  RESUME_TYPE="Recruiter Resume"
+                  ;;
+                *Comprehensive*)
+                  RESUME_TYPE="Comprehensive Resume"
+                  ;;
+                *)
+                  RESUME_TYPE="Resume"
+                  ;;
+              esac
+              
               pandoc "temp_md/$FILE" \
                 -V geometry:margin=0.5in \
                 -V mainfont="$MAIN_FONT" \
@@ -111,6 +125,10 @@ jobs:
                 -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
                 --resource-path=temp_md \
                 -V linkcolor=blue -V urlcolor=blue \
+                -M author="$FULL_NAME" \
+                -M title="${{ secrets.RESUME_TITLE }} - $RESUME_TYPE" \
+                -M subject="Professional Resume - $BUILD_DATE" \
+                -M keywords="Salesforce, Platform Architect, DevOps, AWS, Experience Cloud, Agentforce, CI/CD" \
                 --pdf-engine=xelatex \
                 -o "pdf/$OUTPUT_FILE"
             fi
@@ -124,17 +142,11 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # [Inference] This adds all markdown changes and handles the PDF folder sync
           git add markdown/*.md
 
-          # Stage all current PDFs and remove any that no longer exist
-          if [ -d "pdf" ]
-          then
-            git add pdf/*.pdf
+          if [ -d "pdf" ]; then
+            git add -A pdf/
           fi
-
-          # Use git add -A to ensure deletions in the pdf/ folder are staged
-          git add -A pdf/
 
           git diff --staged --quiet || git commit -m "chore: update resumes and sync pdf artifacts [skip ci]"
           git push

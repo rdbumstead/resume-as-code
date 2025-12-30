@@ -1,22 +1,8 @@
-## ARCHITECT PROFILE
+## Professional Summary
 
 Principal-level Salesforce Platform Architect with **7+ years** designing governed, enterprise-grade Salesforce systems. Specializes in **architecture-first delivery**, **multi-cloud Salesforce/AWS systems**, **DevOps maturity**, and **resilience engineering**. Known for translating executive strategy into enforceable technical architecture.
 
----
-
-## ARCHITECTURAL FOCUS AREAS
-
-- Enterprise Salesforce Platform Architecture
-- API-First & Contract-First Design (OpenAPI 3.0)
-- DevOps Automation & Zero-Touch CI/CD
-- Experience Cloud (LWR) Performance Architecture
-- Multi-Cloud Integration (Salesforce + AWS)
-- AI Governance & Resilience Engineering
-- FinOps & Constraint-Based Design
-
----
-
-## ARCHITECTURE PORTFOLIO
+## Technical Projects
 
 ### Salesforce Platform Architect Portfolio
 
@@ -56,33 +42,44 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via the GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
 
----
+## Professional Experience
 
-## PROFESSIONAL EXPERIENCE
-
-### CRM Developer (Salesforce) — Creighton University | Aug 2025 – Present
+**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
 
 - Leading platform-level DevOps modernization and architectural standards.
 - Advising IT leadership on roadmap planning and architectural risk management.
 - Driving best practices for maintainability, scalability, and governance.
 
-### Salesforce Solutions Architect (Freelance) | Oct 2021 – Present
+**Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
 
 - Acted as principal architect for Salesforce implementations across nonprofit and education sectors.
 - **Metropolitan Community College Career Skills Grant Management:** Architected a state-funded grant management platform processing **$5M+ in workforce development funds**, implementing granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
 - Delivered executive architecture reviews, proofs of concept, and governance models.
 
-### Application Administrator — Creighton University | Jun 2021 – Aug 2025
+**Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
 
 - Administered enterprise Service Cloud environments.
 - Automated Experience Cloud onboarding and identity workflows.
 - Supported large-scale Experience Cloud implementations (10,000+ users).
 
----
+## Technical Skills
 
-## EDUCATION & CERTIFICATIONS
+- **Salesforce Platform:** Apex, LWC, Visualforce, SOQL/SOSL, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
+- **DevOps & Tooling:** GitHub Actions, SFDX CLI, Git, JWT Auth, PMD, ESLint, VS Code, Jira
+- **Architecture:** C4 Modeling, REST & OpenAPI Design, Event-Driven Architecture, Multi-Cloud (AWS Lambda, S3), FinOps
+- **General:** JavaScript (ES6+), SQL, HTML, CSS
 
-- Associate's Degree — Metropolitan Community College (2025)
-- Salesforce Certifications: Platform App Builder,
-  Administrator I & II, Agentforce Specialist, Education Cloud Consultant,
-  Data Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations
+## Education & Certifications
+
+**Associate's Degree in General Studies**
+_Metropolitan Community College (2025)_
+
+**Salesforce Certifications:**
+
+- Platform App Builder
+- Administrator I & II
+- Agentforce Specialist
+- Education Cloud Consultant
+- Data Cloud Consultant
+- AI Associate
+- Marketing Cloud Engagement Foundations
