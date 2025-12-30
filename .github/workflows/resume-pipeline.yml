@@ -48,7 +48,7 @@ jobs:
           echo "Installing Source Serif 4…"
 
           wget -q https://github.com/adobe-fonts/source-serif/releases/download/4.005/source-serif-4.005.zip \
-            || { echo "❌ Failed to download Source Serif 4"; exit 1; }
+            || { echo "Failed to download Source Serif 4"; exit 1; }
 
           unzip -q source-serif-4.005.zip "TTF/*.ttf"
           mv TTF/*.ttf .
@@ -57,13 +57,17 @@ jobs:
           echo "Installing Inter…"
 
           wget -q https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip \
-            || { echo "❌ Failed to download Inter"; exit 1; }
+            || { echo "Failed to download Inter"; exit 1; }
 
           unzip -q Inter-4.0.zip "Inter Desktop/*.ttf"
           mv "Inter Desktop"/*.ttf .
           rm -rf "Inter Desktop" Inter-4.0.zip
 
           fc-cache -f -v
+
+          echo "Verifying installed fonts:"
+          fc-list | grep -q "Source Serif 4" || { echo "Source Serif 4 not registered"; exit 1; }
+          fc-list | grep -q "Inter" || { echo "Inter not registered"; exit 1; }
 
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
