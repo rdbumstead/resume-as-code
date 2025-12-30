@@ -85,15 +85,25 @@ jobs:
 
       - name: Render Mermaid Diagrams
         run: |
-          [ -f temp_md/Resume_Recruiter.md ] && node scripts/mermaid-render.js temp_md/Resume_Recruiter.md || true
-          [ -f temp_md/Resume.md ] && node scripts/mermaid-render.js temp_md/Resume.md || true
-          [ -f temp_md/Resume_Comprehensive.md ] && node scripts/mermaid-render.js temp_md/Resume_Comprehensive.md || true
+          echo "Checking for Mermaid diagrams..."
+          if [ -f temp_md/Resume_Recruiter.md ]; then
+            echo "Processing Resume_Recruiter.md"
+            node scripts/mermaid-render.js temp_md/Resume_Recruiter.md || echo "No Mermaid in Recruiter"
+          fi
+          if [ -f temp_md/Resume.md ]; then
+            echo "Processing Resume.md"
+            node scripts/mermaid-render.js temp_md/Resume.md || echo "No Mermaid in Resume"
+          fi
+          if [ -f temp_md/Resume_Comprehensive.md ]; then
+            echo "Processing Resume_Comprehensive.md"
+            node scripts/mermaid-render.js temp_md/Resume_Comprehensive.md || echo "No Mermaid in Comprehensive"
+          fi
+          echo "Listing temp_md contents:"
+          ls -la temp_md/
 
       - name: Build PDFs with Pandoc
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
-          FULL_NAME="${{ secrets.RESUME_FIRST_NAME }} ${{ secrets.RESUME_LAST_NAME }}"
-          BUILD_DATE=$(date +'%B %Y')
 
           MAIN_FONT="Liberation Serif"
           SANS_FONT="Liberation Sans"
@@ -104,19 +114,6 @@ jobs:
             then
               OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
               
-              # Determine resume type for metadata
-              case "$FILE" in
-                *Recruiter*)
-                  RESUME_TYPE="Recruiter Resume"
-                  ;;
-                *Comprehensive*)
-                  RESUME_TYPE="Comprehensive Resume"
-                  ;;
-                *)
-                  RESUME_TYPE="Resume"
-                  ;;
-              esac
-              
               pandoc "temp_md/$FILE" \
                 -V geometry:margin=0.5in \
                 -V mainfont="$MAIN_FONT" \
@@ -126,18 +123,10 @@ jobs:
                 -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
                 --resource-path=temp_md \
                 -V linkcolor=blue -V urlcolor=blue \
-                -M author="$FULL_NAME" \
-                -M title="${{ secrets.RESUME_TITLE }} - $RESUME_TYPE" \
-                -M subject="Professional Resume - $BUILD_DATE" \
-                -M keywords="Salesforce, Platform Architect, DevOps, AWS, Experience Cloud, Agentforce, CI/CD" \
-                -M date="" \
                 --pdf-engine=xelatex \
                 -o "pdf/$OUTPUT_FILE"
             fi
           done
-        env:
-          RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
-          RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
 
       - name: Commit and Push Updated Files
         run: |
