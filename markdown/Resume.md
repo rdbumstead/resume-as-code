@@ -4,7 +4,7 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 
 ## Technical Projects
 
-**Open-Source, Architecture-First Reference Implementation** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-reference-architecture)
+**Open-Source, Architecture-First Reference Implementation** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 _An architecture-first reference implementation demonstrating enterprise delivery patterns prior to final UI completion._
 

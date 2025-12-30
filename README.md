@@ -27,7 +27,8 @@ graph TD
     subgraph Output ["Presentation Layer"]
         Pandoc["Pandoc / XeLaTeX"]
         PDF1["Recruiter Resume.pdf"]
-        PDF2["Comprehensive Resume.pdf"]
+        PDF2["Standard Resume.pdf"]
+        PDF3["Comprehensive Resume.pdf"]
     end
 
     MD --> Fetch
@@ -39,17 +40,43 @@ graph TD
     Audit --> Pandoc
     Pandoc --> PDF1
     Pandoc --> PDF2
+    Pandoc --> PDF3
 ```
 
-1.  **Cleanup:** Removes previous build artifacts and temporary files to ensure a clean slate.
-2.  **Data Fetching (`update-stats.js`):** Queries the GitHub API to fetch live statistics (e.g., number of Architectural Decision Records) and updates the source files dynamically.
-3.  **Assembly (`assemble.js`):** Dynamically stitches together your specific contact details (from Secrets) with the generic Markdown body content.
-4.  **Diagram Rendering (`mermaid-render.js`):** Compiles MermaidJS code blocks into high-resolution, transparent PNGs for embedding in PDFs.
-5.  **Governance & Link Injection (`inject-links.js`):**
-    - **Audits** existing links against a "Source of Truth" configuration.
-    - **Injects** missing links for governed keywords (e.g., "SAS", "Program Charter").
-    - **Sanitizes** inputs to prevent broken URLs or over-linking.
-6.  **Compilation (Pandoc):** Converts the processed Markdown and assets into print-ready PDFs using XeLaTeX and custom typography settings.
+### Pipeline Stages
+
+1. **Cleanup:** Removes previous build artifacts and temporary files to ensure a clean slate.
+2. **Data Fetching (`update-stats.js`):** Queries the GitHub API to fetch live statistics (e.g., number of Architectural Decision Records) and updates the source files dynamically.
+3. **Assembly (`assemble.js`):** Dynamically stitches together your specific contact details (from Secrets) with the generic Markdown body content.
+4. **Diagram Rendering (`mermaid-render.js`):** Compiles MermaidJS code blocks into high-resolution, transparent PNGs for embedding in PDFs.
+5. **Governance & Link Injection (`inject-links.js`):**
+   - **Audits** existing links against a "Source of Truth" configuration.
+   - **Injects** missing links for governed keywords (e.g., "SAS", "Program Charter").
+   - **Sanitizes** inputs to prevent broken URLs or over-linking.
+6. **Compilation (Pandoc):** Converts the processed Markdown and assets into print-ready PDFs with embedded metadata using XeLaTeX and custom typography settings.
+
+## 🎯 Key Features
+
+### Security-First Architecture
+
+- **PII Decoupling:** Personal contact information stored in GitHub Secrets, decoupled from source Markdown
+- **Bot-Resistant:** Contact details only appear in compiled PDFs, not in plain-text source files that are easily scraped by bots
+- **Controlled Exposure:** PII exists only in final artifacts, making automated harvesting significantly more difficult
+- **Environment Variable Injection:** Dynamic assembly at build time ensures separation of concerns
+
+### Automated Governance
+
+- **Real-time Statistics:** GitHub API integration fetches current portfolio metrics (ADR count, documentation status)
+- **Link Validation:** Ensures all hyperlinks resolve correctly and follow naming conventions
+- **Format Enforcement:** Automated checks prevent formatting inconsistencies
+
+### Professional Output
+
+- **PDF Metadata:** Embedded author, title, and keywords for professional document properties
+- **Multi-Version Strategy:** Generates three targeted resume versions from single source
+  - **Recruiter:** ATS-optimized, scannable format
+  - **Standard:** Balanced detail for general applications
+  - **Comprehensive:** Architecture-heavy with diagrams for senior roles
 
 ## 🛠 Tech Stack
 
@@ -57,36 +84,67 @@ graph TD
 - **Scripting:** Node.js (Automation & API interaction)
 - **Diagrams:** Mermaid.js (via Puppeteer)
 - **CI/CD:** GitHub Actions
+- **Fonts:** Liberation Serif & Sans (cross-platform compatibility)
 
 ## 📂 Project Structure
 
-- `markdown/`: Generic source content (Experience, Skills, Summary).
-- `scripts/`: Node.js logic for fetching stats, rendering diagrams, and assembling the final document.
-- `pdf/`: Final compiled artifacts (ignored by git in local, tracked in release).
-- `resume.config.json`: **Single Source of Truth** for architectural meta and links.
-- `.env` / **GitHub Secrets**: **Single Source of Truth** for PII (Name, Email, Phone).
+```
+resume-as-code/
+├── markdown/              # Generic source content (Experience, Skills, Summary)
+│   ├── Resume.md
+│   ├── Resume_Recruiter.md
+│   └── Resume_Comprehensive.md
+├── scripts/               # Node.js automation logic
+│   ├── assemble.js        # PII injection and header assembly
+│   ├── update-stats.js    # GitHub API data fetching
+│   ├── inject-links.js    # Link governance and validation
+│   ├── mermaid-render.js  # Diagram rendering
+│   └── get-name.js        # Name formatting utility
+├── pdf/                   # Final compiled artifacts
+├── resume.config.json     # Single Source of Truth for links and metadata
+└── .github/workflows/     # CI/CD pipeline definition
+```
 
 ## 🚀 Quick Start
 
 ### 1. Fork & Clone
 
-Fork this repository to your own GitHub account.
+Fork this repository to your own GitHub account, then clone it locally:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/resume-as-code.git
+cd resume-as-code
+```
 
 ### 2. Configure Secrets (The Secure Way)
 
 Go to **Settings > Secrets and variables > Actions** in your forked repo and add the following repository secrets:
 
-| Secret Name          | Value Example    |
-| -------------------- | ---------------- |
-| `RESUME_FIRST_NAME`  | Jane             |
-| `RESUME_LAST_NAME`   | Doe              |
-| `RESUME_TITLE`       | Senior Architect |
-| `RESUME_PHONE`       | 555-0100         |
-| `RESUME_EMAIL`       | jane@example.com |
-| `RESUME_LOCATION`    | New York, NY     |
-| `RESUME_GITHUB_USER` | janedoe          |
+| Secret Name          | Value Example    | Description                         |
+| -------------------- | ---------------- | ----------------------------------- |
+| `RESUME_FIRST_NAME`  | Jane             | Your first name                     |
+| `RESUME_LAST_NAME`   | Doe              | Your last name                      |
+| `RESUME_TITLE`       | Senior Architect | Your professional title             |
+| `RESUME_PHONE`       | 555-0100         | Contact phone number                |
+| `RESUME_EMAIL`       | jane@example.com | Contact email address               |
+| `RESUME_LOCATION`    | New York, NY     | City, State                         |
+| `RESUME_GITHUB_USER` | janedoe          | GitHub username for API integration |
 
-### 3. Local Development (Optional)
+### 3. Update Content
+
+Edit the Markdown files in the `markdown/` directory with your experience, skills, and projects. The pipeline will automatically handle PII injection and link governance.
+
+### 4. Commit & Push
+
+```bash
+git add markdown/
+git commit -m "feat: update experience section"
+git push
+```
+
+The GitHub Actions workflow will automatically build and commit the updated PDFs.
+
+### 5. Local Development (Optional)
 
 If running locally, create a `.env` file in the root directory (this file is ignored by git):
 
@@ -99,3 +157,36 @@ RESUME_EMAIL=jane@example.com
 RESUME_LOCATION=New York, NY
 RESUME_GITHUB_USER=janedoe
 ```
+
+Then install dependencies and run the build:
+
+```bash
+npm install
+# Run individual scripts or the full pipeline locally
+node scripts/update-stats.js markdown
+node scripts/assemble.js temp_md markdown/Resume.md Resume.md
+```
+
+## 🔒 Why This Approach?
+
+### Traditional Resume Management
+
+- Manual Word document updates
+- Version control via "Resume_v3_final_FINAL.docx"
+- Contact info in plain-text files (easily scraped by bots)
+- Inconsistent formatting across versions
+
+### Resume as Code
+
+- **Single Source of Truth:** One set of Markdown files, multiple output formats
+- **Automated Governance:** Links, stats, and formatting enforced programmatically
+- **Bot-Resistant PII:** Contact details only in compiled PDFs, not easily harvested by automated scrapers
+- **Verifiable Architecture:** The pipeline itself demonstrates DevOps and automation skills
+
+## 📄 License
+
+MIT License - Feel free to fork and adapt for your own use.
+
+## 🤝 Contributing
+
+This is a personal project, but if you find bugs or have suggestions for improving the pipeline architecture, feel free to open an issue.
