@@ -21,7 +21,9 @@ console.log(`[Mermaid] Basename: ${mdBasename}`);
 
 let count = 0;
 
-const newText = mdText.replace(/```mermaid([\s\S]*?)```/g, (match, mermaidCode) => {
+const mermaidRegex = /```mermaid([\s\S]*?)```/g;
+
+const newText = mdText.replace(mermaidRegex, (match, mermaidCode) => {
     count++;
     const pngName = `${mdBasename}_mermaid_${count}.png`;
     const pngPath = path.join(mdDir, pngName);
@@ -31,8 +33,7 @@ const newText = mdText.replace(/```mermaid([\s\S]*?)```/g, (match, mermaidCode) 
 
     try {
         execSync('mmdc --version', { stdio: 'pipe' });
-
-        execSync(`mmdc -i - -o "${pngPath}" -b transparent -s 4 --logLevel debug`, {
+        execSync(`mmdc -i - -o "${pngPath}" -b transparent -s 4`, {
             input: mermaidCode,
             stdio: ['pipe', 'pipe', 'pipe'],
             env: {
