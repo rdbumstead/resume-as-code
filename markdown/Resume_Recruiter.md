@@ -4,7 +4,7 @@ Salesforce Platform Architect with **7+ years** of experience designing scalable
 
 ## Technical Projects
 
-**Open-Source, Architecture-First Reference Implementation** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-reference-architecture)
+**Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 - Enterprise documentation ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md))
 - 26 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, performance, and resilience
