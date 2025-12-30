@@ -26,7 +26,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Pandoc and LaTeX
+      - name: Install Pandoc, LaTeX, and Guaranteed Fonts
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -34,7 +34,9 @@ jobs:
             texlive-xetex \
             texlive-fonts-recommended \
             texlive-latex-extra \
-            fontconfig
+            fontconfig \
+            fonts-liberation \
+            fonts-dejavu
 
       - name: Install Mermaid CLI
         run: npm install -g @mermaid-js/mermaid-cli
@@ -98,9 +100,8 @@ jobs:
         run: |
           NAME_PREFIX=$(node scripts/get-name.js)
 
-          # [Inference] DejaVu Serif and Ubuntu are pre-installed on GitHub Ubuntu runners
-          MAIN_FONT="DejaVu Serif"
-          SANS_FONT="Ubuntu"
+          MAIN_FONT="Liberation Serif"
+          SANS_FONT="Liberation Sans"
 
           for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md
           do
