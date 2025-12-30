@@ -104,6 +104,7 @@ jobs:
             then
               OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
               
+              # Determine resume type for metadata
               case "$FILE" in
                 *Recruiter*)
                   RESUME_TYPE="Recruiter Resume"
@@ -129,6 +130,7 @@ jobs:
                 -M title="${{ secrets.RESUME_TITLE }} - $RESUME_TYPE" \
                 -M subject="Professional Resume - $BUILD_DATE" \
                 -M keywords="Salesforce, Platform Architect, DevOps, AWS, Experience Cloud, Agentforce, CI/CD" \
+                -M date="" \
                 --pdf-engine=xelatex \
                 -o "pdf/$OUTPUT_FILE"
             fi
