@@ -12,6 +12,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
+      RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
+      RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
+      RESUME_TITLE: ${{ secrets.RESUME_TITLE }}
+      RESUME_LOCATION: ${{ secrets.RESUME_LOCATION }}
+      RESUME_PHONE: ${{ secrets.RESUME_PHONE }}
+      RESUME_EMAIL: ${{ secrets.RESUME_EMAIL }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -46,8 +55,6 @@ jobs:
 
       - name: Update Stats
         run: node scripts/update-stats.js markdown
-        env:
-          RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
 
       - name: Copy Source Files
         run: cp markdown/*.md temp_links/
@@ -60,25 +67,20 @@ jobs:
 
       - name: Assemble Resumes with PII Headers
         run: |
-          for file in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
-            node scripts/assemble.js temp_md "markdown/$file" "$file"
+          for file_path in markdown/*.md; do
+            # Extract just the filename (e.g., "Resume.md")
+            file_name=$(basename "$file_path")
+            
+            echo "Assembling $file_name..."
+            node scripts/assemble.js temp_md "markdown/$file_name" "$file_name"
           done
-        env:
-          RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
-          RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
-          RESUME_TITLE: ${{ secrets.RESUME_TITLE }}
-          RESUME_LOCATION: ${{ secrets.RESUME_LOCATION }}
-          RESUME_PHONE: ${{ secrets.RESUME_PHONE }}
-          RESUME_EMAIL: ${{ secrets.RESUME_EMAIL }}
 
       - name: Render Mermaid Diagrams
         run: |
           for f in temp_md/*.md; do
-            echo "Processing $f"
+            echo "Rendering diagrams for $f"
             node scripts/mermaid-render.js "$f"
           done
-          echo "Listing temp_md contents:"
-          ls -la temp_md/
 
       - name: Build PDFs with Pandoc
         run: |
@@ -86,21 +88,25 @@ jobs:
           MAIN_FONT="Liberation Serif"
           SANS_FONT="Liberation Sans"
 
-          for FILE in Resume_Recruiter.md Resume.md Resume_Comprehensive.md; do
-            if [ -f "temp_md/$FILE" ]; then
-              OUTPUT_FILE="${NAME_PREFIX}_$(basename "$FILE" .md).pdf"
-              pandoc "temp_md/$FILE" \
-                -V geometry:margin=0.5in \
-                -V mainfont="$MAIN_FONT" \
-                -V sansfont="$SANS_FONT" \
-                -V fontsize=10pt \
-                -V linestretch=1.15 \
-                -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
-                --resource-path=temp_md \
-                -V linkcolor=blue -V urlcolor=blue \
-                --pdf-engine=xelatex \
-                -o "pdf/$OUTPUT_FILE"
-            fi
+          for FILE_PATH in temp_md/*.md; do
+            FILE_NAME=$(basename "$FILE_PATH")
+            BASE_NAME="${FILE_NAME%.*}" # e.g., "Resume_Recruiter"
+            
+            echo "Building PDF for $BASE_NAME..."
+
+            OUTPUT_FILE="${NAME_PREFIX}_${BASE_NAME}.pdf"
+            
+            pandoc "$FILE_PATH" \
+              -V geometry:margin=0.5in \
+              -V mainfont="$MAIN_FONT" \
+              -V sansfont="$SANS_FONT" \
+              -V fontsize=10pt \
+              -V linestretch=1.15 \
+              -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
+              --resource-path=temp_md \
+              -V linkcolor=blue -V urlcolor=blue \
+              --pdf-engine=xelatex \
+              -o "pdf/$OUTPUT_FILE"
           done
 
       - name: Commit and Push Updates
