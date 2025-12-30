@@ -29,20 +29,22 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra wget unzip fontconfig
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra wget fontconfig
 
       - name: Install Fonts (Source Serif 4 and Inter)
         run: |
           mkdir -p ~/.fonts
-          cd /tmp
+          cd ~/.fonts
 
-          # Download Source Serif 4 from Google Fonts
-          wget -O SourceSerif4.zip "https://fonts.google.com/download?family=Source%20Serif%204"
-          unzip -o SourceSerif4.zip -d ~/.fonts/
+          # Download Source Serif 4 TTF files from release branch
+          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-Regular.ttf
+          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-Bold.ttf
+          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-It.ttf
+          wget https://github.com/adobe-fonts/source-serif/raw/release/TTF/SourceSerif4-BoldIt.ttf
 
-          # Download Inter from Google Fonts
-          wget -O Inter.zip "https://fonts.google.com/download?family=Inter"
-          unzip -o Inter.zip -d ~/.fonts/
+          # Download Inter font files from release branch  
+          wget https://github.com/rsms/inter/raw/master/docs/font-files/Inter-Regular.ttf
+          wget https://github.com/rsms/inter/raw/master/docs/font-files/Inter-Bold.ttf
 
           # Refresh font cache
           fc-cache -f -v
