@@ -73,15 +73,18 @@ jobs:
       - name: Process Markdown (Inject Links & Stats)
         run: |
           node scripts/update-stats.js temp_processed
-
           node scripts/inject-links.js temp_processed
 
       - name: Publish Safe Markdown to Distribution
         run: |
+          NAME_PREFIX=$(node scripts/get-name.js)
+
           for file_path in temp_processed/*.md; do
             file_name=$(basename "$file_path")
-            echo "Assembling Safe Markdown for $file_name..."
-            node scripts/assemble.js markdown "temp_processed/$file_name" "$file_name" --safe
+            new_file_name="${NAME_PREFIX}_${file_name}"
+            
+            echo "Assembling Safe Markdown for $new_file_name..."
+            node scripts/assemble.js markdown "temp_processed/$file_name" "$new_file_name" --safe
           done
 
       - name: Assemble Resumes with PII Headers
