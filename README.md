@@ -12,6 +12,12 @@ Every commit to `src/` triggers a GitHub Actions workflow that executes the foll
 
 ```mermaid
 graph TD
+    subgraph Import ["Legacy Import"]
+        Docx["imports/*.docx"] --> Convert["Pandoc Conversion"]
+        Convert --> Strip["Strip Headers"]
+        Strip --> Src
+    end
+
     subgraph Input ["Source Layer"]
         Src["src/*.md<br/>(Clean Source)"]
         Conf["resume.config.json"]
@@ -27,9 +33,9 @@ graph TD
     end
 
     subgraph Output ["Distribution Layer"]
-        DistMD["markdown/<br/>(Web-Ready View with Links)"]
+        DistMD["markdown/<br/>(Redacted PII)"]
         Pandoc["Pandoc / XeLaTeX"]
-        PDF["pdf/*.pdf<br/>(Downloadable Artifacts)"]
+        PDF["pdf/*.pdf<br/>(Full PII)"]
     end
 
     Src --> Temp
@@ -46,33 +52,31 @@ graph TD
 
 ### Pipeline Stages
 
-1.  **Source Separation:** The pipeline separates **Source Code** (`src/`) from **Distribution Artifacts** (`markdown/` and `pdf/`).
-2.  **Data Fetching (`update-stats.js`):** Queries the GitHub API to fetch live statistics (e.g., number of Architectural Decision Records) and injects them into the build.
-3.  **Governance & Link Injection (`inject-links.js`):**
-    - **Audits** existing links against a "Source of Truth" configuration.
-    - **Injects** missing links for governed keywords (e.g., "SAS", "Program Charter").
-    - **Publishes** the fully linked version to the `markdown/` folder for immediate viewing on GitHub.
-4.  **Assembly (`assemble.js`):** Dynamically stitches together your specific contact details (from Secrets) with the generic Markdown body content for the PDF build.
-5.  **Diagram Rendering (`mermaid-render.js`):** Compiles MermaidJS code blocks into high-resolution, transparent PNGs for embedding in PDFs.
-6.  **Compilation (Pandoc):** Converts the processed Markdown and assets into print-ready PDFs with embedded metadata using XeLaTeX.
+1.  **Legacy Import:** Dropping a `.docx` file into `imports/` triggers a conversion workflow that cleans the file and pushes it to `src/`.
+2.  **Source Separation:** The pipeline separates **Source Code** (`src/`) from **Distribution Artifacts** (`markdown/` and `pdf/`).
+3.  **Governance & Link Injection:** Audits links against a "Source of Truth" configuration and publishes a "Safe Mode" (PII-redacted) version to `markdown/`.
+4.  **Assembly:** Dynamically stitches together contact details (from Secrets) with the generic Markdown body for the PDF build.
+5.  **Diagram Rendering:** Compiles MermaidJS code blocks into high-resolution, transparent PNGs.
+6.  **Compilation:** Converts the processed Markdown into print-ready PDFs with embedded metadata using XeLaTeX.
 
 ## 🎯 Key Features
 
 ### Security-First Architecture
 
 - **PII Decoupling:** Personal contact information stored in GitHub Secrets, decoupled from source Markdown.
-- **Bot-Resistant:** Contact details only appear in compiled PDFs, not in plain-text source files that are easily scraped by bots.
-- **Controlled Exposure:** PII exists only in final artifacts, making automated harvesting significantly more difficult.
+- **Bot-Resistant:** Contact details only appear in compiled PDFs, not in plain-text source files.
+- **Safe Web View:** The `markdown/` folder contains "Safe Mode" resumes (Name/Title only) for public viewing.
 
 ### Automated Governance
 
-- **Real-time Statistics:** GitHub API integration fetches current portfolio metrics (ADR count, documentation status).
+- **Real-time Statistics:** GitHub API integration fetches current portfolio metrics.
 - **Link Validation:** Ensures all hyperlinks resolve correctly and follow naming conventions.
-- **Idempotency:** The pipeline guarantees consistent output regardless of how many times it is run.
+- **Idempotency:** The pipeline guarantees consistent output regardless of execution count.
 
 ### Professional Output
 
-- **PDF Metadata:** Embedded author, title, and keywords for professional document properties.
+- **PDF Metadata:** Embedded author, title, and keywords.
+- **Consistent Naming:** Both PDF and Markdown artifacts are automatically prefixed with your name (e.g., `RyanBumstead_Resume.pdf`).
 - **Multi-Version Strategy:** Generates three targeted resume versions from single source:
   - **Recruiter:** ATS-optimized, scannable format.
   - **Standard:** Balanced detail for general applications.
@@ -90,18 +94,19 @@ graph TD
 
 ```
 resume-as-code/
-├── markdown/              # <--- DO NOT EDIT: Auto-generated distribution (Web View)
+├── markdown/              # <--- AUTO-GENERATED: Safe Mode (Redacted PII) for Web View
 ├── src/                   # <--- EDIT HERE: Clean source content
 │   ├── Resume.md
 │   ├── Resume_Recruiter.md
 │   └── Resume_Comprehensive.md
+├── imports/               # <--- DROP BOX: Place .docx here to auto-convert
 ├── scripts/               # Node.js automation logic
 │   ├── assemble.js        # PII injection and header assembly
 │   ├── update-stats.js    # GitHub API data fetching
 │   ├── inject-links.js    # Link governance and validation
 │   ├── mermaid-render.js  # Diagram rendering
 │   └── get-name.js        # Name formatting utility
-├── pdf/                   # Final compiled artifacts
+├── pdf/                   # Final compiled artifacts (Full PII)
 ├── resume.config.json     # Single Source of Truth for links and metadata
 └── .github/workflows/     # CI/CD pipeline definition
 ```
@@ -131,9 +136,13 @@ Go to **Settings > Secrets and variables > Actions** in your forked repo and add
 | `RESUME_LOCATION`    | New York, NY     | City, State                         |
 | `RESUME_GITHUB_USER` | janedoe          | GitHub username for API integration |
 
-### 3. Update Content (Src Directory)
+### 3. Update Content
 
-Edit the Markdown files in the **`src/`** directory. Do not edit `markdown/` directly, as it is overwritten by the pipeline.
+**Option A: Edit Source**
+Edit the Markdown files in the **`src/`** directory.
+
+**Option B: Import Legacy**
+Upload a `.docx` file to the `imports/` folder. The pipeline will convert it, strip the headers, and place it in `src/`.
 
 ### 4. Commit & Push
 
@@ -193,3 +202,7 @@ MIT License - Feel free to fork and adapt for your own use.
 ## 🤝 Contributing
 
 This is a personal project, but if you find bugs or have suggestions for improving the pipeline architecture, feel free to open an issue.
+
+```
+
+```
