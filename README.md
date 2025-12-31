@@ -12,13 +12,13 @@ Every commit to `src/` triggers a GitHub Actions workflow that executes the foll
 
 ```mermaid
 graph TD
-    subgraph Input ["Source Layer (Human Edited)"]
+    subgraph Input ["Source Layer"]
         Src["src/*.md<br/>(Clean Source)"]
         Conf["resume.config.json"]
         Sec["GitHub Secrets (PII)"]
     end
 
-    subgraph Process ["Build Layer (Node.js)"]
+    subgraph Process ["Build Layer"]
         Temp["Temp Directory"]
         Fetch["update-stats.js<br/>(Fetch GitHub API Data)"]
         Audit["inject-links.js<br/>(Link Governance & Audit)"]
@@ -26,7 +26,7 @@ graph TD
         Render["mermaid-render.js<br/>(Render Diagrams to PNG)"]
     end
 
-    subgraph Output ["Distribution Layer (Machine Generated)"]
+    subgraph Output ["Distribution Layer"]
         DistMD["markdown/<br/>(Web-Ready View with Links)"]
         Pandoc["Pandoc / XeLaTeX"]
         PDF["pdf/*.pdf<br/>(Downloadable Artifacts)"]
