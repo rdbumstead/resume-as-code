@@ -13,6 +13,7 @@ try {
 }
 
 const LINKS = config.links || {};
+const IGNORE_LIST = config.ignore || []; 
 const TARGET_DIR = process.argv[2];
 
 if (!TARGET_DIR) process.exit(1);
@@ -46,7 +47,6 @@ fs.readdir(TARGET_DIR, (err, files) => {
 function processFile(filePath, fileName) {
     console.log(`📄 Document: ${fileName}`);
     let content = fs.readFileSync(filePath, 'utf8');
-    let injectedInFile = 0;
     
     content = content.replace(/\[([\s\S]*?)\]\(([\s\S]*?)\)/g, (match, text, currentUrl) => {
         const cleanText = text.replace(/[*_]/g, '').trim();
@@ -78,13 +78,11 @@ function processFile(filePath, fileName) {
         const sortedKeys = Object.keys(LINKS).sort((a, b) => b.length - a.length);
 
         sortedKeys.forEach(keyword => {
+            if (IGNORE_LIST.includes(keyword)) return;
+
             const keywordRegex = new RegExp(`\\b(${escapeRegExp(keyword)})\\b`, 'gi');
             
             textBlock = textBlock.replace(keywordRegex, (match, p1, offset, fullString) => {
-                
-                // Don't inject links for these keywords - they appear in other contexts
-                if (keyword === 'Portfolio' || keyword === 'GitHub') return match;
-
                 let start = offset;
                 while (start > 0 && !/\s/.test(fullString[start - 1])) start--;
                 let end = offset + match.length;
@@ -98,7 +96,6 @@ function processFile(filePath, fileName) {
                     return match;
                 }
 
-                injectedInFile++;
                 stats.linksInjected++;
                 console.log(`   [INJECTED]   "${match}"`);
                 return `[${match}](${LINKS[keyword]})`;
