@@ -2,8 +2,8 @@ name: Import Legacy Resume
 
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - "import/**"
     paths:
       - "imports/**.docx"
   workflow_dispatch:
@@ -28,36 +28,62 @@ jobs:
 
       - name: Convert Documents
         run: |
-          git config --global user.name "Resume-Import-Bot"
-          git config --global user.email "bot@noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           has_changes=false
+          error_count=0
+
+          mkdir -p src
 
           for file in imports/*.docx; do
             [ -e "$file" ] || continue
 
             filename=$(basename -- "$file")
             name_no_ext="${filename%.*}"
-            target="markdown/$name_no_ext.md"
+            target="src/$name_no_ext.md"
 
             echo "Converting $filename to $target..."
 
-            pandoc "$file" -f docx -t gfm --standalone=false -o "$target"
+            if ! pandoc "$file" -f docx -t gfm --standalone=false -o "$target"; then
+              echo "ERROR: Pandoc conversion failed for $filename"
+              error_count=$((error_count + 1))
+              continue
+            fi
 
-            sed -i -n '/^## /,$p' "$target" || echo "Warning: No header found, skipping strip."
+            if ! grep -q '^## ' "$target"; then
+              echo "WARNING: No ## headers found in $target - skipping header strip"
+            else
+              sed -i -n '/^## /,$p' "$target"
+            fi
 
-            prettier --write "$target"
+            if [ ! -s "$target" ] || [ $(wc -l < "$target") -lt 5 ]; then
+              echo "ERROR: Converted file $target is empty or too short"
+              error_count=$((error_count + 1))
+              continue
+            fi
+
+            if ! prettier --write "$target" 2>/dev/null; then
+              echo "WARNING: Prettier formatting failed for $target, continuing anyway"
+            fi
 
             git rm "$file"
             git add "$target"
-
             has_changes=true
+
+            echo "✓ Successfully converted $filename"
           done
 
+          if [ $error_count -gt 0 ]; then
+            echo "⚠️  Completed with $error_count error(s)"
+          fi
+
           if [ "$has_changes" = true ]; then
-             echo "Changes detected. Committing..."
-             git commit -m "feat(import): convert docx to clean markdown [skip ci]"
-             git push
+              echo "Changes detected. Committing..."
+              git commit -m "feat(import): convert docx to clean markdown [skip ci]"
+              git push
+              echo "✓ Changes pushed successfully"
           else
-             echo "No .docx files found to convert."
+              echo "No .docx files found to convert."
+              exit 0
           fi

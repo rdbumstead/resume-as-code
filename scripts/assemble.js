@@ -15,6 +15,7 @@ try {
 const TARGET_DIR = process.argv[2];
 const SOURCE_FILE = process.argv[3];
 const OUTPUT_FILE = process.argv[4];
+const isSafeMode = process.argv.includes('--safe');
 
 if (!TARGET_DIR || !SOURCE_FILE || !OUTPUT_FILE) {
     console.error("Usage Error: Missing arguments");
@@ -35,15 +36,19 @@ const portfolio = l.Portfolio ? `[Portfolio](${l.Portfolio})` : "";
 
 const nameLine = `# ${firstName.toUpperCase()} ${lastName.toUpperCase()}\n`;
 
-const headerItems = [
-    `**${title}**`,
+const rawHeaderItems = [
+    title,
     location,
-    email,
+    !isSafeMode && email, 
     github,
     portfolio,
     linkedIn,
-    phone
-].filter(Boolean);
+    !isSafeMode && phone 
+];
+
+const headerItems = rawHeaderItems
+    .filter(Boolean)
+    .map(item => `**${item}**`);
 
 const infoLine = headerItems.join(" | ");
 const fullHeader = `${nameLine}${infoLine}\n\n---\n\n`;
@@ -61,4 +66,4 @@ const finalContent = fullHeader + bodyContent;
 const outputPath = path.join(TARGET_DIR, OUTPUT_FILE);
 
 fs.writeFileSync(outputPath, finalContent, 'utf8');
-console.log(`Assembled: ${OUTPUT_FILE}`);
+console.log(`Assembled (${isSafeMode ? 'SAFE MODE' : 'FULL PII'}): ${OUTPUT_FILE}`);
