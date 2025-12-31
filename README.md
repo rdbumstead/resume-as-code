@@ -12,14 +12,13 @@ Every commit to `src/` triggers a GitHub Actions workflow that executes the foll
 
 ```mermaid
 graph TD
-    subgraph Import ["Legacy Import"]
+    subgraph Import ["Legacy Import (Optional)"]
         Docx["imports/*.docx"] --> Convert["Pandoc Conversion"]
         Convert --> Strip["Strip Headers"]
-        Strip --> Src
     end
 
     subgraph Input ["Source Layer"]
-        Src["src/*.md<br/>(Clean Source)"]
+        Src["src/*.md<br/>(Single Source of Truth)"]
         Conf["resume.config.json"]
         Sec["GitHub Secrets (PII)"]
     end
@@ -37,6 +36,9 @@ graph TD
         Pandoc["Pandoc / XeLaTeX"]
         PDF["pdf/*.pdf<br/>(Full PII)"]
     end
+
+    %% Dotted line indicates optional/one-time flow
+    Strip -.->|One-time Migration| Src
 
     Src --> Temp
     Conf --> Fetch
