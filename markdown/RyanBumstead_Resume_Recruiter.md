@@ -7,23 +7,6 @@
 
 Salesforce Platform Architect with **7+ years** of experience designing scalable, governed Salesforce solutions. Expert in **DevOps automation**, **Experience Cloud (LWR)**, and **API-first architecture**. Proven ability to align enterprise architecture with business outcomes across education, nonprofit, and public-sector organizations.
 
-## Technical Projects
-
-**Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
-
-- Enterprise documentation ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md))
-- 26 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, performance, and resilience
-- API-first design with OpenAPI 3.0
-- Multi-cloud architecture (Salesforce + AWS)
-- CI/CD automation and chaos engineering patterns
-
-**"Resume as Code" CI/CD Pipeline** | [Resume Repository](https://github.com/rdbumstead/resume-as-code)
-
-- Infrastructure as Code pipeline for automated resume generation
-- Security-first design with PII decoupling
-- Automated governance and quality checks
-- Tech Stack: GitHub Actions, Node.js, Docker, Mermaid.js
-
 ## Professional Experience
 
 **CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
@@ -43,6 +26,23 @@ Salesforce Platform Architect with **7+ years** of experience designing scalable
 - Administered Service Cloud for 400+ users.
 - Automated Experience Cloud user provisioning, reducing manual effort by 90%.
 - Supported Experience Cloud sites serving 10,000+ users.
+
+## Technical Projects
+
+**Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
+
+- Enterprise documentation ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md))
+- 26 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, performance, and resilience
+- API-first design with OpenAPI 3.0
+- Multi-cloud architecture (Salesforce + AWS)
+- CI/CD automation and chaos engineering patterns
+
+**"Resume as Code" CI/CD Pipeline** | [Resume Repository](https://github.com/rdbumstead/resume-as-code)
+
+- Infrastructure as Code pipeline for automated resume generation
+- Security-first design with PII decoupling
+- Automated governance and quality checks
+- Tech Stack: GitHub Actions, Node.js, Docker, Mermaid.js
 
 ## Technical Skills
 
