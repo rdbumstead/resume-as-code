@@ -1,26 +1,33 @@
 ## Professional Summary
 
-Salesforce Platform Architect with **7+ years** of experience designing scalable, governed Salesforce solutions. Expert in **DevOps automation**, **Experience Cloud (LWR)**, and **API-first architecture**. Proven ability to align enterprise architecture with business outcomes across education, nonprofit, and public-sector organizations.
+Principal-level Salesforce Platform Architect with **7+ years** designing governed, enterprise-grade Salesforce systems. Specializes in **architecture-first delivery**, **multi-cloud Salesforce/AWS systems**, **DevOps maturity**, and **resilience engineering**. Known for translating executive strategy into enforceable technical architecture and mentoring development teams.
 
 ## Professional Experience
 
-**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
-
-- Engineering the organization's first **enterprise DevOps strategy**, implementing CI/CD pipelines and automated quality gates.
-- Leading Apex, async processing, and LWC development beyond declarative limits.
-- Advising IT leadership on Salesforce roadmap and architectural decisions.
-
 **Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
 
-- Designed enterprise Salesforce solutions for education and nonprofit organizations.
-- Architected a **custom grant management platform** managing **$5M+ in funds** with strict data governance.
-- Delivered executive solution designs and proofs of concept on Experience Cloud and Service Cloud.
+- Acted as principal architect for Salesforce implementations across nonprofit and education sectors.
+- **Metropolitan Community College Career Skills Grant Management:** Architected a state-funded grant management platform processing **$5M+ in workforce development funds**, implementing granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
+- Delivered executive architecture reviews, proofs of concept, and governance models.
+
+**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
+
+- Engineering the organization's first **enterprise DevOps strategy**, implementing CI/CD pipelines and automated quality gates to enforce coding standards.
+- **Eliminated deployment failures by 100%** by introducing a localized Docker-based testing pipeline (LWC/Jest) and strict version control governance.
+- **Force Multiplier:** Designs and delivers an upskilling program for 4 Salesforce Administrators, bridging the gap between declarative config and programmatic development.
+- Leading Apex, async processing, and LWC development beyond declarative limits.
 
 **Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
 
 - Administered Service Cloud for 400+ users.
-- Automated Experience Cloud user provisioning, reducing manual effort by 90%.
-- Supported Experience Cloud sites serving 10,000+ users.
+- **Automated Experience Cloud user provisioning**, reducing manual effort by **90%** via Flow and Apex triggers.
+- Supported large-scale Experience Cloud sites serving 10,000+ users.
+
+**CAET Services Specialist II** | Creighton University | _Nov 2017 - Jun 2021_
+
+- Administered the Learning Management System (LMS) and lecture capture platforms for the university.
+- Developed and delivered technical training documentation and workshops for faculty and staff.
+- Provided Tier 2 technical support for enterprise academic technologies.
 
 ## Technical Projects
 
