@@ -3,6 +3,10 @@ name: Build and Deploy Resume PDFs
 on:
   push:
     branches: [main]
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 permissions:
@@ -28,7 +32,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
+
+      - name: Cache TeX Live
+        uses: actions/cache@v3
+        id: cache-tex
+        with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-texlive-${{ hashFiles('**/*.tex') }}
+          restore-keys: |
+            ${{ runner.os }}-texlive-
 
       - name: Install Dependencies
         run: npm install
@@ -50,34 +63,38 @@ jobs:
 
       - name: Prepare Directories
         run: |
-          mkdir -p pdf temp_md temp_links
+          mkdir -p pdf temp_processed markdown
           rm -f pdf/*.pdf
+          rm -f markdown/*.md
 
-      - name: Update Stats
-        run: node scripts/update-stats.js markdown
+      - name: Copy Source to Temp
+        run: cp src/*.md temp_processed/
 
-      - name: Copy Source Files
-        run: cp markdown/*.md temp_links/
+      - name: Process Markdown (Inject Links & Stats)
+        run: |
+          node scripts/update-stats.js temp_processed
 
-      - name: Inject Links
-        run: node scripts/inject-links.js temp_links
+          node scripts/inject-links.js temp_processed
 
-      - name: Copy Link-Injected Files Back
-        run: cp temp_links/*.md markdown/
+      - name: Publish Safe Markdown to Distribution
+        run: |
+          for file_path in temp_processed/*.md; do
+            file_name=$(basename "$file_path")
+            echo "Assembling Safe Markdown for $file_name..."
+            node scripts/assemble.js markdown "temp_processed/$file_name" "$file_name" --safe
+          done
 
       - name: Assemble Resumes with PII Headers
         run: |
-          for file_path in markdown/*.md; do
-            # Extract just the filename (e.g., "Resume.md")
+          for file_path in temp_processed/*.md; do
             file_name=$(basename "$file_path")
-            
             echo "Assembling $file_name..."
-            node scripts/assemble.js temp_md "markdown/$file_name" "$file_name"
+            node scripts/assemble.js temp_processed "temp_processed/$file_name" "$file_name"
           done
 
       - name: Render Mermaid Diagrams
         run: |
-          for f in temp_md/*.md; do
+          for f in temp_processed/*.md; do
             echo "Rendering diagrams for $f"
             node scripts/mermaid-render.js "$f"
           done
@@ -88,12 +105,11 @@ jobs:
           MAIN_FONT="Liberation Serif"
           SANS_FONT="Liberation Sans"
 
-          for FILE_PATH in temp_md/*.md; do
+          for FILE_PATH in temp_processed/*.md; do
             FILE_NAME=$(basename "$FILE_PATH")
-            BASE_NAME="${FILE_NAME%.*}" # e.g., "Resume_Recruiter"
+            BASE_NAME="${FILE_NAME%.*}" 
             
             echo "Building PDF for $BASE_NAME..."
-
             OUTPUT_FILE="${NAME_PREFIX}_${BASE_NAME}.pdf"
             
             pandoc "$FILE_PATH" \
@@ -103,18 +119,21 @@ jobs:
               -V fontsize=10pt \
               -V linestretch=1.15 \
               -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
-              --resource-path=temp_md \
+              --resource-path=temp_processed \
               -V linkcolor=blue -V urlcolor=blue \
               --pdf-engine=xelatex \
               -o "pdf/$OUTPUT_FILE"
           done
 
-      - name: Commit and Push Updates
+      - name: Commit and Push Artifacts
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add markdown/*.md pdf/
-          git diff --staged --quiet || git commit -m "chore: update resumes and sync pdf artifacts [skip ci]"
+
+          git add markdown/ pdf/
+
+          git diff --staged --quiet || git commit -m "chore: build distribution artifacts (md/pdf) [skip ci]"
+
           git push
 
       - name: Upload PDF Artifacts
@@ -125,5 +144,4 @@ jobs:
 
       - name: Cleanup
         if: always()
-        run: |
-          rm -rf temp_md temp_links
+        run: rm -rf temp_processed
