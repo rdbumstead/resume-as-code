@@ -1,8 +1,3 @@
-# RYAN BUMSTEAD
-**Salesforce Platform Architect** | **Omaha, NE** | **[GitHub](https://github.com/rdbumstead)** | **[Portfolio](https://ryanbumstead.com)** | **[LinkedIn](https://linkedin.com/in/ryanbumstead)**
-
----
-
 ## Professional Summary
 
 Salesforce Platform Architect with 7+ years of experience bridging business requirements and scalable system design. Specialized in enterprise DevOps, Experience Cloud LWR, and Agentforce AI. Designs multi-cloud Salesforce/AWS architectures, enforcing governance-first delivery and engineering automated CI/CD pipelines for high availability and fault-tolerant systems.
