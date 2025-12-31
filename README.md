@@ -204,7 +204,3 @@ MIT License - Feel free to fork and adapt for your own use.
 ## 🤝 Contributing
 
 This is a personal project, but if you find bugs or have suggestions for improving the pipeline architecture, feel free to open an issue.
-
-```
-
-```
