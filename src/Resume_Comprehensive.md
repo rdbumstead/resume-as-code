@@ -4,17 +4,17 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 
 ## Professional Experience
 
-**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
-
-- Leading platform-level DevOps modernization and architectural standards.
-- Advising IT leadership on roadmap planning and architectural risk management.
-- Driving best practices for maintainability, scalability, and governance.
-
 **Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
 
 - Acted as principal architect for Salesforce implementations across nonprofit and education sectors.
 - **Metropolitan Community College Career Skills Grant Management:** Architected a state-funded grant management platform processing **$5M+ in workforce development funds**, implementing granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
 - Delivered executive architecture reviews, proofs of concept, and governance models.
+
+**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
+
+- Leading platform-level DevOps modernization and architectural standards.
+- Advising IT leadership on roadmap planning and architectural risk management.
+- Driving best practices for maintainability, scalability, and governance.
 
 **Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
 
