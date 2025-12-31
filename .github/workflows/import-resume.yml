@@ -28,6 +28,7 @@ jobs:
 
       - name: Convert Documents
         run: |
+          # Use official GitHub Actions Bot for commits
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
@@ -45,7 +46,7 @@ jobs:
 
             echo "Converting $filename to $target..."
 
-            if ! pandoc "$file" -f docx -t gfm --standalone=false -o "$target"; then
+            if ! pandoc "$file" -f docx -t gfm -o "$target"; then
               echo "ERROR: Pandoc conversion failed for $filename"
               error_count=$((error_count + 1))
               continue
