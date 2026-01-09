@@ -13,9 +13,9 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 
 **CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
 
-- **DevOps Transformation:** Engineers the organization's first formal DevOps strategy by implementing CI/CD pipelines and enforcing code quality via PR reviews and static analysis.
+- **DevOps Transformation:** Engineers the organization's first formal DevOps strategy, eliminating deployment failures by 100% by introducing a localized Docker-based testing pipeline (LWC/Jest) and strict version control governance.
+- **Force Multiplier:** Designs and delivers an upskilling program for 4 Salesforce Administrators, bridging the gap between declarative config and programmatic development to establish standards for maintainability.
 - **Advanced Engineering:** Leads backend development using Apex triggers, asynchronous processing, and LWC to extend platform capabilities beyond declarative limits.
-- **Team Leadership:** Designs and delivers an upskilling program for junior developers to establish standards for maintainability and architectural consistency.
 - **Strategic Advisory:** Advises IT leadership on Salesforce roadmap planning, architectural dependencies, and platform optimization.
 
 **Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
@@ -34,11 +34,11 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 
 **Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
-_An architecture-first reference implementation demonstrating enterprise delivery patterns prior to final UI completion._
+_An architecture-first reference implementation. **Read the full documentation on the [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/).**_
 
-- **Executive Strategy:** Authored [Executive Overview](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/01-Executive-Overview.md) aligning technical delivery with business value, success criteria, and measurable ROI.
-- **Program Governance:** Authored [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md) and [Technical Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/04-Technical-Guide.md) defining scope, phased delivery, and enterprise design standards.
-- **Enterprise Architecture:** Authored Systems Architecture Specification ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md)) and [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md). Design covers governed multi-cloud architecture across Salesforce LWR, AWS Lambda, and Agentforce AI.
+- **Governance & Guardrails:** Authored [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md) defining automated quality gates, compliance rules, and "Definition of Done" for enterprise delivery.
+- **Architectural Decision Records (ADRs):** Documented 26 immutable [ADRs](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, FinOps, and resilience, treating architectural decisions as code.
+- **Enterprise Architecture:** Authored Systems Architecture Specification ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md)) and [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md). Design covers governed multi-cloud architecture across Salesforce LWR, AWS Lambda, and Agentforce AI.
 - **API-First Design:** Designed and published contract-first APIs using OpenAPI 3.0, enforcing governance via rate limiting, caching directives, and distributed tracing headers.
 - **DevOps Engineering:** Engineered zero-touch CI/CD pipeline using GitHub Actions and JWT authentication. Implementation includes delta deployments and automated quality gates using PMD and ESLint.
 - **Resilience & Chaos Engineering:** Architected controlled failure simulation and chaos engineering patterns to validate graceful degradation of third-party integrations like GitHub and Jira.
