@@ -31,15 +31,50 @@ Open-source, architecture-first reference implementation
 
 ```mermaid
 graph LR
-    User((User)) --> LWR[Experience Cloud LWR]
-    LWR -->|Native GraphQL| SF_GQL[Salesforce GraphQL API]
-    SF_GQL --> DB[(Custom Objects)]
-    LWR -->|Phase 8 Gateway| Lambda[AWS Lambda Gateway]
-    LWR -->|Apex REST| Apex[Apex Runtime]
-    Lambda -->|Named Creds| Apex
-    Apex -->|REST| Jira[Jira API]
-    Apex -->|REST| GitHub[GitHub API]
-    Apex <--> AI[Agentforce]
+    %%{init: {'flowchart': {'nodeSpacing': 50, 'rankSpacing': 50}}}%%
+    %% ========= BRAND STYLES =========
+    classDef user fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef sfdc fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef aws fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef jira fill:#0052CC,stroke:#003A8F,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef github fill:#24292E,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef data fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef future fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,stroke-dasharray:5 5;
+
+    %% ========= NODES =========
+    User((User))
+    LWR[Experience Cloud<br/>LWR]
+    GQL[Salesforce<br/>GraphQL]
+    Apex[Apex Runtime]
+    DB[(Custom Objects)]
+    AI[Agentforce]
+    Jira[Jira Cloud API]
+    GitHub[GitHub API]
+    Lambda[AWS Lambda<br/>Phase 8]
+
+    %% ========= FLOWS =========
+    User --> LWR
+    LWR --> GQL
+    GQL --> DB
+    LWR --> Apex
+    Apex <--> AI
+    Apex --> Jira
+    Apex --> GitHub
+
+    %% ========= FUTURE =========
+    LWR -.-> Lambda
+    Lambda -.-> Apex
+
+    %% ========= APPLY STYLES =========
+    class User user;
+    class LWR,GQL,Apex,AI sfdc;
+    class DB data;
+    class Jira jira;
+    class GitHub github;
+    class Lambda aws;
+
+    %% ========= CRITICAL PATH =========
+    linkStyle 0,1,2 stroke:#2ECC71,stroke-width:3px;
 ```
 
 **Key Architecture Artifacts:**
