@@ -87,9 +87,7 @@ graph LR
 
 ### "Resume as Code" CI/CD Pipeline
 
-[Resume Repository](https://github.com/rdbumstead/resume-as-code)
-
-_A "Zero-Touch" CI/CD pipeline treating professional career documentation as a software product._
+A "Zero-Touch" CI/CD pipeline treating professional career documentation as a software product. | [Resume Repository](https://github.com/rdbumstead/resume-as-code)
 
 - **Infrastructure as Code:** Architected an event-driven build pipeline transforming Markdown source into immutable PDF artifacts using **Node.js**, **Pandoc**, and **GitHub Actions**.
 - **Security Architecture:** Implemented a "Secrets-First" design pattern, decoupling PII (Phone, Email) from the codebase using GitHub Secrets and Environment Variables to enable public repository visibility without data leakage.
