@@ -26,8 +26,7 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 
 ### Salesforce Platform Architect Portfolio
 
-Open-source, architecture-first reference implementation
-[Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
+Open-source, architecture-first reference implementation | [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/) | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 ```mermaid
 graph LR
