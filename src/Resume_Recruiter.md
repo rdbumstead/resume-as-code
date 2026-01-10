@@ -14,7 +14,7 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 
 - Engineering the organization's first **enterprise DevOps strategy**, implementing CI/CD pipelines and automated quality gates to enforce coding standards.
 - **Eliminated deployment failures by 100%** by introducing a localized Docker-based testing pipeline (LWC/Jest) and strict version control governance.
-- **Force Multiplier:** Designs and delivers an upskilling program for 4 Salesforce Administrators, bridging the gap between declarative config and programmatic development.
+- **Force Multiplier:** Designs and delivers an upskilling program for 2 Salesforce Administrators and 1 Salesforce Developer, bridging the gap between declarative config and programmatic development.
 - Leading Apex, async processing, and LWC development beyond declarative limits.
 
 **Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
@@ -23,11 +23,10 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 - **Automated Experience Cloud user provisioning**, reducing manual effort by **90%** via Flow and Apex triggers.
 - Supported large-scale Experience Cloud sites serving 10,000+ users.
 
-**CAET Services Specialist II** | Creighton University | _Nov 2017 - Jun 2021_
+**CAET Services Specialist II** | Metropolitan Community College | _July 2017 - Jun 2021_
 
-- Administered the Learning Management System (LMS) and lecture capture platforms for the university.
-- Developed and delivered technical training documentation and workshops for faculty and staff.
-- Provided Tier 2 technical support for enterprise academic technologies.
+- Implemented Salesforce CRM for workforce programs.
+- Managed workforce development web content using HTML, CSS, and JavaScript.
 
 ## Technical Projects
 
