@@ -27,6 +27,10 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 - Automated Experience Cloud onboarding and identity workflows.
 - Supported large-scale Experience Cloud implementations (10,000+ users).
 
+**CAET Services Specialist II** | Metropolitan Community College | _Jul 2017 - Jun 2021_
+
+- Implemented Salesforce CRM for workforce programs and managed web content (HTML/CSS).
+
 ## Technical Projects
 
 ### Salesforce Platform Architect Portfolio
