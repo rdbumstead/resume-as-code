@@ -1,6 +1,6 @@
 ## Professional Summary
 
-Salesforce Platform Architect with 7+ years of experience bridging business requirements and scalable system design. Specialized in enterprise DevOps, Experience Cloud LWR, and Agentforce AI. Designs multi-cloud Salesforce/AWS architectures, enforcing governance-first delivery and engineering automated CI/CD pipelines for high availability and fault-tolerant systems.
+Lead Salesforce Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging the gap between complex backend architecture and intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a "Design-First" approach that combines rigorous DevOps governance with high-performance, resilient customer journeys to drive service quality.
 
 ## Professional Experience
 
