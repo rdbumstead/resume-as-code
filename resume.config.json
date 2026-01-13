@@ -7,14 +7,15 @@
     "LinkedIn": "https://linkedin.com/in/ryanbumstead",
     "Portfolio": "https://ryanbumstead.com",
     "GitHub": "https://github.com/rdbumstead",
-    "Portfolio Repository": "https://github.com/rdbumstead/salesforce-reference-architecture",
+    "Portfolio Repository": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio",
     "Resume Repository": "https://github.com/rdbumstead/resume-as-code",
     "SAS": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md",
     "Program Charter": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md",
     "Technical Guide": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/04-Technical-Guide.md",
     "Executable Governance Guide": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md",
     "Executive Overview": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/01-Executive-Overview.md",
-    "Architectural Decision Records": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr"
+    "Architectural Decision Records": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr",
+    "Governance Hub": "https://rdbumstead.github.io/salesforce-platform-architect-portfolio/"
   },
   "ignore": [
     "Portfolio",
