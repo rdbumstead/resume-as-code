@@ -37,7 +37,7 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 
 ## Technical Projects
 
-**Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-reference-architecture)
+**Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 _An architecture-first reference implementation. **Read the full documentation on the [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/).**_
 
