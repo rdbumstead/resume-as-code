@@ -121,10 +121,13 @@ _Metropolitan Community College (2025)_
 
 **Salesforce Certifications:**
 
-- Platform App Builder
-- Administrator I & II
-- Agentforce Specialist
-- Education Cloud Consultant
-- Data Cloud Consultant
-- AI Associate
-- Marketing Cloud Engagement Foundations
+- Salesforce Certified Agentforce Specialist
+- Salesforce Certified Data Cloud Consultant
+- Salesforce Certified Education Cloud Consultant
+- Salesforce Certified Platform App Builder
+- Salesforce Certified Platform Administrator
+- Salesforce Certified Platform Administrator II
+- Salesforce Certified AI Associate
+- Salesforce Certified Marketing Cloud Engagement Foundations
+
+_[Verify credentials on Trailhead](https://www.salesforce.com/trailblazer/rbumstead)_

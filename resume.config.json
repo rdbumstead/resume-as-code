@@ -16,7 +16,8 @@
     "Executable Governance Guide": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md",
     "Executive Overview": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/01-Executive-Overview.md",
     "Architectural Decision Records": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr",
-    "Governance Hub": "https://rdbumstead.github.io/salesforce-platform-architect-portfolio/"
+    "Governance Hub": "https://rdbumstead.github.io/salesforce-platform-architect-portfolio/",
+    "Verify credentials on Trailhead": "https://www.salesforce.com/trailblazer/rbumstead"
   },
   "ignore": [
     "Portfolio",
