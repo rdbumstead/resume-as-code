@@ -53,6 +53,15 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
 
+**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+
+_A production-ready GitHub Action for Salesforce CI/CD pipelines._
+
+- **Performance:** 20-45 second setup with intelligent caching (vs 2-3 min without)
+- **Security:** JWT-based authentication with automatic key cleanup
+- **Flexibility:** Fully optional plugin system - install only what you need
+- **Community Impact:** Published to GitHub Marketplace for the Salesforce ecosystem
+
 ## Technical Skills
 
 - **Salesforce Platform:** Apex, LWC, Visualforce, SOQL/SOSL, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
