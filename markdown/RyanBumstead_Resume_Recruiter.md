@@ -50,6 +50,13 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 - Automated governance and quality checks
 - Tech Stack: GitHub Actions, Node.js, Docker, Mermaid.js
 
+**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+
+- Production-ready GitHub Action with 20-45 second setup time
+- JWT authentication with security-first design
+- Published to [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli) for community use
+- Intelligent caching for 3-5x performance improvement
+
 ## Technical Skills
 
 - **Salesforce:** Apex, LWC, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
