@@ -1,6 +1,6 @@
 ## Professional Summary
 
-Salesforce Platform Architect with 7+ years of experience bridging business requirements and scalable system design. Specialized in enterprise DevOps, Experience Cloud LWR, and Agentforce AI. Designs multi-cloud Salesforce/AWS architectures, enforcing governance-first delivery and engineering automated CI/CD pipelines for high availability and fault-tolerant systems.
+Salesforce Platform Architect with 7+ years of experience bridging business requirements and scalable system design. Specialized in enterprise DevOps, Experience Cloud LWR, and Agentforce AI. Designs multi-cloud Salesforce/AWS architectures, enforcing governance-first delivery and engineers automated CI/CD pipelines for high availability and fault-tolerant systems.
 
 ## Professional Experience
 
@@ -52,6 +52,15 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Security Architecture:** Implemented "Secrets-First" design pattern, decoupling PII (Phone, Email) from codebase using GitHub Secrets and Environment Variables to enable public repository visibility without data leakage.
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
+
+**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+
+_A production-ready GitHub Action for Salesforce CI/CD pipelines._
+
+- **Performance:** 20-45 second setup with intelligent caching (vs 2-3 min without)
+- **Security:** JWT-based authentication with automatic key cleanup
+- **Flexibility:** Fully optional plugin system - install only what you need
+- **Community Impact:** Published to GitHub Marketplace for the Salesforce ecosystem
 
 ## Technical Skills
 
