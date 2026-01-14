@@ -65,7 +65,7 @@ _A production-ready GitHub Action for Salesforce CI/CD pipelines._
 - **Performance:** 20-45 second setup with intelligent caching (vs 2-3 min without)
 - **Security:** JWT-based authentication with automatic key cleanup
 - **Flexibility:** Fully optional plugin system - install only what you need
-- **Community Impact:** Published to [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli) for the Salesforce ecosystem
+- **Community Impact:** Published to GitHub Marketplace for the Salesforce ecosystem
 
 ## Technical Skills
 
