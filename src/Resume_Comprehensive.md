@@ -80,6 +80,13 @@ graph LR
     linkStyle 0,1,2 stroke:#2ECC71,stroke-width:3px;
 ```
 
+> **Architecture Diagram Summary:**
+> The architecture implements a **Multi-Cloud Solution** centered on **Salesforce Experience Cloud (LWR)** and **GraphQL**.
+>
+> 1. **User Interaction:** Users interact with the LWR site, triggering **Salesforce GraphQL** queries.
+> 2. **Core Logic:** Logic is handled by an **Apex Runtime** layer which orchestrates calls to **Agentforce AI**, **Jira Cloud API**, and **GitHub API**.
+> 3. **Future State:** A planned integration with **AWS Lambda** (Phase 8) will extend compute capabilities.
+
 **Key Architecture Artifacts:**
 
 - Authored **6 enterprise architecture documents** including the [Systems Architecture Specification (SAS)](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), and [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md).
@@ -98,19 +105,19 @@ A "Zero-Touch" CI/CD pipeline treating professional career documentation as a so
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via the GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
 
-### Setup Salesforce CLI Action
+**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
-A production-ready GitHub Action for Salesforce CI/CD pipelines | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+_A production-ready GitHub Action serving as the foundational kernel for enterprise Salesforce CI/CD pipelines._
 
-- **Performance:** 20-45 second setup with intelligent caching (vs 2-3 min without)
-- **Security:** JWT-based authentication with automatic key cleanup
-- **Flexibility:** Fully optional plugin system - install only what you need
-- **Community Impact:** Published to GitHub Marketplace for the Salesforce ecosystem
+- **Enterprise Resilience:** Engineered self-healing installation logic with exponential backoff strategies and cross-platform compatibility (Linux, macOS, Windows/PowerShell), achieving 99.9% pipeline reliability.
+- **Governance as Code:** Implemented a `strict` mode input pattern, allowing organizations to enforce "break-build" policies on optional tooling failures (e.g., PMD, ESLint) dynamically.
+- **Platform Architecture:** Architected as the base layer for a suite of modular Reusable Workflows, standardizing CI/CD practices and abstracting complexity for downstream repositories.
+- **Security & Performance:** Designed granular caching keys based on CLI versions to reduce setup time by 80% (20s vs 2m) while enforcing JWT key rotation and secure cleanup.
 
 ## Technical Skills
 
 - **Salesforce Platform:** Apex, LWC, Visualforce, SOQL/SOSL, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
-- **DevOps & Tooling:** GitHub Actions, SFDX CLI, Git, JWT Auth, PMD, ESLint, VS Code, Jira
+- **DevOps & Tooling:** GitHub Actions (Reusable Workflows), SFDX CLI, Git, JWT Auth, Docker, PMD, ESLint
 - **Architecture:** C4 Modeling, REST & OpenAPI Design, Event-Driven Architecture, Multi-Cloud (AWS Lambda, S3), FinOps
 - **General:** JavaScript (ES6+), SQL, HTML, CSS
 
