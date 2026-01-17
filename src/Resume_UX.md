@@ -55,19 +55,17 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 
 **Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
-_A production-ready GitHub Action for Salesforce CI/CD pipelines._
+_A production-ready GitHub Action focused on streamlining Developer Experience (DX) for Salesforce DevOps._
 
-- **Performance:** 20-45 second setup with intelligent caching (vs 2-3 min without)
-- **Security:** JWT-based authentication with automatic key cleanup
-- **Flexibility:** Fully optional plugin system - install only what you need
-- **Community Impact:** Published to GitHub Marketplace for the Salesforce ecosystem
+- **Developer Experience (DX):** Designed a "Zero-Config" interface for Salesforce CI/CD, abstracting complex authentication, caching, and dependency management behind intuitive inputs.
+- **Performance Design:** Optimized the user journey by reducing pipeline wait times by 80% through intelligent caching strategies, enabling faster feedback loops for development teams.
+- **Smart Defaults:** Engineered the action with sensible default configurations for tools like Prettier and ESLint, reducing the cognitive load required to set up compliant pipeline environments.
 
 ## Technical Skills
 
-- **Salesforce Platform:** Apex, LWC, Visualforce, SOQL/SOSL, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
-- **DevOps & Tooling:** GitHub Actions, SFDX CLI, Git, JWT Auth, PMD, ESLint, VS Code, Jira
-- **Architecture:** C4 Modeling, REST & OpenAPI Design, Event-Driven Architecture, Multi-Cloud (AWS Lambda, S3), FinOps
-- **General:** JavaScript (ES6+), SQL, HTML, CSS
+- **Salesforce Platform:** Experience Cloud (LWR), Flow, Service Cloud, Agentforce, LWC, Apex, Visualforce
+- **Frontend & Design:** HTML, CSS, JavaScript (ES6+), C4 Modeling
+- **Architecture & DevOps:** Event-Driven Architecture, REST & OpenAPI Design, GitHub Actions, Docker
 
 ## Education & Certifications
 
