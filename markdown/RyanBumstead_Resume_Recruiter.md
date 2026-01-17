@@ -9,6 +9,14 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 
 ## Professional Experience
 
+## Technical Skills
+
+- **Salesforce:** Apex, LWC, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
+- **Architecture:** API-First Design, OpenAPI 3.0, Event-Driven Architecture, C4 Modeling
+- **DevOps & Tooling:** GitHub Actions (Reusable Workflows), SFDX CLI, Git, JWT Auth, Docker, PMD, ESLint
+- **Cloud:** AWS Lambda, S3, Multi-Cloud Patterns, FinOps
+- **General:** JavaScript (ES6+), SQL, HTML/CSS
+
 **Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
 
 - Acted as principal architect for Salesforce implementations across nonprofit and education sectors.
@@ -37,33 +45,25 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 
 **Salesforce Platform Architect Portfolio** | [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/) | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
-- Enterprise documentation ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md))
-- 26 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, performance, and resilience
-- API-first design with OpenAPI 3.0
-- Multi-cloud architecture (Salesforce + AWS)
-- CI/CD automation and chaos engineering patterns
+- **Enterprise Documentation:** Authored Systems Architecture Specification ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md)), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), and [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md).
+- **Architecture as Code:** Documented 26 immutable [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, performance, and resilience.
+- **API-First Design:** Implemented contract-first integrations using OpenAPI 3.0 standards.
+- **Multi-Cloud Architecture:** Designed governed patterns spanning Salesforce, AWS, and third-party systems.
+- **Resilience Engineering:** Implemented chaos engineering patterns and CI/CD automation to validate failure modes.
 
 **"Resume as Code" CI/CD Pipeline** | [Resume Repository](https://github.com/rdbumstead/resume-as-code)
 
-- Infrastructure as Code pipeline for automated resume generation
-- Security-first design with PII decoupling
-- Automated governance and quality checks
-- Tech Stack: GitHub Actions, Node.js, Docker, Mermaid.js
+- **Infrastructure as Code:** Architected an event-driven pipeline for automated PDF resume generation.
+- **Security Architecture:** Decoupled PII (Phone/Email) using GitHub Secrets to enable safe public repository visibility.
+- **Automated Governance:** Engineered custom scripts to enforce formatting standards and validate hyperlinks.
+- **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js.
 
 **Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
-- Production-ready GitHub Action with 20-45 second setup time
-- JWT authentication with security-first design
-- Published to GitHub Marketplace for community use
-- Intelligent caching for 3-5x performance improvement
-
-## Technical Skills
-
-- **Salesforce:** Apex, LWC, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
-- **Architecture:** API-First Design, OpenAPI 3.0, Event-Driven Architecture, C4 Modeling
-- **DevOps:** GitHub Actions, CI/CD, SFDX, JWT Auth, PMD, ESLint
-- **Cloud:** AWS Lambda, S3, Multi-Cloud Patterns, FinOps
-- **General:** JavaScript (ES6+), SQL, HTML/CSS
+- **Self-Healing Architecture:** Engineered exponential backoff logic for high availability and fault tolerance.
+- **Strict-Mode Governance:** Implemented automated quality gates to enforce enterprise coding standards.
+- **Cross-Platform Design:** Built the foundation for modular reusable workflows supporting Linux and Windows.
+- **Performance Optimization:** Intelligent caching strategy reducing setup time by **80%** (20s vs 2m).
 
 ## Education & Certifications
 
