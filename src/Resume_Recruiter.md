@@ -38,6 +38,17 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 
 ## Technical Projects
 
+**GlassOps Governance Protocol** | Open Source | [GlassOps Repository](https://github.com/glassops-platform/glassops)
+
+_A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
+
+- Designed a **strategic governance framework** that enforces quality and security standards across all deployments.
+- Created a **standardized compliance model** that ensures consistent results regardless of the tools used by development teams.
+- Built a **flexible architecture** allowing teams to adopt new technologies without compromising enterprise security rules.
+- Established clear **"Definition of Done" gates** to automate approval processes and reduce manual review bottlenecks.
+- Integrated industry-leading tools into a cohesive ecosystem, maximizing ROI on existing tooling investments.
+- Authored **foundational policy documentation** to align technical teams with broader corporate governance goals.
+
 **Salesforce Platform Architect Portfolio** | [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/) | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 - **Enterprise Documentation:** Authored Systems Architecture Specification (SAS), Program Charter, and Executable Governance Guide.
@@ -53,7 +64,7 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 - **Automated Governance:** Engineered custom scripts to enforce formatting standards and validate hyperlinks.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js.
 
-**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+**GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
 - **Self-Healing Architecture:** Engineered exponential backoff logic for high availability and fault tolerance.
 - **Strict-Mode Governance:** Implemented automated quality gates to enforce enterprise coding standards.
