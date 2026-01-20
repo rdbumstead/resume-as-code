@@ -9,7 +9,7 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 - **Strategic Partner:** Delivers enterprise-grade solution architecture and technical implementations across nonprofit, education, and public-sector organizations.
 - **Metropolitan Community College Employer Hub (Design & PoC):** Diagnosed data silos and designed a unified Experience/Service Cloud hub. Delivered executive walkthroughs and prototypes to validate Flow automation and Einstein Activity Capture.
 - **Greenville Literacy Association:** Led architectural evaluation of Education Cloud vs NPSP + PMM. Performed cost-benefit analysis leveraging the Salesforce Power of Us program.
-- **Metropolitan Community College Career Skills Grant Management:** Architected a state-funded grant management platform processing $5M+ in workforce development funds. Implemented granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
+- **Grant Platform:** Architected a state-funded grant management platform processing $5M+ in workforce development funds. Implemented granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
 
 **CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
 
@@ -20,15 +20,15 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 
 **Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
 
-- Administered Salesforce Service Cloud for 400+ users.
-- Automated Experience Cloud contact and user provisioning to eliminate manual processing.
-- Integrated Microsoft Power Automate for on-demand user provisioning, reducing setup time by 90%.
-- Maintained Experience Cloud sites supporting 10,000+ external users.
+- **Service Cloud Administration:** Administered Salesforce Service Cloud for 400+ users.
+- **Process Automation:** Automated Experience Cloud contact and user provisioning to eliminate manual processing.
+- **System Integration:** Integrated Microsoft Power Automate for on-demand user provisioning, reducing setup time by 90%.
+- **Platform Scale:** Maintained Experience Cloud sites supporting 10,000+ external users.
 
 **CAET Services Specialist II** | Metropolitan Community College | _Jul 2017 - Jun 2021_
 
-- Implemented and administered Salesforce CRM supporting $2M+ in workforce training programs.
-- Managed workforce development web content using HTML, CSS, and JavaScript.
+- **CRM Implementation:** Implemented and administered Salesforce CRM supporting $2M+ in workforce training programs.
+- **Web Development:** Managed workforce development web content using HTML, CSS, and JavaScript.
 
 ## Technical Projects
 
@@ -36,12 +36,12 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 
 _A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
 
-- Designed a **developer-centric governance experience** that enforces deployment outcomes without disrupting workflows.
-- Defined a **normalized interaction model** creating a consistent feedback loop across different execution engines.
-- Architected a **modular system design** allowing teams to swap tools without breaking the developer experience.
-- Formalized governance concepts into intuitive **validation gates**, providing clear "pass/fail" signals to users.
-- Positioned mature tools as **integrated adapters**, creating a seamless ecosystem rather than a fragmented toolchain.
-- Authored **system-level documentation** treating governance as a core part of the platform user experience.
+- **Developer Experience (DX):** Designed a developer-centric governance experience that enforces deployment outcomes without disrupting workflows.
+- **Interaction Model:** Defined a consistent feedback loop across different execution engines to normalize the user journey.
+- **Modular Design:** Architected a modular system allowing teams to swap tools without breaking the developer experience.
+- **Intuitive Feedback:** Formalized governance concepts into intuitive **validation gates**, providing clear "pass/fail" signals to users.
+- **Ecosystem Integration:** Positioned mature tools as **integrated adapters**, creating a seamless ecosystem rather than a fragmented toolchain.
+- **User-Centric Documentation:** Authored system-level documentation treating governance as a core part of the platform user experience.
 
 **Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
@@ -62,7 +62,7 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Infrastructure as Code:** Architected event-driven build pipeline transforming Markdown source into immutable PDF artifacts using **Node.js**, **Pandoc**, and **GitHub Actions**.
 - **Security Architecture:** Implemented "Secrets-First" design pattern, decoupling PII (Phone, Email) from codebase using GitHub Secrets and Environment Variables to enable public repository visibility without data leakage.
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
-- **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
+- **Tech Stack:** Utilizes GitHub Actions, Node.js, Docker, Mermaid.js, and LaTeX.
 
 **GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
