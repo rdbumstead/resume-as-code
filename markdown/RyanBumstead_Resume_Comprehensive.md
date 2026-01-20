@@ -3,6 +3,8 @@
 
 ---
 
+> _Extended Technical Portfolio – For in-depth discussions. Concise resume available upon request._
+
 ## Professional Summary
 
 Principal-level Salesforce Platform Architect with **7+ years** designing governed, enterprise-grade Salesforce systems. Specializes in **architecture-first delivery**, **multi-cloud Salesforce/AWS systems**, **DevOps maturity**, and **resilience engineering**. Known for translating executive strategy into enforceable technical architecture.
@@ -32,6 +34,90 @@ Principal-level Salesforce Platform Architect with **7+ years** designing govern
 - Implemented Salesforce CRM for workforce programs and managed web content (HTML/CSS).
 
 ## Technical Projects
+
+**GlassOps Governance Protocol**
+
+Open Source | [GlassOps Repository](https://github.com/glassops-platform/glassops)
+
+> **"GlassOps governs outcomes, not implementations."**
+
+_A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
+
+```mermaid
+graph TB
+    %%{init: {'flowchart': {'nodeSpacing': 40, 'rankSpacing': 40}}}%%
+
+    %% ===== Styles =====
+    classDef input fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef logic fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef artifact fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef gate fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#ffffff,font-weight:bold;
+
+    %% ===== Starting Point =====
+    Repo["GitHub Repository<br/>Source Code"]:::input
+
+    %% ===== Phase 1: Policy Resolution =====
+    subgraph Phase1 ["PHASE 1: Policy Resolution"]
+        direction TB
+        Config["devops-config.json"]:::artifact
+        CMDT["Salesforce CMDT<br/>(Optional)"]:::input
+        Resolver["resolve-policy.js<br/>(Merge Logic)"]:::logic
+        PolicyJSON[".glassops/policy.json"]:::artifact
+    end
+
+    %% ===== Phase 2: Simulation =====
+    subgraph Phase2 ["PHASE 2: The Simulation (Dry Run)"]
+        direction TB
+        EngineCheck{"Select Engine"}:::logic
+        SimNative["Native Adapter<br/>(Check-Only)"]:::logic
+        SimHardis["Hardis Adapter<br/>(Check-Only)"]:::logic
+        DraftContract[".glassops/contract-draft.json"]:::artifact
+    end
+
+    %% ===== Phase 3: The Gate =====
+    subgraph Phase3 ["PHASE 3: Governance Gate"]
+        direction TB
+        Validate["Compare Draft vs Policy"]:::logic
+        Decision{"Pass?"}:::gate
+    end
+
+    %% ===== Phase 4: Execution =====
+    subgraph Phase4 ["PHASE 4: The Execution"]
+        direction TB
+        ExecNative["Native Adapter<br/>(Quick Deploy)"]:::logic
+        ExecHardis["Hardis Adapter<br/>(Quick Deploy)"]:::logic
+        FinalContract[".glassops/contract-final.json"]:::artifact
+    end
+
+    %% ===== Flow =====
+    Repo --> Phase1
+    Config --> Resolver
+    CMDT -.-> Resolver
+    Resolver --> PolicyJSON
+    PolicyJSON --> EngineCheck
+
+    EngineCheck -->|"native"| SimNative
+    EngineCheck -->|"hardis"| SimHardis
+
+    SimNative --> DraftContract
+    SimHardis --> DraftContract
+
+    DraftContract --> Validate
+    Validate --> Decision
+
+    Decision -->|"Yes (Quick Deploy)"| ExecNative
+    Decision -->|"Yes (Quick Deploy)"| ExecHardis
+
+    ExecNative --> FinalContract
+    ExecHardis --> FinalContract
+```
+
+**Architecture Deep Dive:**
+
+- **Phase 1: Policy Resolution:** Implements an additive merge model where the strictest policy wins (GitHub Env Vars > Team Policy > Org Defaults), ensuring security floors cannot be bypassed.
+- **Phase 2: The Simulation:** Runs deployments in "Check-Only" mode using pluggable adapters (Native SFDX, sfdx-hardis), normalizing diverse tool outputs into a standard **Draft Contract**.
+- **Phase 3: The Governance Gate:** A logic-only evaluation that compares the Draft Contract against the Policy. Bad code never leaves this phase.
+- **Phase 4: The Execution:** Uses the "Quick Deploy" ID from Phase 2 to instantly promote the exact validated byte-code, ensuring zero drift between test and release.
 
 ### Salesforce Platform Architect Portfolio
 
@@ -110,7 +196,7 @@ A "Zero-Touch" CI/CD pipeline treating professional career documentation as a so
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via the GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
 
-**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+**GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
 _A production-ready GitHub Action serving as the foundational kernel for enterprise Salesforce CI/CD pipelines._
 
