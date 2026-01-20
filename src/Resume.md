@@ -7,9 +7,9 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 **Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
 
 - **Strategic Partner:** Delivers enterprise-grade solution architecture and technical implementations across nonprofit, education, and public-sector organizations.
+- **Grant Platform:** Architected a state-funded grant management platform processing $5M+ in workforce development funds. Implemented granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
 - **Metropolitan Community College Employer Hub (Design & PoC):** Diagnosed data silos and designed a unified Experience/Service Cloud hub. Delivered executive walkthroughs and prototypes to validate Flow automation and Einstein Activity Capture.
 - **Greenville Literacy Association:** Led architectural evaluation of Education Cloud vs NPSP + PMM. Performed cost-benefit analysis leveraging the Salesforce Power of Us program.
-- **Metropolitan Community College Career Skills Grant Management:** Architected a state-funded grant management platform processing $5M+ in workforce development funds. Implemented granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
 
 **CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
 
@@ -20,15 +20,15 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 
 **Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
 
-- Administered Salesforce Service Cloud for 400+ users.
-- Automated Experience Cloud contact and user provisioning to eliminate manual processing.
-- Integrated Microsoft Power Automate for on-demand user provisioning, reducing setup time by 90%.
-- Maintained Experience Cloud sites supporting 10,000+ external users.
+- **Service Cloud Administration:** Administered Salesforce Service Cloud for 400+ users.
+- **Process Automation:** Automated Experience Cloud contact and user provisioning to eliminate manual processing.
+- **System Integration:** Integrated Microsoft Power Automate for on-demand user provisioning, reducing setup time by 90%.
+- **Platform Scale:** Maintained Experience Cloud sites supporting 10,000+ external users.
 
 **CAET Services Specialist II** | Metropolitan Community College | _Jul 2017 - Jun 2021_
 
-- Implemented and administered Salesforce CRM supporting $2M+ in workforce training programs.
-- Managed workforce development web content using HTML, CSS, and JavaScript.
+- **CRM Implementation:** Implemented and administered Salesforce CRM supporting $2M+ in workforce training programs.
+- **Web Development:** Managed workforce development web content using HTML, CSS, and JavaScript.
 
 ## Technical Projects
 
@@ -36,12 +36,12 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 
 _A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
 
-- Designed a **governance control plane** enforcing deployment outcomes independently of tooling.
-- Defined a **policy and contract model** that normalizes results across execution engines such as native sf CLI and sfdx-hardis.
-- Architected a **pluggable adapter pattern** allowing teams to swap execution engines without breaking compliance guarantees.
-- Formalized deployment governance concepts including policy resolution, validation gates, and pass or fail arbitration.
-- Positioned mature tools like sfdx-hardis as **first-class execution adapters**, not competitors.
-- Authored protocol-level architecture documentation treating governance as a system concern rather than a pipeline feature.
+- **Governance Control Plane:** Designed a system enforcing deployment outcomes independently of tooling.
+- **Policy & Contract Model:** Defined a model that normalizes results across execution engines such as native sf CLI and sfdx-hardis.
+- **Pluggable Adapter Pattern:** Architected a pattern allowing teams to swap execution engines without breaking compliance guarantees.
+- **Deployment Governance:** Formalized concepts including policy resolution, validation gates, and pass or fail arbitration.
+- **Tooling Strategy:** Positioned mature tools like sfdx-hardis as **first-class execution adapters**, not competitors.
+- **System Documentation:** Authored protocol-level architecture documentation treating governance as a system concern rather than a pipeline feature.
 
 **Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
@@ -62,7 +62,7 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Infrastructure as Code:** Architected event-driven build pipeline transforming Markdown source into immutable PDF artifacts using **Node.js**, **Pandoc**, and **GitHub Actions**.
 - **Security Architecture:** Implemented "Secrets-First" design pattern, decoupling PII (Phone, Email) from codebase using GitHub Secrets and Environment Variables to enable public repository visibility without data leakage.
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
-- **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
+- **Tech Stack:** Utilizes GitHub Actions, Node.js, Docker, Mermaid.js, and LaTeX.
 
 **GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
