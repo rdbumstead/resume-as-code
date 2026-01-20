@@ -32,6 +32,17 @@ Salesforce Platform Architect with 7+ years of experience bridging business requ
 
 ## Technical Projects
 
+**GlassOps Governance Protocol** | Open Source | [GlassOps Repository](https://github.com/glassops-platform/glassops)
+
+_A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
+
+- Designed a **governance control plane** enforcing deployment outcomes independently of tooling.
+- Defined a **policy and contract model** that normalizes results across execution engines such as native sf CLI and sfdx-hardis.
+- Architected a **pluggable adapter pattern** allowing teams to swap execution engines without breaking compliance guarantees.
+- Formalized deployment governance concepts including policy resolution, validation gates, and pass or fail arbitration.
+- Positioned mature tools like sfdx-hardis as **first-class execution adapters**, not competitors.
+- Authored protocol-level architecture documentation treating governance as a system concern rather than a pipeline feature.
+
 **Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 _An architecture-first reference implementation. **Read the full documentation on the [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/).**_
@@ -53,7 +64,7 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
 
-**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+**GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
 _A production-ready GitHub Action serving as the foundational kernel for enterprise Salesforce CI/CD pipelines._
 
