@@ -37,6 +37,17 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 
 ## Technical Projects
 
+**GlassOps Governance Protocol** | Open Source | [GlassOps Repository](https://github.com/glassops-platform/glassops)
+
+_A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
+
+- Designed a **developer-centric governance experience** that enforces deployment outcomes without disrupting workflows.
+- Defined a **normalized interaction model** creating a consistent feedback loop across different execution engines.
+- Architected a **modular system design** allowing teams to swap tools without breaking the developer experience.
+- Formalized governance concepts into intuitive **validation gates**, providing clear "pass/fail" signals to users.
+- Positioned mature tools as **integrated adapters**, creating a seamless ecosystem rather than a fragmented toolchain.
+- Authored **system-level documentation** treating governance as a core part of the platform user experience.
+
 **Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
 _An architecture-first reference implementation. **Read the full documentation on the [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/).**_
@@ -58,7 +69,7 @@ _A "Zero-Touch" CI/CD pipeline treating professional career documentation as a s
 - **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
 - **Tech Stack:** GitHub Actions, Node.js, Docker, Mermaid.js, LaTeX.
 
-**Setup Salesforce CLI Action** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
+**GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
 
 _A production-ready GitHub Action focused on streamlining Developer Experience (DX) for Salesforce DevOps._
 
