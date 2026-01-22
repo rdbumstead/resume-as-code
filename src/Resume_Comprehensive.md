@@ -13,17 +13,18 @@ Principal-level Platform Architect with 7+ years designing governed Salesforce e
 
 ## Professional Experience
 
-### Salesforce Solutions Architect (Freelance) | _Oct 2021 - Present_
+### Salesforce Solutions Architect (Freelance) | Oct 2021 - Present
 
 - Acts as principal architect for Salesforce implementations across nonprofit, education, and public-sector environments.
-- Architected compliance-driven platforms processing **$5M+ in public funding**, enforcing auditability, least-privilege access, and traceable operational controls.
+- Architected compliance-driven platforms processing $5M+ in public funding, enforcing auditability, least-privilege access, and traceable operational controls.
 - Leads executive architecture reviews, proofs of concept, and platform governance discussions to guide long-term investment and risk reduction.
 - Balances delivery velocity with system integrity by defining clear architectural boundaries and governance contracts.
 
-### CRM Developer (Salesforce) | Creighton University | _Aug 2025 - Present_
+### CRM Developer (Salesforce) | Creighton University | Aug 2025 - Present
 
-- Leading platform-wide DevOps modernization and architectural standards adoption.
-- Defined the organization’s first formal Salesforce DevOps governance model, eliminating deployment failures by enforcing deterministic validation and controlled release promotion.
+- Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
+- Defined the organization's first formal Salesforce DevOps governance model, establishing deterministic validation and controlled release promotion to eliminate deployment failures.
+- Designed structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
 - Advises IT leadership on roadmap planning, architectural dependencies, and platform risk management.
 - Acts as technical authority for Apex, asynchronous processing, and LWC development beyond declarative limits.
 
@@ -40,8 +41,6 @@ A governance-first protocol for Salesforce CI/CD that separates policy enforceme
 - Produces immutable audit artifacts suitable for regulated environments.
 
 ```mermaid
-    %%{init: {'flowchart': {'nodeSpacing': 50, 'rankSpacing': 50}}}%%
-
 flowchart LR
     %% ========= STANDARD STYLES =========
     classDef actor fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
@@ -163,4 +162,10 @@ graph LR
 
 - Enterprise-grade GitHub Action providing deterministic Salesforce CLI environments.
 - Designed as a foundational primitive for reusable workflows and governed delivery.
-- Reduced CI setup time by **80%** while enforcing authentication and execution invariants.
+- Reduced CI setup time by 80% while enforcing authentication and execution invariants.
+
+## Education and Certifications
+
+**Associate's Degree in General Studies** : Metropolitan Community College (2025)
+
+**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations.
