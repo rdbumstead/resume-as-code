@@ -35,6 +35,6 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 
 ## Education and Certifications
 
-**Associate's Degree** : Metropolitan Community College (2025)
+**Associate's Degree** : Metropolitan Community College (Completed 2025)
 
 **Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, AI Associate.
