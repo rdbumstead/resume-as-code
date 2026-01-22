@@ -40,19 +40,37 @@ A governance-first protocol for Salesforce CI/CD that separates policy enforceme
 - Produces immutable audit artifacts suitable for regulated environments.
 
 ```mermaid
+    %%{init: {'flowchart': {'nodeSpacing': 50, 'rankSpacing': 50}}}%%
+
 flowchart LR
+    %% ========= STANDARD STYLES =========
+    classDef actor fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef policy fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef action fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef gate fill:#FB8C00,stroke:#E65100,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef record fill:#24292E,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+
+    %% ========= NODES =========
     Intent[User Intent]
     Policy[Policy Resolution]
     Adapter[Execution Adapter]
     Contract[Deployment Contract]
-    Gate{Governance Gate}
-    Audit[(Audit Trail)]
+    Enforce[Governance Enforcement]
+    Audit[Audit Trail]
 
+    %% ========= FLOWS =========
     Intent --> Policy
     Policy --> Adapter
     Adapter --> Contract
-    Contract --> Gate
-    Gate --> Audit
+    Contract --> Enforce
+    Enforce --> Audit
+
+    %% ========= APPLY STYLES =========
+    class Intent actor;
+    class Policy policy;
+    class Adapter action;
+    class Enforce gate;
+    class Contract,Audit record;
 ```
 
 ### GlassOps Architectural Flow (Detailed)
@@ -66,12 +84,53 @@ This model allows governance guarantees to remain stable even as delivery toolin
 
 ```mermaid
 graph LR
+    %%{init: {'flowchart': {'nodeSpacing': 50, 'rankSpacing': 50}}}%%
+    %% ========= BRAND STYLES =========
+    classDef user fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef sfdc fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef aws fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef jira fill:#0052CC,stroke:#003A8F,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef github fill:#24292E,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef data fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef future fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,stroke-dasharray:5 5;
+
+    %% ========= NODES =========
+    User((User))
+    LWR[Experience Cloud<br/>LWR]
+    GQL[Salesforce<br/>GraphQL]
+    Apex[Apex Runtime]
+    DB[(Custom Objects)]
+    AI[Agentforce]
+    Jira[Jira Cloud API]
+    GitHub[GitHub API]
+
+    subgraph Roadmap ["Future Roadmap (Phase 2)"]
+        Lambda[AWS Lambda<br/>Offload Compute]
+    end
+
+    %% ========= FLOWS =========
     User --> LWR
+    LWR --> GQL
+    GQL --> DB
     LWR --> Apex
-    Apex --> Agentforce
-    Apex --> GitHub
+    Apex <--> AI
     Apex --> Jira
+    Apex --> GitHub
+
+    %% ========= FUTURE =========
     LWR -.-> Lambda
+    Lambda -.-> Apex
+
+    %% ========= APPLY STYLES =========
+    class User user;
+    class LWR,GQL,Apex,AI sfdc;
+    class DB data;
+    class Jira jira;
+    class GitHub github;
+    class Lambda aws;
+
+    %% ========= CRITICAL PATH =========
+    linkStyle 0,1,2 stroke:#2ECC71,stroke-width:3px;
 ```
 
 ### Portfolio Architecture Overview
