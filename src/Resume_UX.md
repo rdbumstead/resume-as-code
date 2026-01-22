@@ -33,9 +33,9 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 - Designed Experience Cloud (LWR) frontends backed by governed APIs.
 - Implemented chaos engineering to validate graceful UX degradation during failures.
 
-**Resume as Code CI/CD Pipeline**
+**Resume as Code**
 
-- Architected an event-driven pipeline that transforms Markdown source into immutable PDF artifacts.
+- Architected an event-driven CI/CD pipeline that transforms Markdown source into immutable PDF artifacts.
 - Decoupled PII using GitHub Secrets to enable safe and public repository visibility.
 - Engineered automated governance to enforce formatting standards and validate hyperlink integrity before compilation.
 
