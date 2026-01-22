@@ -38,9 +38,9 @@ A governance-first protocol separating policy enforcement from execution.
 - Designed API-first integrations using OpenAPI 3.0 with enforceable governance controls.
 - Implemented zero-touch CI/CD with resilience and controlled failure testing.
 
-**Resume as Code CI/CD Pipeline**
+**Resume as Code**
 
-- Architected an event-driven pipeline that transforms Markdown source into immutable PDF artifacts.
+- Architected an event-driven CI/CD pipeline that transforms Markdown source into immutable PDF artifacts.
 - Decoupled PII using GitHub Secrets to enable safe and public repository visibility.
 - Engineered automated governance to enforce formatting standards and validate hyperlink integrity before compilation.
 
