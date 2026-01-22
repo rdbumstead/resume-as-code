@@ -145,7 +145,7 @@ graph LR
 - Authored **Systems Architecture Specification (SAS)** defining platform boundaries and responsibilities.
 - Maintained **26 Architectural Decision Records (ADRs)** covering security, FinOps, resilience, and AI governance.
 - Designed **contract-first APIs** using OpenAPI 3.0 with enforceable rate limiting, caching, and observability requirements.
-- Engineered zero-touch CI/CD pipelines with deterministic validation and controlled release promotion.
+- Engineering zero-touch CI/CD pipelines with deterministic validation and controlled release promotion.
 - Implemented resilience and controlled failure testing to validate graceful degradation of third-party dependencies.
 
 ---
@@ -161,7 +161,7 @@ graph LR
 ### Setup Salesforce CLI (GitHub Marketplace)
 
 - Enterprise-grade GitHub Action providing deterministic Salesforce CLI environments.
-- Designed as a foundational primitive for reusable workflows and governed delivery.
+- Designed as a foundational primitive for reusable workflows and governing delivery.
 - Reduced CI setup time by 80% while enforcing authentication and execution invariants.
 
 ## Education and Certifications

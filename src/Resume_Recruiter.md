@@ -23,7 +23,7 @@ Lead Platform Architect with 7+ years designing governed Salesforce ecosystems f
 - Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
 - Defined the organization's first formal Salesforce DevOps governance model, establishing deterministic validation and controlled release promotion to eliminate deployment failures.
 - Designed structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
-- Engineered CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated quality gates.
+- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated quality gates.
 
 **Application Administrator** | Creighton University | Jun 2021 - Aug 2025
 
