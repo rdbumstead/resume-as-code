@@ -43,6 +43,6 @@ Lead Platform Architect with 7+ years designing governed Salesforce ecosystems f
 
 ## Education and Certifications
 
-**Associate's Degree in General Studies** : Metropolitan Community College (2025)
+**Associate's Degree in General Studies** : Metropolitan Community College (Completed 2025)
 
 **Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations.
