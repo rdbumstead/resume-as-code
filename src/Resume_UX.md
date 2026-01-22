@@ -1,97 +1,46 @@
 ## Professional Summary
 
-Lead Salesforce Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging the gap between complex backend architecture and intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a "Design-First" approach that combines rigorous DevOps governance with high-performance, resilient customer journeys to drive service quality.
-
-## Professional Experience
-
-**Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
-
-- **Strategic Partner:** Delivers enterprise-grade solution architecture and technical implementations across nonprofit, education, and public-sector organizations.
-- **Metropolitan Community College Employer Hub (Design & PoC):** Diagnosed data silos and designed a unified Experience/Service Cloud hub. Delivered executive walkthroughs and prototypes to validate Flow automation and Einstein Activity Capture.
-- **Greenville Literacy Association:** Led architectural evaluation of Education Cloud vs NPSP + PMM. Performed cost-benefit analysis leveraging the Salesforce Power of Us program.
-- **Grant Platform:** Architected a state-funded grant management platform processing $5M+ in workforce development funds. Implemented granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
-
-**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
-
-- **DevOps Transformation:** Engineers the organization's first formal DevOps strategy, eliminating deployment failures by 100% by introducing a localized Docker-based testing pipeline (LWC/Jest) and strict version control governance.
-- **Force Multiplier:** Designs and delivers an upskilling program for 2 Salesforce Administrators and 1 Salesforce Developer, bridging the gap between declarative config and programmatic development to establish standards for maintainability.
-- **Advanced Engineering:** Leads backend development using Apex triggers, asynchronous processing, and LWC to extend platform capabilities beyond declarative limits.
-- **Strategic Advisory:** Advises IT leadership on Salesforce roadmap planning, architectural dependencies, and platform optimization.
-
-**Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
-
-- **Service Cloud Administration:** Administered Salesforce Service Cloud for 400+ users.
-- **Process Automation:** Automated Experience Cloud contact and user provisioning to eliminate manual processing.
-- **System Integration:** Integrated Microsoft Power Automate for on-demand user provisioning, reducing setup time by 90%.
-- **Platform Scale:** Maintained Experience Cloud sites supporting 10,000+ external users.
-
-**CAET Services Specialist II** | Metropolitan Community College | _Jul 2017 - Jun 2021_
-
-- **CRM Implementation:** Implemented and administered Salesforce CRM supporting $2M+ in workforce training programs.
-- **Web Development:** Managed workforce development web content using HTML, CSS, and JavaScript.
-
-## Technical Projects
-
-**GlassOps Governance Protocol** | Open Source | [GlassOps Repository](https://github.com/glassops-platform/glassops)
-
-_A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution._
-
-- **Developer Experience (DX):** Designed a developer-centric governance experience that enforces deployment outcomes without disrupting workflows.
-- **Interaction Model:** Defined a consistent feedback loop across different execution engines to normalize the user journey.
-- **Modular Design:** Architected a modular system allowing teams to swap tools without breaking the developer experience.
-- **Intuitive Feedback:** Formalized governance concepts into intuitive **validation gates**, providing clear "pass/fail" signals to users.
-- **Ecosystem Integration:** Positioned mature tools as **integrated adapters**, creating a seamless ecosystem rather than a fragmented toolchain.
-- **User-Centric Documentation:** Authored system-level documentation treating governance as a core part of the platform user experience.
-
-**Salesforce Platform Architect Portfolio** | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
-
-_An architecture-first reference implementation. **Read the full documentation on the [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/).**_
-
-- **Governance & Guardrails:** Authored [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md) defining automated quality gates, compliance rules, and "Definition of Done" for enterprise delivery.
-- **Architectural Decision Records (ADRs):** Documented 26 immutable [ADRs](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, FinOps, and resilience, treating architectural decisions as code.
-- **Enterprise Architecture:** Authored Systems Architecture Specification ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md)) and [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md). Design covers governed multi-cloud architecture across Salesforce LWR, AWS Lambda, and Agentforce AI.
-- **API-First Design:** Designed and published contract-first APIs using OpenAPI 3.0, enforcing governance via rate limiting, caching directives, and distributed tracing headers.
-- **DevOps Engineering:** Engineered zero-touch CI/CD pipeline using GitHub Actions and JWT authentication. Implementation includes delta deployments and automated quality gates using PMD and ESLint.
-- **Resilience & Chaos Engineering:** Architected controlled failure simulation and chaos engineering patterns to validate graceful degradation of third-party integrations like GitHub and Jira.
-- **Outcome:** Demonstrates end-to-end Salesforce platform architecture combining governance, resilience, DevOps automation, and executive alignment.
-
-**"Resume as Code" CI/CD Pipeline** | [Resume Repository](https://github.com/rdbumstead/resume-as-code)
-
-_A "Zero-Touch" CI/CD pipeline treating professional career documentation as a software product._
-
-- **Infrastructure as Code:** Architected event-driven build pipeline transforming Markdown source into immutable PDF artifacts using **Node.js**, **Pandoc**, and **GitHub Actions**.
-- **Security Architecture:** Implemented "Secrets-First" design pattern, decoupling PII (Phone, Email) from codebase using GitHub Secrets and Environment Variables to enable public repository visibility without data leakage.
-- **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via GitHub API prior to compilation.
-- **Tech Stack:** Utilizes GitHub Actions, Node.js, Docker, Mermaid.js, and LaTeX.
-
-**GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
-
-_A production-ready GitHub Action focused on streamlining Developer Experience (DX) for Salesforce DevOps._
-
-- **Developer Experience (DX):** Designed a "Zero-Config" interface for Salesforce CI/CD, abstracting complex authentication, caching, and dependency management behind intuitive inputs.
-- **Performance Design:** Optimized the user journey by reducing pipeline wait times by 80% through intelligent caching strategies, enabling faster feedback loops for development teams.
-- **Smart Defaults:** Engineered the action with sensible default configurations for tools like Prettier and ESLint, reducing the cognitive load required to set up compliant pipeline environments.
+Lead Salesforce Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging complex backend architecture with intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a design-first approach that combines rigorous DevOps governance with high-performance customer journeys.
 
 ## Technical Skills
 
-- **Salesforce Platform:** Experience Cloud (LWR), Flow, Service Cloud, Agentforce, LWC, Apex, Visualforce
-- **Frontend & Design:** HTML, CSS, JavaScript (ES6+), C4 Modeling
-- **Architecture & DevOps:** Event-Driven Architecture, REST & OpenAPI Design, GitHub Actions, Docker
+- Salesforce: Experience Cloud (LWR), Service Cloud, Flow, LWC, Apex, Agentforce
+- UX and Architecture: C4 Modeling, API Design, Event-Driven Systems
+- DevOps: GitHub Actions, CI/CD Governance
 
-## Education & Certifications
+## Professional Experience
 
-**Associate's Degree in General Studies**
-_Metropolitan Community College (2025)_
+**Salesforce Solutions Architect (Freelance)** | Oct 2021 - Present
 
-**Salesforce Certifications:**
+- Designed Experience and Service Cloud solutions focused on usability, clarity, and operational scale.
+- Led design and proof-of-concept efforts validating Flow automation and AI-assisted workflows.
 
-- Salesforce Certified Agentforce Specialist
-- Salesforce Certified Data Cloud Consultant
-- Salesforce Certified Education Cloud Consultant
-- Salesforce Certified Platform App Builder
-- Salesforce Certified Platform Administrator
-- Salesforce Certified Platform Administrator II
-- Salesforce Certified AI Associate
-- Salesforce Certified Marketing Cloud Engagement Foundations
+**CRM Developer (Salesforce)** | Creighton University | Aug 2025 - Present
 
-_[Verify credentials on Trailhead](https://www.salesforce.com/trailblazer/rbumstead)_
+- Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
+- Defined a governed DevOps model establishing deterministic validation and controlled release promotion to eliminate deployment failures.
+- Designed structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
+- Led Apex and LWC development enabling experiences beyond declarative limits.
+
+## Selected Work
+
+**GlassOps Governance Protocol**
+
+- Designed governance as a developer experience providing clear pass/fail feedback.
+
+**Salesforce Platform Architect Portfolio**
+
+- Designed Experience Cloud (LWR) frontends backed by governed APIs.
+- Implemented chaos engineering to validate graceful UX degradation during failures.
+
+**Resume as Code CI/CD Pipeline**
+
+- Architected an event-driven pipeline that transforms Markdown source into immutable PDF artifacts.
+- Decoupled PII using GitHub Secrets to enable safe and public repository visibility.
+- Engineered automated governance to enforce formatting standards and validate hyperlink integrity before compilation.
+
+## Education and Certifications
+
+**Associate's Degree** : Metropolitan Community College (Completed 2025)
+
+**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, AI Associate.

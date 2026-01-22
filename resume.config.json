@@ -18,11 +18,22 @@
     "Executive Overview": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/01-Executive-Overview.md",
     "Architectural Decision Records": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr",
     "Governance Hub": "https://rdbumstead.github.io/salesforce-platform-architect-portfolio/",
-    "Verify credentials on Trailhead": "https://www.salesforce.com/trailblazer/rbumstead"
+    "Verify credentials on Trailhead": "https://www.salesforce.com/trailblazer/rbumstead",
+    "Systems Architecture Specification": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md",
+    "Program Charters": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md",
+    "GlassOps Governance Protocol": "https://github.com/glassops-platform/glassops",
+    "Resume as Code": "https://github.com/rdbumstead/resume-as-code",
+    "Salesforce Platform Architect Portfolio": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio"
+
   },
   "ignore": [
     "Portfolio",
     "GitHub",
-    "GitHub Marketplace"
+    "GitHub Marketplace",
+    "Salesforce",
+    "DevOps",
+    "Architecture",
+    "Platform",
+    "Governance"
   ]
 }
