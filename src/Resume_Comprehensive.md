@@ -1,13 +1,11 @@
-# Comprehensive Resume
-
-> Extended Technical Portfolio  
-> Intended for architecture, platform, and engineering leadership discussions.
+_Extended Technical Portfolio_
+_Intended for architecture, platform, and engineering leadership discussions._
 
 ## Professional Summary
 
 Principal-level Platform Architect with 7+ years designing governed Salesforce ecosystems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps maturity, and Salesforce-centric multi-cloud systems. Known for translating executive intent into enforceable technical architecture and defining delivery standards that scale across teams and tooling.
 
-> This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used. It should be read as a platform narrative rather than a traditional resume.
+_This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used. It should be read as a platform narrative rather than a traditional resume._
 
 ---
 
@@ -80,6 +78,15 @@ flowchart LR
 - **Execution Phase:** Promotes the exact validated byte-code using quick-deploy semantics, ensuring zero drift between validation and release.
 
 This model allows governance guarantees to remain stable even as delivery tooling evolves.
+
+## Salesforce Platform Architect Portfolio
+
+### Architectural Intent
+
+- **Governance First:** Treats configuration as code, ensuring all changes are auditable and reproducible.
+- **Resilient Multi-Cloud:** Leverages AWS Lambda for off-platform compute, reducing dependence on Salesforce execution limits.
+- **API Centricity:** Uses contract-first design (OpenAPI 3.0) for predictable and governed integration patterns.
+- **AI Augmented:** Integrates Agentforce within defined boundaries to maintain platform integrity.
 
 ```mermaid
 graph LR

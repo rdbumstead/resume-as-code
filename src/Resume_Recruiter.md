@@ -41,9 +41,9 @@ Lead Platform Architect with 7+ years designing governed Salesforce ecosystems f
 - Authored enterprise architecture artifacts including Systems Architecture Specifications and Architectural Decision Records (ADRs).
 - Implemented contract-first APIs and zero-touch CI/CD pipelines with resilience testing.
 
-**Resume as Code CI/CD Pipeline**
+**Resume as Code**
 
-- Architected an event-driven pipeline that transforms Markdown source into immutable PDF artifacts.
+- Architected an event-driven CI/CD pipeline that transforms Markdown source into immutable PDF artifacts.
 - Decoupled PII using GitHub Secrets to enable safe and public repository visibility.
 - Engineered automated governance to enforce formatting standards and validate hyperlink integrity before compilation.
 
