@@ -1,74 +1,85 @@
-> _Extended Technical Portfolio – For in-depth discussions. Concise resume available upon request._
+# Comprehensive Resume
+
+> Extended Technical Portfolio  
+> Intended for architecture, platform, and engineering leadership discussions.
 
 ## Professional Summary
 
-Principal-level Salesforce Platform Architect with **7+ years** designing governed, enterprise-grade Salesforce systems. Specializes in **architecture-first delivery**, **multi-cloud Salesforce/AWS systems**, **DevOps maturity**, and **resilience engineering**. Known for translating executive strategy into enforceable technical architecture.
+Principal-level Platform Architect with 7+ years designing governed Salesforce ecosystems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps maturity, and Salesforce-centric multi-cloud systems. Known for translating executive intent into enforceable technical architecture and defining delivery standards that scale across teams and tooling.
+
+> This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used. It should be read as a platform narrative rather than a traditional resume.
+
+---
 
 ## Professional Experience
 
-**Salesforce Solutions Architect (Freelance)** | _Oct 2021 - Present_
+### Salesforce Solutions Architect (Freelance) | Oct 2021 - Present
 
-- **Strategic Leadership:** Acted as principal architect for Salesforce implementations across nonprofit and education sectors.
-- **Grant Platform:** Architected a state-funded grant management platform processing **$5M+ in workforce development funds**, implementing granular permission models and audit trails to meet public sector compliance requirements while reducing administrative overhead by 40%.
-- **Executive Advisory:** Delivered executive architecture reviews, proofs of concept, and governance models.
+- Acts as principal architect for Salesforce implementations across nonprofit, education, and public-sector environments.
+- Architected compliance-driven platforms processing $5M+ in public funding, enforcing auditability, least-privilege access, and traceable operational controls.
+- Leads executive architecture reviews, proofs of concept, and platform governance discussions to guide long-term investment and risk reduction.
+- Balances delivery velocity with system integrity by defining clear architectural boundaries and governance contracts.
 
-**CRM Developer (Salesforce)** | Creighton University | _Aug 2025 - Present_
+### CRM Developer (Salesforce) | Creighton University | Aug 2025 - Present
 
-- **DevOps Strategy:** Leading platform-level DevOps modernization and architectural standards.
-- **Strategic Roadmap:** Advising IT leadership on roadmap planning and architectural risk management.
-- **Development Standards:** Driving best practices for maintainability, scalability, and governance.
+- Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
+- Defined the organization's first formal Salesforce DevOps governance model, establishing deterministic validation and controlled release promotion to eliminate deployment failures.
+- Designed structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
+- Advises IT leadership on roadmap planning, architectural dependencies, and platform risk management.
+- Acts as technical authority for Apex, asynchronous processing, and LWC development beyond declarative limits.
 
-**Application Administrator** | Creighton University | _Jun 2021 - Aug 2025_
+---
 
-- **Service Cloud Administration:** Administered enterprise Service Cloud environments.
-- **Identity & Access Management:** Automated Experience Cloud onboarding and identity workflows.
-- **Platform Scale:** Supported large-scale Experience Cloud implementations (10,000+ users).
+## GlassOps Governance Protocol (Open Source)
 
-**CAET Services Specialist II** | Metropolitan Community College | _Jul 2017 - Jun 2021_
+A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution tooling. GlassOps treats governance as a platform concern, not a pipeline feature. The system enforces outcomes independent of how deployments are executed, allowing teams to adopt or replace tools without weakening compliance guarantees.
 
-- **CRM Implementation:** Implemented Salesforce CRM for workforce programs and managed web content (HTML/CSS).
+### Architectural Intent
 
-## Technical Projects
-
-**GlassOps Governance Protocol**
-
-A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution. | Open Source | [GlassOps Repository](https://github.com/glassops-platform/glassops)
-
-_In active development (seeking testers, v0.1 Q1/Q2 2026). See full README for quick-start YAML and pluggable adapter examples._
+- Prevents automation of chaos by requiring explicit policy definition before execution.
+- Normalizes deployment outcomes across heterogeneous tooling.
+- Produces immutable audit artifacts suitable for regulated environments.
 
 ```mermaid
 flowchart LR
-    %%{init: {'flowchart': {'nodeSpacing': 30, 'rankSpacing': 30}}}%%
-    %% CLASSES
-    classDef input fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef logic fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef artifact fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef gate fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#ffffff,font-weight:bold;
-    %% NODES
-    Intent[User Intent]:::input
-    Policy[Policy<br/>Resolution]:::logic
-    Adapter[Execution<br/>Adapter]:::logic
-    Contract[Deployment<br/>Contract]:::artifact
-    Enforce{Governance<br/>Gate}:::gate
-    Audit[(Audit<br/>Trail)]:::artifact
-    %% FLOW
-    Intent --> Policy
-    Policy --> Adapter
-    Adapter --> Contract
-    Contract --> Enforce
-    Enforce --> Audit
+    %% ========= STANDARD STYLES =========
+    classDef actor fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef policy fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef action fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef gate fill:#FB8C00,stroke:#E65100,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef record fill:#24292E,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
+
+    %% ========= NODES =========
+    Intent[User Intent]
+    Policy[Policy Resolution]
+    Adapter[Execution Adapter]
+    Contract[Deployment Contract]
+    Enforce[Governance Enforcement]
+    Audit[Audit Trail]
+
+    %% ========= FLOWS =========
+    Intent --> Policy
+    Policy --> Adapter
+    Adapter --> Contract
+    Contract --> Enforce
+    Enforce --> Audit
+
+    %% ========= APPLY STYLES =========
+    class Intent actor;
+    class Policy policy;
+    class Adapter action;
+    class Enforce gate;
+    class Contract,Audit record;
 ```
 
-**Architecture Deep Dive:**
+### GlassOps Architectural Flow (Detailed)
 
-- **Phase 1: Policy Resolution:** Implements an additive merge model where the strictest policy wins (GitHub Env Vars > Team Policy > Org Defaults), ensuring security floors cannot be bypassed.
-- **Phase 2: The Simulation:** Runs deployments in "Check-Only" mode using pluggable adapters (Native SFDX, sfdx-hardis), normalizing diverse tool outputs into a standard **Draft Contract**.
-- **Phase 3: The Governance Gate:** Evaluates the Draft Contract against the Policy. Bad code never leaves this phase.
-- **Phase 4: The Execution:** Uses the "Quick Deploy" ID from Phase 2 to instantly promote the exact validated byte-code, ensuring zero drift between test and release.
+- **Policy Resolution:** Implements a strictest-policy-wins merge model (Environment, Team, Org), ensuring security floors cannot be bypassed by local configuration.
+- **Simulation Phase:** Executes deployments in check-only mode via pluggable adapters. Tool-specific output is normalized into a standard Draft Contract.
+- **Governance Gate:** Evaluates the Draft Contract against resolved policy. Invalid architecture or quality violations are blocked before promotion.
+- **Execution Phase:** Promotes the exact validated byte-code using quick-deploy semantics, ensuring zero drift between validation and release.
 
-### Salesforce Platform Architect Portfolio
-
-Open-source, architecture-first reference implementation | [Live Governance Hub](https://rdbumstead.github.io/salesforce-platform-architect-portfolio/) | [Portfolio Repository](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
+This model allows governance guarantees to remain stable even as delivery tooling evolves.
 
 ```mermaid
 graph LR
@@ -91,7 +102,10 @@ graph LR
     AI[Agentforce]
     Jira[Jira Cloud API]
     GitHub[GitHub API]
-    Lambda[AWS Lambda<br/>Phase 8]
+
+    subgraph Roadmap ["Future Roadmap (Phase 2)"]
+        Lambda[AWS Lambda<br/>Offload Compute]
+    end
 
     %% ========= FLOWS =========
     User --> LWR
@@ -118,65 +132,40 @@ graph LR
     linkStyle 0,1,2 stroke:#2ECC71,stroke-width:3px;
 ```
 
-> **Architecture Diagram Summary:**
-> The architecture implements a **Multi-Cloud Solution** centered on **Salesforce Experience Cloud (LWR)** and **GraphQL**.
->
-> 1. **User Interaction:** Users interact with the LWR site, triggering **Salesforce GraphQL** queries.
-> 2. **Core Logic:** Logic is handled by an **Apex Runtime** layer which orchestrates calls to **Agentforce AI**, **Jira Cloud API**, and **GitHub API**.
-> 3. **Future State:** A planned integration with **AWS Lambda** (Phase 8) will extend compute capabilities.
+### Portfolio Architecture Overview
 
-**Key Architecture Artifacts:**
+- **Core Platform:** Salesforce Experience Cloud (LWR) serves as the primary user interface.
+- **Logic Layer:** Apex orchestrates business logic and integrations.
+- **AI Integration:** Agentforce augments workflows while remaining governed by platform controls.
+- **External Systems:** Jira and GitHub integrations are mediated through defined APIs.
+- **Selective Off-Platform Compute:** AWS Lambda is introduced intentionally for compute-heavy or failure-prone operations.
 
-- **Enterprise Documentation:** Authored **6 enterprise architecture documents** including the [Systems Architecture Specification (SAS)](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), [Program Charter](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md), and [Executable Governance Guide](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/06-Guardrails-and-Executable-Governance.md).
-- **Architectural Decision Records:** Documented **26 [ADRs](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr)** covering security, performance, AI governance, FinOps, and resilience.
-- **Multi-Cloud Architecture:** Designed a topology using Salesforce LWR, Apex, Agentforce AI, and AWS Lambda.
-- **API-First Design:** Implemented **contract-first APIs** ([System API](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/api/oas/salesforce-sapi.md) & [Process API](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/api/oas/portfolio-papi.md)) with OpenAPI 3.0 enforcing rate limiting, caching, and observability.
-- **DevOps Engineering:** Engineered **zero-touch CI/CD pipelines** with JWT authentication, delta deployments, and automated quality gates.
-- **Resilience Engineering:** Designed chaos engineering and resilience simulation patterns to validate graceful degradation of third-party integrations.
+### Key Architecture Artifacts
 
-### "Resume as Code" CI/CD Pipeline
-
-A "Zero-Touch" CI/CD pipeline treating professional career documentation as a software product | [Resume Repository](https://github.com/rdbumstead/resume-as-code)
-
-- **Infrastructure as Code:** Architected an event-driven build pipeline transforming Markdown source into immutable PDF artifacts using **Node.js**, **Pandoc**, and **GitHub Actions**.
-- **Security Architecture:** Implemented a "Secrets-First" design pattern, decoupling PII (Phone, Email) from the codebase using GitHub Secrets and Environment Variables to enable public repository visibility without data leakage.
-- **Automated Governance:** Engineered custom Node.js scripts to audit hyperlinks, enforce formatting standards, and inject real-time portfolio statistics via the GitHub API prior to compilation.
-- **Tech Stack:** Utilizes GitHub Actions, Node.js, Docker, Mermaid.js, and LaTeX.
-
-**GitHub Marketplace Action: Setup Salesforce CLI** | [GitHub Marketplace](https://github.com/marketplace/actions/setup-salesforce-cli)
-
-_A production-ready GitHub Action serving as the foundational kernel for enterprise Salesforce CI/CD pipelines._
-
-- **Enterprise Resilience:** Engineered self-healing installation logic with exponential backoff strategies and cross-platform compatibility (Linux, macOS, Windows/PowerShell), achieving 99.9% pipeline reliability.
-- **Governance as Code:** Implemented a `strict` mode input pattern, allowing organizations to enforce "break-build" policies on optional tooling failures (e.g., PMD, ESLint) dynamically.
-- **Platform Architecture:** Architected as the base layer for a suite of modular Reusable Workflows, standardizing CI/CD practices and abstracting complexity for downstream repositories.
-- **Security & Performance:** Designed granular caching keys based on CLI versions to reduce setup time by 80% (20s vs 2m) while enforcing JWT key rotation and secure cleanup.
-
-## Technical Skills
-
-- **Salesforce Platform:** Apex, LWC, Visualforce, SOQL/SOSL, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
-- **DevOps & Tooling:** GitHub Actions (Reusable Workflows), SFDX CLI, Git, JWT Auth, Docker, PMD, ESLint
-- **Architecture:** C4 Modeling, REST & OpenAPI Design, Event-Driven Architecture, Multi-Cloud (AWS Lambda, S3), FinOps
-- **General:** JavaScript (ES6+), SQL, HTML, CSS
-
-## Education & Certifications
-
-**Associate's Degree in General Studies**
-_Metropolitan Community College (2025)_
-
-**Salesforce Certifications:**
-
-- Salesforce Certified Agentforce Specialist
-- Salesforce Certified Data Cloud Consultant
-- Salesforce Certified Education Cloud Consultant
-- Salesforce Certified Platform App Builder
-- Salesforce Certified Platform Administrator
-- Salesforce Certified Platform Administrator II
-- Salesforce Certified AI Associate
-- Salesforce Certified Marketing Cloud Engagement Foundations
-
-_[Verify credentials on Trailhead](https://www.salesforce.com/trailblazer/rbumstead)_
+- Authored **Systems Architecture Specification (SAS)** defining platform boundaries and responsibilities.
+- Maintained **26 Architectural Decision Records (ADRs)** covering security, FinOps, resilience, and AI governance.
+- Designed **contract-first APIs** using OpenAPI 3.0 with enforceable rate limiting, caching, and observability requirements.
+- Engineered zero-touch CI/CD pipelines with deterministic validation and controlled release promotion.
+- Implemented resilience and controlled failure testing to validate graceful degradation of third-party dependencies.
 
 ---
 
-> _Interested in discussing governance protocols, multi-cloud patterns, or DevOps modernization? Reach out via LinkedIn or email._
+## Additional Platform Work
+
+### Resume as Code
+
+- Event-driven CI/CD pipeline treating professional documentation as immutable artifacts.
+- Secrets-first architecture decoupling PII from source control.
+- Automated governance enforcing formatting, link integrity, and build consistency.
+
+### Setup Salesforce CLI (GitHub Marketplace)
+
+- Enterprise-grade GitHub Action providing deterministic Salesforce CLI environments.
+- Designed as a foundational primitive for reusable workflows and governing delivery.
+- Reduced CI setup time by 80% while enforcing authentication and execution invariants.
+
+## Education and Certifications
+
+**Associate's Degree in General Studies** : Metropolitan Community College (Completed 2025)
+
+**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations.
