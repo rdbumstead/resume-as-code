@@ -5,7 +5,7 @@
 
 ## Professional Summary
 
-Platform Architect with 7+ years designing governed Salesforce systems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps governance, and resilient Salesforce-centric multi-cloud designs. Known for defining enforceable platform standards that balance developer velocity with long-term system integrity.
+Salesforce Platform Architect with 7+ years designing governed Salesforce systems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps governance, and resilient Salesforce-centric multi-cloud designs. Known for defining enforceable platform standards that balance developer velocity with long-term system integrity.
 
 ## Professional Experience
 
@@ -31,7 +31,7 @@ Platform Architect with 7+ years designing governed Salesforce systems for enter
 ## Technical Projects
 
 **[GlassOps Governance Protocol](https://github.com/glassops-platform/glassops)** | Open Source  
-A governance-first protocol separating policy enforcement from execution.
+GlassOps is an open-source governance protocol currently under active development. It represents a reference implementation of governance-first Salesforce DevOps, with early adapters and execution engines being built and validated.
 
 - Designed a deployment governance control plane independent of CI/CD tooling.
 - Defined normalized deployment contracts across execution engines.
