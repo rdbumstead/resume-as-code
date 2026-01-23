@@ -1,6 +1,6 @@
 ## Professional Summary
 
-Lead Salesforce Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging complex backend architecture with intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a design-first approach that combines rigorous DevOps governance with high-performance customer journeys.
+Salesforce Platform Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging complex backend architecture with intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a design-first approach that combines rigorous DevOps governance with high-performance customer journeys.
 
 ## Technical Skills
 
@@ -25,6 +25,8 @@ Lead Salesforce Architect with 7+ years designing customer-centric, scalable ent
 ## Selected Work
 
 **GlassOps Governance Protocol**
+
+GlassOps is an open-source governance protocol currently under active development. It represents a reference implementation of governance-first Salesforce DevOps, with early adapters and execution engines being built and validated.
 
 - Designed governance as a developer experience providing clear pass/fail feedback.
 
