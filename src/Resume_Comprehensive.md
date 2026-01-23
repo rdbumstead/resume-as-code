@@ -3,7 +3,7 @@ _Intended for architecture, platform, and engineering leadership discussions._
 
 ## Professional Summary
 
-Principal-level Platform Architect with 7+ years designing governed Salesforce ecosystems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps maturity, and Salesforce-centric multi-cloud systems. Known for translating executive intent into enforceable technical architecture and defining delivery standards that scale across teams and tooling.
+Salesforce Platform Architect with 7+ years designing governed Salesforce ecosystems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps maturity, and Salesforce-centric multi-cloud systems. Known for translating executive intent into enforceable technical architecture and defining delivery standards that scale across teams and tooling.
 
 _This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used. It should be read as a platform narrative rather than a traditional resume._
 
@@ -30,7 +30,7 @@ _This document is intentionally detailed. It is designed to demonstrate how arch
 
 ## GlassOps Governance Protocol (Open Source)
 
-A governance-first protocol for Salesforce CI/CD that separates policy enforcement from execution tooling. GlassOps treats governance as a platform concern, not a pipeline feature. The system enforces outcomes independent of how deployments are executed, allowing teams to adopt or replace tools without weakening compliance guarantees.
+GlassOps is an open-source governance protocol currently under active development. It represents a reference implementation of governance-first Salesforce DevOps, with early adapters and execution engines being built and validated. The system enforces outcomes independent of how deployments are executed, allowing teams to adopt or replace tools without weakening compliance guarantees.
 
 ### Architectural Intent
 
