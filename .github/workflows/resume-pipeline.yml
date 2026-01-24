@@ -139,6 +139,32 @@ jobs:
 
           git push
 
+      - name: Generate Release Body
+        run: |
+          echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
+          for f in pdf/*.pdf; do
+            echo "- $(basename "$f")" >> $GITHUB_ENV
+          done
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: latest Resume Build
+          files: pdf/*.pdf
+          body: |
+            Automated resume build from branch `${{ github.ref_name }}`.
+
+            ### Included Resumes:
+            ${{ env.RELEASE_BODY }}
+          draft: false
+          prerelease: false
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Upload PDF Artifacts (Secure)
         uses: actions/upload-artifact@v4
         with:
