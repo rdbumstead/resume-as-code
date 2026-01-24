@@ -145,6 +145,7 @@ jobs:
 
       - name: Generate Release Body
         run: |
+          echo "BUILD_DATE=$(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_ENV
           echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
           for f in pdf/*.pdf; do
             echo "- $(basename "$f")" >> $GITHUB_ENV
@@ -159,7 +160,7 @@ jobs:
           name: Latest Build (${{ github.sha }})
           files: pdf/*.pdf
           body: |
-            **Build Timestamp:** `$(date -u)`
+            **Build Timestamp:** `${{ env.BUILD_DATE }}`
             **Commit SHA:** `${{ github.sha }}`
 
             ### 📄 Artifacts
