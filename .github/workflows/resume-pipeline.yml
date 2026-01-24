@@ -128,22 +128,23 @@ jobs:
               -o "pdf/$OUTPUT_FILE"
           done
 
-      - name: Commit and Push Artifacts
+      - name: Commit and Push Safe Markdown Only
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          git add markdown/ pdf/
+          git add markdown/
 
-          git diff --staged --quiet || git commit -m "chore: build distribution artifacts (md/pdf) [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: update safe markdown distribution [skip ci]"
 
           git push
 
-      - name: Upload PDF Artifacts
+      - name: Upload PDF Artifacts (Secure)
         uses: actions/upload-artifact@v4
         with:
-          name: resume-pdfs
+          name: RyanBumstead_Resumes_PDF
           path: pdf/*.pdf
+          retention-days: 90
 
       - name: Cleanup
         if: always()
