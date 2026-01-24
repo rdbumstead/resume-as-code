@@ -83,7 +83,6 @@ resume-as-code/
 │   ├── import-local.js    # Docx conversion & Title detection
 │   ├── build.js           # Local build orchestrator
 │   └── update-stats.js    # GitHub API data fetching
-├── pdf/                   # Final compiled artifacts (Full PII)
 ├── resume.config.json     # Configuration for Resume Variants
 └── package.json           # Project Manifest & Command definitions
 ```
