@@ -6,7 +6,7 @@ title: Platform Engineer
 
 Aspiring Platform Engineer with 7+ years designing governed Salesforce platforms and delivery systems for enterprise and public-sector organizations. Specializes in governance-first architecture, CI/CD abstraction, and policy-driven enforcement systems. Currently expanding platform engineering skills into Kubernetes-native control planes and infrastructure orchestration while applying proven architectural patterns from large-scale Salesforce environments.
 
-Known for separating **policy from execution**, designing **deterministic pipelines**, and treating governance as a first-class platform capability rather than an afterthought.
+Known for separating policy from execution, designing deterministic pipelines, and treating governance as a first-class platform capability rather than an afterthought.
 
 ---
 
