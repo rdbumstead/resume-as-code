@@ -1,3 +1,7 @@
+---
+title: Salesforce Platform Architect
+---
+
 ## Professional Summary
 
 Salesforce Platform Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging complex backend architecture with intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a design-first approach that combines rigorous DevOps governance with high-performance customer journeys.

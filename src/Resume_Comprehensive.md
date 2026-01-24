@@ -1,3 +1,7 @@
+---
+title: Salesforce Platform Architect
+---
+
 _Extended Technical Portfolio_
 _Intended for architecture, platform, and engineering leadership discussions._
 

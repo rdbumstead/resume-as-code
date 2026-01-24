@@ -1,3 +1,7 @@
+---
+title: Platform Engineer
+---
+
 ## Professional Summary
 
 Aspiring Platform Engineer with 7+ years designing governed Salesforce platforms and delivery systems for enterprise and public-sector organizations. Specializes in governance-first architecture, CI/CD abstraction, and policy-driven enforcement systems. Currently expanding platform engineering skills into Kubernetes-native control planes and infrastructure orchestration while applying proven architectural patterns from large-scale Salesforce environments.

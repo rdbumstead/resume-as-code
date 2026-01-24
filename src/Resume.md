@@ -1,3 +1,7 @@
+---
+title: Salesforce Platform Architect
+---
+
 ## Professional Summary
 
 Salesforce Platform Architect with 7+ years designing governed Salesforce systems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps governance, and resilient Salesforce-centric multi-cloud designs. Known for defining enforceable platform standards that balance developer velocity with long-term system integrity.
