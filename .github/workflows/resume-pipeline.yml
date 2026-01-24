@@ -17,13 +17,17 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      RESUME_GITHUB_USER: ${{ secrets.RESUME_GITHUB_USER }}
-      RESUME_FIRST_NAME: ${{ secrets.RESUME_FIRST_NAME }}
-      RESUME_LAST_NAME: ${{ secrets.RESUME_LAST_NAME }}
-      RESUME_TITLE: ${{ secrets.RESUME_TITLE }}
-      RESUME_LOCATION: ${{ secrets.RESUME_LOCATION }}
+      # --- SECRETS (Masked PII) ---
       RESUME_PHONE: ${{ secrets.RESUME_PHONE }}
       RESUME_EMAIL: ${{ secrets.RESUME_EMAIL }}
+
+      # --- VARIABLES (Configuration) ---
+      RESUME_FIRST_NAME: ${{ vars.RESUME_FIRST_NAME }}
+      RESUME_LAST_NAME: ${{ vars.RESUME_LAST_NAME }}
+      RESUME_TITLE: ${{ vars.RESUME_TITLE }}
+      RESUME_LOCATION: ${{ vars.RESUME_LOCATION }}
+      RESUME_GITHUB_USER: ${{ vars.RESUME_GITHUB_USER }}
+      RESUME_LINKEDIN: ${{ vars.RESUME_LINKEDIN }}
 
     steps:
       - name: Checkout Repository
@@ -138,6 +142,33 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: update safe markdown distribution [skip ci]"
 
           git push
+
+      - name: Generate Release Body
+        run: |
+          echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
+          for f in pdf/*.pdf; do
+            echo "- $(basename "$f")" >> $GITHUB_ENV
+          done
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Build (${{ github.sha }})
+          files: pdf/*.pdf
+          body: |
+            **Build Timestamp:** `$(date -u)`
+            **Commit SHA:** `${{ github.sha }}`
+
+            ### 📄 Artifacts
+            ${{ env.RELEASE_BODY }}
+          draft: false
+          prerelease: false
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload PDF Artifacts (Secure)
         uses: actions/upload-artifact@v4

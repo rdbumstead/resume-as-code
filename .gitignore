@@ -4,6 +4,7 @@ node_modules/
 # --- BUILD ARTIFACTS ---
 # Intermediate folder for assembled markdown & images
 temp_md/
+.pdf
 
 # --- SECRETS ---
 .env
@@ -12,6 +13,7 @@ temp_md/
 .DS_Store
 Thumbs.db
 *.log
+*.docx
 
 # --- LOCAL BUILDER ---
 build_resumes.bat

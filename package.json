@@ -4,8 +4,10 @@
   "description": "Zero-Touch CI/CD pipeline for architecture portfolios",
   "main": "scripts/assemble.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "import": "node scripts/import-local.js",
     "build": "node scripts/build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "node scripts/assemble.js preview src/RyanBumstead_Resume.md RyanBumstead_PREVIEW.md"
   },
   "keywords": [
     "resume",
@@ -16,7 +18,8 @@
   "author": "Ryan Bumstead",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "prettier": "^3.8.1"
   },
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.8.0",
