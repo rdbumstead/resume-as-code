@@ -22,6 +22,7 @@
     "Systems Architecture Specification": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md",
     "Program Charters": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/02-Program-Charter.md",
     "GlassOps Governance Protocol": "https://github.com/glassops-platform/glassops",
+    "GlassOps Runtime & Adapter Ecosystem" : "https://github.com/glassops-platform/glassops-runtime",
     "Resume as Code": "https://github.com/rdbumstead/resume-as-code",
     "Salesforce Platform Architect Portfolio": "https://github.com/rdbumstead/salesforce-platform-architect-portfolio",
     "Setup Salesforce CLI": "https://github.com/marketplace/actions/setup-salesforce-cli"
