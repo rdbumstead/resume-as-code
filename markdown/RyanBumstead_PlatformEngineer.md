@@ -1,5 +1,5 @@
-# RYAN BUMSTEAD
-**Salesforce Platform Architect** | **Omaha, NE** | **[GitHub](https://github.com/rdbumstead)** | **[Portfolio](https://ryanbumstead.com)** | **[LinkedIn](https://linkedin.com/in/ryanbumstead)**
+# Ryan Bumstead
+**Platform Engineer** | **Omaha, NE** | **[GitHub](https://github.com/rdbumstead)** | **[Portfolio](https://ryanbumstead.com)** | **[LinkedIn](https://linkedin.com/in/ryanbumstead)**
 
 ---
 
