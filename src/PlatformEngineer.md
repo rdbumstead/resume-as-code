@@ -4,7 +4,7 @@ title: Platform Engineer
 
 ## Professional Summary
 
-Aspiring Platform Engineer with 7+ years designing governed Salesforce platforms and delivery systems for enterprise and public-sector organizations. Specializes in governance-first architecture, CI/CD abstraction, and policy-driven enforcement systems. Currently expanding platform engineering skills into Kubernetes-native control planes and infrastructure orchestration while applying proven architectural patterns from large-scale Salesforce environments.
+Platform Engineer with 7+ years designing governed Salesforce platforms and delivery systems for enterprise and public-sector organizations. Specializes in governance-first architecture, CI/CD abstraction, and policy-driven enforcement systems. Currently expanding platform engineering skills into Kubernetes-native control planes and infrastructure orchestration while applying proven architectural patterns from large-scale Salesforce environments.
 
 Known for separating **policy from execution**, designing **deterministic pipelines**, and treating governance as a first-class platform capability rather than an afterthought.
 
@@ -12,7 +12,7 @@ Known for separating **policy from execution**, designing **deterministic pipeli
 
 ## Core Platform & Engineering Skills
 
-**Platform Engineering (Emerging)**
+**Platform Engineering**
 
 - Control plane & data plane separation
 - Governance-as-Code & policy enforcement
@@ -57,11 +57,11 @@ Known for separating **policy from execution**, designing **deterministic pipeli
 
 **Creighton University** | Aug 2025 – Present
 
-- Championing DevOps modernization and platform governance for a multi-team Salesforce environment.
-- Defined the organization’s first formal Salesforce DevOps governance model, enforcing deterministic validation and controlled promotion paths.
-- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
-- Acting as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
-- Designing training and certification paths for developers and administrators to improve platform maturity and delivery reliability.
+- Champion DevOps modernization and platform governance for a multi-team Salesforce environment.
+- Defining the organization's first formal Salesforce DevOps governance model, enforcing deterministic validation and controlled promotion paths.
+- Engineer CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
+- Act as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
+- Design training and certification paths for developers and administrators to improve platform maturity and delivery reliability.
 
 ---
 
@@ -69,10 +69,10 @@ Known for separating **policy from execution**, designing **deterministic pipeli
 
 **Independent Consultant** | Oct 2021 – Present
 
-- Served as principal architect for Salesforce implementations across nonprofit, education, and public-sector organizations.
-- Architected a state-funded grant management platform processing $5M+ with strict auditability, least-privilege access, and compliance-driven design.
-- Led platform evaluations, proofs of concept, and architectural tradeoff analyses to guide executive decision-making.
-- Designed scalable Experience Cloud solutions supporting thousands of external users with governed customization boundaries.
+- Serve as principal architect for Salesforce implementations across nonprofit, education, and public-sector organizations.
+- Architect state-funded grant management platforms processing $5M+ with strict auditability, least-privilege access, and compliance-driven design.
+- Lead platform evaluations, proofs of concept, and architectural tradeoff analyses to guide executive decision-making.
+- Design scalable Experience Cloud solutions supporting thousands of external users with governed customization boundaries.
 
 ---
 
@@ -157,7 +157,7 @@ Event-driven CI/CD pipeline treating professional documentation as immutable art
 
 ## Education & Certifications
 
-**Associate’s Degree, General Studies**  
+**Associate's Degree, General Studies**  
 Metropolitan Community College (Completed 2025)
 
 **Salesforce Certifications**
