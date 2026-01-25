@@ -17,15 +17,15 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 **Salesforce Solutions Architect (Freelance)** | Oct 2021 - Present
 
-- Designed Experience and Service Cloud solutions focused on usability, clarity, and operational scale.
-- Led design and proof-of-concept efforts validating Flow automation and AI-assisted workflows.
+- Design Experience and Service Cloud solutions focused on usability, clarity, and operational scale.
+- Lead design and proof-of-concept efforts validating Flow automation and AI-assisted workflows.
 
 **CRM Developer (Salesforce)** | Creighton University | Aug 2025 - Present
 
-- Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
-- Defined a governed DevOps model establishing deterministic validation and controlled release promotion to eliminate deployment failures.
-- Designed structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
-- Led Apex and LWC development enabling experiences beyond declarative limits.
+- Champion DevOps modernization and architectural standards adoption for the university Salesforce platform.
+- Defining a governed DevOps model establishing deterministic validation and controlled release promotion to eliminate deployment failures.
+- Design structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
+- Lead Apex and LWC development enabling experiences beyond declarative limits.
 
 ## Selected Work
 
@@ -48,6 +48,6 @@ GlassOps is an open-source governance protocol currently under active developmen
 
 ## Education and Certifications
 
-**Associate's Degree** : Metropolitan Community College (Completed 2025)
+**Associate's Degree in General Studies** : Metropolitan Community College (Completed 2025)
 
-**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, AI Associate.
+**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations.
