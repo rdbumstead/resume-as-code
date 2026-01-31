@@ -50,7 +50,7 @@ Salesforce Platform Architect with 7+ years designing governed Salesforce ecosys
 
 - Designed a governance framework that enforces deployment quality and security independent of CI/CD tooling.
 
-> Note: GlassOps is in active development and not yet deployed in enterprise production environments.
+_Note: GlassOps is in active development and not yet deployed in enterprise production environments._
 
 **Salesforce Platform Architect Portfolio**
 

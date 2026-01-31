@@ -61,8 +61,8 @@ Experience spans greenfield platform builds, multi-org DevOps modernization, and
 
 **Creighton University | Aug 2025 – Present**
 
-> Official title: CRM Developer  
-> Functional role: Platform architecture and DevOps leadership
+_Official title: CRM Developer_  
+_Functional role: Platform architecture and DevOps leadership_
 
 - Architecting and implementing DevOps capabilities supporting two Salesforce orgs with distinct domains:
   - Student success, EDA, and internal digital platforms
@@ -75,7 +75,7 @@ Experience spans greenfield platform builds, multi-org DevOps modernization, and
 - Preparing for MuleSoft transition from Talend, including DEX-401 certification pursuit.
 - Acting as technical lead for complex Salesforce development beyond declarative capabilities.
 
-> Note: DevOps architecture is actively evolving and not yet a fully mature enterprise-scale implementation.
+_Note: DevOps architecture is actively evolving and not yet a fully mature enterprise-scale implementation._
 
 ---
 
@@ -141,7 +141,7 @@ Technical and operational roles across IT support, GIS analysis, POS systems, an
 - Defining control-plane concepts separating governance logic from execution engines.
 - Standardizing deployment contracts and validation gates across heterogeneous pipelines.
 
-> Note: GlassOps is experimental and not yet deployed in enterprise production environments.
+_Note: GlassOps is experimental and not yet deployed in enterprise production environments._
 
 ---
 

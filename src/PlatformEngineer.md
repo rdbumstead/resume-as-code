@@ -99,7 +99,7 @@ Open Source | Jan 2026 – Present
 - Defined normalized deployment contracts for heterogeneous CI/CD runners.
 - Implemented policy arbitration across organizational, team, and environment boundaries with immutable audit trails.
 
-> Note: GlassOps is in active development and not yet deployed in enterprise production environments.
+_Note: GlassOps is in active development and not yet deployed in enterprise production environments._
 
 ---
 

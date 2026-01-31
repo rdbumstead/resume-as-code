@@ -46,7 +46,7 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 - Designed governance as a developer experience providing clear pass/fail feedback.
 
-> Note: GlassOps is in active development and not yet deployed in enterprise production environments.
+_Note: GlassOps is in active development and not yet deployed in enterprise production environments._
 
 **Salesforce Platform Architect Portfolio**
 

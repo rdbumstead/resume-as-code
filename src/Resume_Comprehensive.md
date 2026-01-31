@@ -277,8 +277,8 @@ graph TD
 
 **Creighton University | Aug 2025 – Present**
 
-> Official title: CRM Developer  
-> Functional role: Platform architecture and DevOps leadership
+_Official title: CRM Developer_  
+_Functional role: Platform architecture and DevOps leadership_
 
 - Architecting DevOps capabilities supporting two Salesforce orgs with distinct organizational domains:
   - Student success, EDA, and internal digital platforms
@@ -292,7 +292,7 @@ graph TD
 - Acting as technical lead for complex Salesforce development beyond declarative capabilities.
 - Advising IT and interdepartmental leadership on Salesforce-focused projects, incidents, and enhancements.
 
-> Note: DevOps architecture is actively evolving and not yet fully mature at enterprise scale.
+_Note: DevOps architecture is actively evolving and not yet fully mature at enterprise scale._
 
 ---
 
@@ -412,7 +412,7 @@ graph TD
 - Standardizing deployment contracts and validation gates.
 - Implementing policy arbitration across organizational, team, and environment boundaries with immutable audit trails.
 
-> Note: GlassOps is experimental and not deployed in enterprise production environments.
+_Note: GlassOps is experimental and not deployed in enterprise production environments._
 
 ---
 
