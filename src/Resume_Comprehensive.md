@@ -266,7 +266,7 @@ graph TD
 
 **Key Project — Metropolitan Community College Career Skills Application:**
 
-- Developed custom application focused on workforce development using Contacts as Students.
+- Architected and developed custom application focused on workforce development using Contacts as Students.
 - Designed and implemented custom objects: Employments, Training Programs, Training Courses, Tuition Assistance, Certifications, Supportive Programs, Supportive Services, Training Course Members, and Funding.
 - Created Flow automations and Apex triggers with handler patterns to meet complex business requirements.
 - Managed complete application lifecycle from planning through implementation and ongoing enhancements.
@@ -416,12 +416,12 @@ graph TD
 
 ---
 
-### Salesforce Platform Architecture Portfolio
+### Salesforce Platform Architect Portfolio
 
-- Authored ADRs and system architecture documentation.
+- Authored Architectural Decision Records, Systems Architecture Specification, and four other documentation artifacts.
 - Designed API-first integration architectures using OpenAPI 3.0.
-- Implemented contract-first APIs with Apex orchestration.
-- Built Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
+- Architected contract-first APIs with Apex orchestration.
+- Planned Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
 - Implemented automated CI/CD workflows with controlled failure testing.
 - Integrated Agentforce within defined governance boundaries.
 

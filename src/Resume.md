@@ -145,7 +145,7 @@ Technical and operational roles across IT support, GIS analysis, POS systems, an
 
 ---
 
-### Salesforce Platform Architecture Portfolio
+### Salesforce Platform Architect Portfolio
 
 - Authored architecture artifacts including ADRs, system diagrams, and platform governance models.
 - Designed API-first integration patterns using OpenAPI 3.0.
