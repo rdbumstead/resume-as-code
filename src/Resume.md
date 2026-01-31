@@ -2,61 +2,170 @@
 title: Salesforce Platform Architect
 ---
 
+# Salesforce Platform Architect
+
 ## Professional Summary
 
-Salesforce Platform Architect with 7+ years designing governed Salesforce systems for enterprise and public-sector organizations. Specializes in architecture-first delivery, DevOps governance, and resilient Salesforce-centric multi-cloud designs. Known for defining enforceable platform standards that balance developer velocity with long-term system integrity.
+Salesforce Platform Architect with 7+ years designing, governing, and evolving Salesforce platforms in higher education and nonprofit environments. Specializes in platform architecture, DevOps governance, and scalable integration design across multi-org Salesforce ecosystems. Known for translating organizational goals into enforceable technical standards, resilient deployment pipelines, and sustainable platform operating models.
+
+Experience spans greenfield platform builds, multi-org DevOps modernization, and architecture-first delivery in regulated, audit-sensitive, and stakeholder-driven environments.
+
+---
+
+## Core Expertise
+
+### Salesforce Platform Architecture
+
+- Apex, LWC, Flow, Experience Cloud (LWR), Service Cloud, Data Cloud, Marketing Cloud, Agentforce
+- Multi-org Salesforce architecture and domain-aligned platform design
+- Security architecture: Profiles, Permission Sets, Role Hierarchies, Shield, least-privilege models
+- Data modeling, lifecycle governance, and metadata strategy
+
+### DevOps & Platform Engineering
+
+- GitHub Actions, SFDX CLI, JWT authentication
+- CI/CD architecture, automated validation, and quality gates
+- Branching strategies, release orchestration, and environment promotion models
+- Deterministic deployment pipelines across multiple Salesforce orgs
+
+### Integration & Systems Architecture
+
+- API-first design, REST, OpenAPI 3.0
+- Event-driven architecture and integration patterns
+- MuleSoft and AWS Lambda integration patterns
+- Identity and access architecture across platforms
+
+### Languages & Data
+
+- JavaScript (ES6+), TypeScript, SQL, HTML/CSS
+- Go, Python, YAML
+- Docker containerization
+
+---
 
 ## Professional Experience
 
-**Salesforce Solutions Architect (Freelance)** | Oct 2021 - Present
+### Salesforce Solutions Architect (Freelance)
 
-- Serve as principal architect for Salesforce implementations across nonprofit, education, and public-sector environments.
-- Architect state-funded grant management platforms processing $5M+, enforcing auditability, least-privilege access, and compliance-driven design.
-- Lead architectural evaluations and proofs of concept to guide executive decision-making.
+**Oct 2021 – Present**
 
-**CRM Developer (Salesforce)** | Creighton University | Aug 2025 - Present
+- Serve as principal architect for Salesforce implementations across nonprofit and higher education organizations.
+- Designed and delivered Salesforce-based grant and workforce platforms supporting government-funded programs and compliance-driven workflows.
+- Led architecture assessments and proofs of concept to inform executive-level platform decisions.
+- Designed and delivered a custom workforce development application at Metropolitan Community College, managing the full lifecycle from requirements to production.
+- Established platform standards for data modeling, security, automation, and deployment practices across client environments.
 
-- Champion DevOps modernization and architectural standards adoption for the university Salesforce platform.
-- Defining the organization's first formal Salesforce DevOps governance model, establishing deterministic validation and controlled release promotion to eliminate deployment failures.
-- Design structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
-- Engineer CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated quality gates.
-- Act as technical lead for Apex, asynchronous processing, and LWC development beyond declarative limits.
+---
 
-**Application Administrator** | Creighton University | Jun 2021 - Aug 2025
+### CRM Developer / Technical Lead Responsibilities
+
+**Creighton University | Aug 2025 – Present**
+
+> Official title: CRM Developer  
+> Functional role: Platform architecture and DevOps leadership
+
+- Architecting and implementing DevOps capabilities supporting two Salesforce orgs with distinct domains:
+  - Student success, EDA, and internal digital platforms
+  - Advancement and donor relations systems
+- Designing a governance-driven DevOps model to support multiple teams with different operational priorities and release cadences.
+- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated validation gates.
+- Defining platform standards for Apex, LWC, asynchronous processing, and integration design.
+- Designed comprehensive training plan for two new CRM Developers including Trailhead, Udemy, and curated certification paths.
+- Training team members on ETL processes and Salesforce architecture dependencies.
+- Preparing for MuleSoft transition from Talend, including DEX-401 certification pursuit.
+- Acting as technical lead for complex Salesforce development beyond declarative capabilities.
+
+> Note: DevOps architecture is actively evolving and not yet a fully mature enterprise-scale implementation.
+
+---
+
+### Application Administrator
+
+**Creighton University | Jun 2021 – Aug 2025**
 
 - Administered Service Cloud for 400+ internal users and Experience Cloud sites supporting 10,000+ external users.
-- Automated onboarding and identity workflows, reducing provisioning time by 90%.
+- Designed automation for onboarding and identity workflows, reducing provisioning time by ~90%.
+- Implemented Flow automations and developed custom Apex solutions to improve operations.
+- Supported Service Cloud for Financial Aid, Registrar, and Student Accounts using email-to-case.
+- Managed Marketing Cloud including synchronized data sources, SQL, AMPscript, and customer journeys.
+- Led Talend runtime administration and upgrade to Talend 8.0, including Change Data Capture operations.
+- Integrated GatherContent with Salesforce Experience Cloud to streamline content workflows.
+- Maintained SSRS reporting, Power BI dashboards, and automated operational workflows using Power Automate.
+
+---
+
+### CAET Services Specialist II
+
+**Metropolitan Community College | Jul 2017 – Jun 2021**
+
+- Implemented Salesforce CRM from greenfield, including platform configuration, custom development, and user training.
+- Served as Salesforce administrator, developer, and trainer for workforce and continuing education programs.
+- Built automation workflows using Microsoft Forms, Teams, and Power Automate, including scholarship intake processing.
+- Administered Canvas LMS and managed digital content for non-credit programs.
+- Managed operations of the Center for Advanced and Emerging Technology.
+- Served as Content Manager for Workforce Innovation Division website utilizing HTML5, CSS3, jQuery, and JavaScript.
+
+---
+
+### Non-Credit Instructor
+
+**Metropolitan Community College | Dec 2017 – Jun 2021**
+
+- Developed and delivered curriculum in Prototype Design and Industrial Manufacturing.
+- Designed coursework aligned with workforce and industry competency frameworks.
+
+---
+
+### Earlier Career
+
+Technical and operational roles across IT support, GIS analysis, POS systems, and operations management (2012–2017).
+
+---
+
+## Architecture & Platform Highlights
+
+- Designed multi-org Salesforce platform architectures aligned to organizational domains and team structures.
+- Built governance-first DevOps models balancing developer velocity with platform stability.
+- Defined enterprise documentation standards including ADRs and system architecture specifications.
+- Designed integration architectures spanning Salesforce, MuleSoft, and AWS.
+
+---
 
 ## Technical Projects
 
-**GlassOps Governance Protocol** | Open Source  
-GlassOps is an open-source governance protocol currently under active development. It represents a reference implementation of governance-first Salesforce DevOps, with early adapters and execution engines being built and validated.
+### GlassOps Governance Protocol (Open Source)
 
-- Designed a deployment governance control plane independent of CI/CD tooling.
-- Defined normalized deployment contracts across execution engines.
-- Formalized validation gates and arbitration rules for pass/fail enforcement.
+**Status: Active Development**
 
-**Salesforce Platform Architect Portfolio**
+- Designing a governance-first framework for Salesforce DevOps independent of specific CI/CD tooling.
+- Defining control-plane concepts separating governance logic from execution engines.
+- Standardizing deployment contracts and validation gates across heterogeneous pipelines.
 
-- Authored enterprise architecture documentation including ADRs, Systems Architecture Specifications (SAS), and Program Charters.
-- Designed API-first integrations using OpenAPI 3.0 with enforceable governance controls.
-- Implemented zero-touch CI/CD with resilience and controlled failure testing.
+> Note: GlassOps is experimental and not yet deployed in enterprise production environments.
 
-**Resume as Code**
+---
 
-- Architected an event-driven CI/CD pipeline that transforms Markdown source into immutable PDF artifacts.
-- Decoupled PII using GitHub Secrets to enable safe and public repository visibility.
-- Engineered automated governance to enforce formatting standards and validate hyperlink integrity before compilation.
+### Salesforce Platform Architecture Portfolio
 
-## Technical Skills
+- Authored architecture artifacts including ADRs, system diagrams, and platform governance models.
+- Designed API-first integration patterns using OpenAPI 3.0.
+- Implemented automated CI/CD workflows with controlled failure testing.
 
-- Salesforce: Apex, LWC, Flow, Experience Cloud (LWR), Service Cloud, Agentforce
-- DevOps: GitHub Actions, SFDX CLI, JWT Authentication
-- Architecture: REST, OpenAPI, Event-Driven Architecture, Multi-Cloud (AWS Lambda)
-- General: JavaScript, SQL, HTML/CSS
+---
 
-## Education and Certifications
+### Resume as Code
 
-**Associate's Degree in General Studies** : Metropolitan Community College (Completed 2025)
+- Built an event-driven pipeline transforming Markdown into immutable PDF artifacts.
+- Decoupled PII using GitHub Secrets for safe public repository visibility.
+- Implemented automated validation for formatting and hyperlink integrity.
 
-**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations.
+---
+
+## Education & Certifications
+
+**Associate's Degree in General Studies**  
+Metropolitan Community College (Completed 2025)
+
+**Salesforce Certifications:** Platform Administrator I & II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations
+
+**MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)

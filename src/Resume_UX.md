@@ -10,7 +10,8 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 - Salesforce: Experience Cloud (LWR), Service Cloud, Flow, LWC, Apex, Agentforce
 - UX and Architecture: C4 Modeling, API Design, Event-Driven Systems
-- DevOps: GitHub Actions, CI/CD Governance
+- DevOps: GitHub Actions, CI/CD Governance, Docker
+- Languages: JavaScript, TypeScript, Go, Python, YAML
 
 ## Professional Experience
 
@@ -18,6 +19,7 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 - Design Experience and Service Cloud solutions focused on usability, clarity, and operational scale.
 - Lead design and proof-of-concept efforts validating Flow automation and AI-assisted workflows.
+- Developed custom workforce development application with focus on user experience and workflow efficiency.
 
 **CRM Developer (Salesforce)** | Creighton University | Aug 2025 - Present
 
@@ -26,13 +28,25 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 - Design structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
 - Lead Apex and LWC development enabling experiences beyond declarative limits.
 
+**Application Administrator** | Creighton University | Jun 2021 - Aug 2025
+
+- Administered Service Cloud for 400+ internal users and Experience Cloud sites supporting 10,000+ external users.
+- Designed automation for onboarding and identity workflows, reducing provisioning time by ~90%.
+- Implemented Flow automations and custom solutions focused on user experience.
+
+**CAET Services Specialist II** | Metropolitan Community College | Jul 2017 - Jun 2021
+
+- Implemented Salesforce CRM from greenfield with focus on user adoption and training.
+- Served as Salesforce administrator, developer, and trainer for workforce and continuing education programs.
+- Built automation workflows improving user experience across scholarship intake and support systems.
+
 ## Selected Work
 
 **GlassOps Governance Protocol**
 
-GlassOps is an open-source governance protocol currently under active development. It represents a reference implementation of governance-first Salesforce DevOps, with early adapters and execution engines being built and validated.
-
 - Designed governance as a developer experience providing clear pass/fail feedback.
+
+> Note: GlassOps is in active development and not yet deployed in enterprise production environments.
 
 **Salesforce Platform Architect Portfolio**
 
@@ -50,3 +64,5 @@ GlassOps is an open-source governance protocol currently under active developmen
 **Associate's Degree in General Studies** : Metropolitan Community College (Completed 2025)
 
 **Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations.
+
+**MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)
