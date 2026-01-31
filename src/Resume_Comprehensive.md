@@ -1,5 +1,5 @@
 ---
-title: Salesforce Platform Architect — Comprehensive Profile
+title: Salesforce Platform Architect
 ---
 
 # Salesforce Platform Architect
