@@ -2,6 +2,8 @@
 title: Salesforce Platform Architect
 ---
 
+_Extended Technical Portfolio. This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used._
+
 # Salesforce Platform Architect
 
 ## Professional Identity
