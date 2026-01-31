@@ -4,8 +4,6 @@ title: Salesforce Platform Architect
 
 _Extended Technical Portfolio. This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used._
 
-# Salesforce Platform Architect
-
 ## Professional Identity
 
 Salesforce Platform Architect with 7+ years designing, governing, and evolving Salesforce platforms in higher education and nonprofit environments. Experienced in multi-org architecture, DevOps platform engineering, and integration design across complex organizational domains.
