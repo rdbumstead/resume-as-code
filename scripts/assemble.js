@@ -44,50 +44,58 @@ if (match) {
     if (titleMatch) {
         fileTitle = titleMatch[1].trim().replace(/^['"](.*)['"]$/, '$1');
     }
-    // STRIP Frontmatter from body
     content = content.replace(frontmatterRegex, '');
 }
 
-// Check Config for Title override if Frontmatter didn't have one
 const filename = path.basename(SOURCE_FILE);
 const variantConfig = config.variants?.[filename] || {};
 const finalTitle = fileTitle || variantConfig.title || process.env.RESUME_TITLE || "Salesforce Architect";
 
-// 4. INJECT GOLDEN HEADER (The "Composition" Step)
-// We only inject if the file doesn't already start with the Name Variable
+// 4. PREPARE HEADER (The "Mega-Line" Strategy)
+const headerItems = [];
+
+// A. Professional Identity
+headerItems.push(`**${finalTitle}**`);
+headerItems.push(`**${process.env.RESUME_LOCATION || "Omaha, NE"}**`);
+
+// B. PII (Only if not in Safe Mode)
+if (!isSafeMode) {
+    const phone = process.env.RESUME_PHONE || "555-555-5555";
+    const email = process.env.RESUME_EMAIL || "email@example.com";
+    headerItems.push(`**${phone}**`);
+    headerItems.push(`**${email}**`);
+}
+
+// C. Links (Always Present)
+const githubUser = process.env.RESUME_GITHUB_USER || "rdbumstead";
+const linkedinUser = process.env.RESUME_LINKEDIN || "ryanbumstead";
+
+headerItems.push(`**[GitHub](https://github.com/${githubUser})**`);
+headerItems.push(`**[Portfolio](https://ryanbumstead.com)**`);
+headerItems.push(`**[LinkedIn](https://linkedin.com/in/${linkedinUser})**`);
+
+// JOIN ALL INTO ONE LINE
+const megaLine = headerItems.join(" | ");
+
+// 5. INJECT GOLDEN HEADER
 if (!content.includes('{{ RESUME_FIRST_NAME }}')) {
-    console.log(`   ✨ Injecting Layout Header...`);
+    console.log(`   ✨ Injecting Mega-Header...`);
     
-    // FIX: Template starts immediately on the backtick line to prevent Line 1 gap
+    // Only one variable to inject now: ${megaLine}
     const headerTemplate = `# {{ RESUME_FIRST_NAME }} {{ RESUME_LAST_NAME }}
-**{{ RESUME_TITLE }}** | **{{ RESUME_LOCATION }}** | **[GitHub](https://github.com/{{ RESUME_GITHUB_USER }})** | **[Portfolio](https://ryanbumstead.com)** | **[LinkedIn](https://linkedin.com/in/{{ RESUME_LINKEDIN }})**
+${megaLine}
 
 ---
 
 `;
-    // FIX: Trim leading whitespace from body so we don't have a huge gap after the header
     content = headerTemplate + content.trimStart();
 }
 
-// 5. Define Context
+// 6. Define Context
 const context = {
     "{{ RESUME_FIRST_NAME }}": process.env.RESUME_FIRST_NAME || "Ryan",
-    "{{ RESUME_LAST_NAME }}": process.env.RESUME_LAST_NAME || "Bumstead",
-    "{{ RESUME_TITLE }}": finalTitle, 
-    "{{ RESUME_LOCATION }}": process.env.RESUME_LOCATION || "Omaha, NE",
-    "{{ RESUME_GITHUB_USER }}": process.env.RESUME_GITHUB_USER || "rdbumstead",
-    "{{ RESUME_LINKEDIN }}": process.env.RESUME_LINKEDIN || "ryanbumstead" 
+    "{{ RESUME_LAST_NAME }}": process.env.RESUME_LAST_NAME || "Bumstead"
 };
-
-// 6. Handle PII (Safe Mode)
-if (isSafeMode) {
-    console.log(`   🛡️  Safe Mode: Removing PII from ${OUTPUT_FILE}`);
-    context["{{ RESUME_PHONE }}"] = ""; 
-    context["{{ RESUME_EMAIL }}"] = "";
-} else {
-    context["{{ RESUME_PHONE }}"] = process.env.RESUME_PHONE || "555-555-5555";
-    context["{{ RESUME_EMAIL }}"] = process.env.RESUME_EMAIL || "email@example.com";
-}
 
 // 7. Execute Replacement
 Object.keys(context).forEach(placeholder => {
@@ -96,14 +104,14 @@ Object.keys(context).forEach(placeholder => {
     content = content.replace(regex, value);
 });
 
-// 8. Cleanup Artifacts
+// 8. Cleanup
 if (isSafeMode) {
     content = content.replace(/^\s*\|\s*$/gm, ''); 
-    content = content.replace(/\n{3,}/g, '\n\n'); 
 }
+content = content.replace(/\n{3,}/g, '\n\n'); 
 
 // 9. Write Output
 const outputPath = path.join(TARGET_DIR, OUTPUT_FILE);
 fs.writeFileSync(outputPath, content, 'utf8');
 
-console.log(`✅ Assembled: ${OUTPUT_FILE} (Title: ${finalTitle})`);
+console.log(`✅ Assembled: ${OUTPUT_FILE}`);

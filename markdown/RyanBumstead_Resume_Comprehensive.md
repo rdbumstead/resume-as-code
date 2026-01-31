@@ -18,18 +18,18 @@ _This document is intentionally detailed. It is designed to demonstrate how arch
 
 ### Salesforce Solutions Architect (Freelance) | Oct 2021 - Present
 
-- Acts as principal architect for Salesforce implementations across nonprofit, education, and public-sector environments.
-- Architected compliance-driven platforms processing $5M+ in public funding, enforcing auditability, least-privilege access, and traceable operational controls.
-- Leads executive architecture reviews, proofs of concept, and platform governance discussions to guide long-term investment and risk reduction.
-- Balances delivery velocity with system integrity by defining clear architectural boundaries and governance contracts.
+- Act as principal architect for Salesforce implementations across nonprofit, education, and public-sector environments.
+- Architect compliance-driven platforms processing $5M+ in public funding, enforcing auditability, least-privilege access, and traceable operational controls.
+- Lead executive architecture reviews, proofs of concept, and platform governance discussions to guide long-term investment and risk reduction.
+- Balance delivery velocity with system integrity by defining clear architectural boundaries and governance contracts.
 
 ### CRM Developer (Salesforce) | Creighton University | Aug 2025 - Present
 
-- Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
-- Defined the organization's first formal Salesforce DevOps governance model, establishing deterministic validation and controlled release promotion to eliminate deployment failures.
-- Designed structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
-- Advises IT leadership on roadmap planning, architectural dependencies, and platform risk management.
-- Acts as technical authority for Apex, asynchronous processing, and LWC development beyond declarative limits.
+- Champion DevOps modernization and architectural standards adoption for the university Salesforce platform.
+- Defining the organization's first formal Salesforce DevOps governance model, establishing deterministic validation and controlled release promotion to eliminate deployment failures.
+- Design structured certification and training paths for developers and administrators, including Salesforce platform fundamentals and MuleSoft integration curriculum (DEX-401: Essentials of Anypoint Platform Development).
+- Advise IT leadership on roadmap planning, architectural dependencies, and platform risk management.
+- Act as technical authority for Apex, asynchronous processing, and LWC development beyond declarative limits.
 
 ---
 
