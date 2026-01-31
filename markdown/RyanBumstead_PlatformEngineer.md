@@ -5,50 +5,39 @@
 
 ## Professional Summary
 
-Platform Engineer with 7+ years designing governed Salesforce platforms and delivery systems for enterprise and public-sector organizations. Specializes in governance-first architecture, CI/CD abstraction, and policy-driven enforcement systems. Currently expanding platform engineering skills into Kubernetes-native control planes and infrastructure orchestration while applying proven architectural patterns from large-scale Salesforce environments.
-
-Known for separating policy from execution, designing deterministic pipelines, and treating governance as a first-class platform capability rather than an afterthought.
+Platform Engineer with 7+ years designing governed Salesforce platforms for higher education and nonprofit organizations. Specializes in governance-first architecture, deterministic CI/CD systems, and policy-driven delivery models. Applies proven platform patterns to internal developer platforms and emerging control-plane architectures.
 
 ---
 
 ## Core Platform & Engineering Skills
 
-**Platform Engineering**
+### Platform Engineering & Architecture
 
-- Control plane & data plane separation
-- Governance-as-Code & policy enforcement
-- Adapter-based execution architectures
+- Control plane and data plane separation
+- Governance-as-Code and policy enforcement
 - Deterministic CI/CD pipelines
-- Contract-first validation and arbitration
-- Failure-mode driven design
-
-**DevOps & Delivery**
-
-- GitHub Actions (composite actions, reusable workflows)
-- Salesforce DX (SFDX CLI, JWT auth, org introspection)
-- CI/CD governance & quality gates
-- Automated validation & testing (LWC/Jest, linting, static analysis)
-
-**Architecture**
-
-- API-first & contract-first design (OpenAPI 3.0)
+- Contract-first APIs and validation
 - Event-driven architecture
 - Multi-environment promotion strategies
-- [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) (ADRs)
-- Systems Architecture Specifications ([SAS](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md))
+- [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr)
 
-**Programming & Tooling**
+### DevOps & Delivery
 
-- TypeScript, JavaScript, Apex
-- Go (in progress)
-- JSON schemas, SARIF
-- SQL, HTML/CSS
+- GitHub Actions, reusable workflows, composite actions
+- Salesforce DX, JWT authentication, org introspection
+- CI/CD governance and quality gates
+- Automated testing and static analysis
 
-**Cloud & Platforms**
+### Languages & Tooling
 
-- Salesforce Platform (Service Cloud, Experience Cloud, LWR)
-- AWS Lambda (selective off-platform compute)
-- Kubernetes & Crossplane (design-stage, active learning)
+- TypeScript, JavaScript, Apex, SQL
+- Go, Python, YAML
+- JSON Schema, SARIF
+- Docker, Terraform, Kubernetes
+
+### Platforms
+
+- Salesforce Platform, Service Cloud, Experience Cloud, LWR
 
 ---
 
@@ -58,11 +47,12 @@ Known for separating policy from execution, designing deterministic pipelines, a
 
 **Creighton University** | Aug 2025 – Present
 
-- Champion DevOps modernization and platform governance for a multi-team Salesforce environment.
-- Defining the organization's first formal Salesforce DevOps governance model, enforcing deterministic validation and controlled promotion paths.
-- Engineer CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
-- Act as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
-- Design training and certification paths for developers and administrators to improve platform maturity and delivery reliability.
+- Leading DevOps modernization and governance for a multi-team Salesforce environment.
+- Defined and implemented the organization's first formal Salesforce DevOps governance model with deterministic validation and controlled promotion paths.
+- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
+- Designed comprehensive training plan for two new CRM Developers including Trailhead, Udemy, and curated certification paths.
+- Training team members on ETL processes and Salesforce architecture dependencies.
+- Acting as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
 
 ---
 
@@ -70,10 +60,11 @@ Known for separating policy from execution, designing deterministic pipelines, a
 
 **Independent Consultant** | Oct 2021 – Present
 
-- Serve as principal architect for Salesforce implementations across nonprofit, education, and public-sector organizations.
-- Architect state-funded grant management platforms processing $5M+ with strict auditability, least-privilege access, and compliance-driven design.
-- Lead platform evaluations, proofs of concept, and architectural tradeoff analyses to guide executive decision-making.
-- Design scalable Experience Cloud solutions supporting thousands of external users with governed customization boundaries.
+- Principal architect for Salesforce implementations across nonprofit and higher education organizations.
+- Architected grant management platforms with strict auditability, least-privilege access, and compliance-driven design.
+- Led platform evaluations, proofs of concept, and architectural tradeoff analyses to support executive decision-making.
+- Designed scalable Experience Cloud solutions supporting thousands of external users with governed customization boundaries.
+- Developed custom workforce development application managing complete lifecycle from requirements to production.
 
 ---
 
@@ -82,104 +73,81 @@ Known for separating policy from execution, designing deterministic pipelines, a
 **Creighton University** | Jun 2021 – Aug 2025
 
 - Administered Service Cloud for 400+ internal users and Experience Cloud sites serving 10,000+ external users.
-- Automated identity, onboarding, and provisioning workflows, reducing setup time by ~90%.
-- Supported platform stability, security, and release coordination prior to formal DevOps adoption.
+- Automated identity, onboarding, and provisioning workflows, reducing setup time by approximately 90 percent.
+- Implemented Flow automations and custom Apex solutions to improve operations.
+- Led Talend upgrade to version 8.0 and managed Change Data Capture operations.
+
+---
+
+### CAET Services Specialist II
+
+**Metropolitan Community College** | Jul 2017 – Jun 2021
+
+- Implemented Salesforce CRM from greenfield into active working environment.
+- Served as Salesforce administrator, developer, and trainer for workforce and continuing education programs.
+- Built automation workflows using Microsoft Forms, Teams, and Power Automate.
+- Administered Canvas LMS and managed digital content for non-credit programs.
 
 ---
 
 ## Selected Platform & Engineering Projects
 
-### [GlassOps Governance Protocol](https://github.com/glassops-platform/glassops) (Open Source)
+### [GlassOps Governance Protocol](https://github.com/glassops-platform/glassops)
 
-**Jan 2026 – Present**
+Open Source | Jan 2026 – Present
 
-An open-source governance protocol defining how policy, validation, and execution are separated in Salesforce CI/CD systems.
+- Designed a governance control plane decoupled from execution tooling.
+- Defined normalized deployment contracts for heterogeneous CI/CD runners.
+- Implemented policy arbitration across organizational, team, and environment boundaries with immutable audit trails.
 
-- Designed a governance control plane independent of execution tooling.
-- Defined normalized deployment contracts (JSON/SARIF) across heterogeneous runners.
-- Formalized arbitration logic to merge organizational, team, and environment policy floors.
-- Specified immutable audit trails aligned with regulated environments (SOC 2, HIPAA).
-
-**Focus:** Governance-as-Code, control planes, protocol design.
+> Note: GlassOps is in active development and not yet deployed in enterprise production environments.
 
 ---
 
 ### [GlassOps Runtime & Adapter Ecosystem](https://github.com/glassops-platform/glassops-runtime)
 
-**Jan 2026 – Present**
+Jan 2026 – Present
 
-Execution layer implementing the GlassOps protocol via adapter-based architecture.
-
-- Developing a TypeScript runtime that bootstraps deterministic execution environments.
-- Engineering adapters for scanners, simulators, and CI/CD runners (GitHub Actions, local, containerized).
-- Enforcing strict decoupling where governance authority is never embedded in execution tools.
-- Designing fault-tolerant primitives to ensure consistent behavior across environments.
+- Developing a TypeScript runtime for deterministic execution environments.
+- Engineering adapter-based integrations for scanners, simulators, and CI/CD runners.
+- Enforcing strict separation where governance authority never resides in execution tooling.
 
 ---
 
-### [Setup Salesforce CLI](https://github.com/marketplace/actions/setup-salesforce-cli) (GitHub Marketplace)
+### [Setup Salesforce CLI](https://github.com/marketplace/actions/setup-salesforce-cli)
 
-**Jan 2026 – Present**
+GitHub Marketplace | Jan 2026 – Present
 
-Enterprise-grade GitHub Action providing deterministic Salesforce CLI environments.
-
-- Intelligent caching reducing setup time by ~80%.
-- Self-healing execution with retries and backoff.
-- Cross-platform support (Linux, macOS, Windows).
-- Designed as a foundational primitive for reusable, governed CI/CD workflows.
+- Built an enterprise-grade GitHub Action for deterministic Salesforce CLI environments.
+- Reduced setup time by approximately 80 percent through intelligent caching and self-healing execution.
 
 ---
 
 ### [Salesforce Platform Architect Portfolio](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
-**Nov 2025 – Present**
+Nov 2025 – Present
 
-A production-grade reference implementation demonstrating enterprise Salesforce architecture patterns.
-
+- Production-grade reference implementation demonstrating enterprise Salesforce architecture patterns.
 - Contract-first APIs using OpenAPI 3.0 with Apex orchestration.
-- Experience Cloud (LWR) frontend with GraphQL data layer.
-- 26 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) covering security, FinOps, and resilience.
+- Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
 - Zero-touch CI/CD with automated validation and controlled failure testing.
 
 ---
 
 ### [Resume as Code](https://github.com/rdbumstead/resume-as-code)
 
-**Dec 2025 – Present**
+Dec 2025 – Present
 
-Event-driven CI/CD pipeline treating professional documentation as immutable artifacts.
-
-- Markdown-first source with automated PDF compilation.
-- Secrets-first design decoupling PII from source control.
-- Automated governance enforcing formatting and link integrity.
-- Multiple resume variants generated from a single source of truth.
+- Markdown-first resume source with automated PDF compilation.
+- Governance enforcing formatting, link integrity, and immutable artifact generation.
 
 ---
 
 ## Education & Certifications
 
 **Associate's Degree, General Studies**  
-Metropolitan Community College (Completed 2025)
+Metropolitan Community College, Completed 2025
 
-**Salesforce Certifications**
+**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, Marketing Cloud Engagement Foundations, AI Associate
 
-- Platform Administrator I & II
-- Platform App Builder
-- Agentforce Specialist
-- Data Cloud Consultant
-- Education Cloud Consultant
-- Marketing Cloud Engagement Foundations
-- AI Associate
-
----
-
-## Career Direction
-
-Actively transitioning toward **Platform Engineering** roles focused on:
-
-- Internal developer platforms
-- Governance-first CI/CD systems
-- Control planes and policy enforcement
-- Kubernetes-native execution models
-
-Seeking environments where platform thinking, architectural rigor, and long-term system integrity are valued.
+**MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)
