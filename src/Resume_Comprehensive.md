@@ -2,15 +2,13 @@
 title: Salesforce Platform Architect
 ---
 
-_Extended Technical Portfolio. This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used._
+_Extended Technical Portfolio. This profile represents a comprehensive technical and architectural record, including experimental projects and evolving platform initiatives. This document is intentionally detailed. It is designed to demonstrate how architectural decisions are made, not just what technologies are used._
 
 ## Professional Identity
 
 Salesforce Platform Architect with 7+ years designing, governing, and evolving Salesforce platforms in higher education and nonprofit environments. Experienced in multi-org architecture, DevOps platform engineering, and integration design across complex organizational domains.
 
 Focuses on architecture-first delivery, governance-driven DevOps, and sustainable platform operating models that balance developer velocity with system integrity.
-
-This profile represents a comprehensive technical and architectural record, including experimental projects and evolving platform initiatives.
 
 ---
 
@@ -57,7 +55,9 @@ This profile represents a comprehensive technical and architectural record, incl
 
 ## Platform Architecture Diagrams
 
-### University Salesforce Multi-Org Platform Architecture
+The following diagrams illustrate multi-org architecture, governance protocols, platform portfolios, and automated resume generation pipelines. Each diagram is provided as a separate `.mermaid` file for clarity and maintainability.
+
+### University Salesforce Multi‐Org Platform Architecture
 
 ```mermaid
 flowchart LR
@@ -185,72 +185,52 @@ graph LR
     linkStyle 0,1,2 stroke:#2ECC71,stroke-width:3px;
 ```
 
-### Resume as Code Pipeline Architecture
+### Resume as Code Architecture
 
 ```mermaid
-graph TD
-    %% ========= PIPELINE STAGE STYLES =========
-    classDef import fill:#FB8C00,stroke:#E65100,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef input fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef build fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef output fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+flowchart LR
+    %% ========= STYLES =========
+    classDef source fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef engine fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef secure fill:#FB8C00,stroke:#E65100,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef artifact fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
 
-    subgraph Import ["Legacy Import (Local)"]
-        Docx["imports/*.docx"]
-        ImportScript["npm run import"]
-        Detect["Detect Title & Body"]
-        InjectFM["Inject Frontmatter"]
-        Sanitize["Sanitize PII"]
-        Src["src/*.md"]
-    end
-
-    subgraph Input ["Source Layer"]
+    subgraph Inputs ["Source Control"]
+        direction TB
+        MD["Source Markdown<br/>(No PII / Redacted)"]
         Config["resume.config.json"]
-        Vars["GitHub Variables<br/>(Title, Name, Links)"]
-        Secrets["GitHub Secrets<br/>(Phone, Email)"]
     end
 
-    subgraph Build ["Assembly Layer"]
-        Assemble["npm run build / assemble.js"]
-        Header["Inject Golden Header"]
-        Replace["Replace Variables"]
+    subgraph Security ["Security Layer"]
+        Secrets[("GitHub Secrets<br/>(Phone, Email)")]
     end
 
-    subgraph Output ["Distribution Layer"]
-        Dist["dist/*.md"]
-        PDF["pdf/*.pdf"]
-        Safe["markdown/*.md<br/>(Safe Mode / Web)"]
+    subgraph Build ["Governance Engine"]
+        Assemble["assemble.js<br/>(Inject 'Golden Header' & PII)"]
+        Pandoc["Pandoc / XeLaTeX<br/>(PDF Compilation)"]
+    end
+
+    subgraph Output ["Artifacts"]
+        direction TB
+        PDF["Release Artifact<br/>(Enriched with PII)"]
+        Safe["Safe Mode MD<br/>(Public Web View)"]
     end
 
     %% ========= FLOWS =========
-    Docx --> ImportScript
-    ImportScript --> Detect
-    Detect --> InjectFM
-    InjectFM --> Sanitize
-    Sanitize --> Src
+    MD --> Assemble
+    Config --> Assemble
+    Secrets -.->|Runtime Injection| Assemble
 
-    Src --> Config
-    Config --> Vars
-    Config --> Secrets
-
-    Src --> Assemble
-    Vars --> Assemble
-    Secrets --> Assemble
-    Assemble --> Header
-    Header --> Replace
-
-    Replace --> Dist
-    Dist --> PDF
-    Dist --> Safe
+    Assemble --> Pandoc
+    Pandoc --> PDF
+    Assemble -->|Redacted| Safe
 
     %% ========= APPLY STYLES =========
-    class Docx,ImportScript,Detect,InjectFM,Sanitize,Src import;
-    class Config,Vars,Secrets input;
-    class Assemble,Header,Replace build;
-    class Dist,PDF,Safe output;
+    class MD,Config source;
+    class Secrets secure;
+    class Assemble,Pandoc engine;
+    class PDF,Safe artifact;
 ```
-
----
 
 ## Professional Experience
 
@@ -266,7 +246,7 @@ graph TD
 
 **Key Project — Metropolitan Community College Career Skills Application:**
 
-- Architected and developed custom application focused on workforce development using Contacts as Students.
+- Architected and developed a custom workforce development application using Contacts as Students.
 - Designed and implemented custom objects: Employments, Training Programs, Training Courses, Tuition Assistance, Certifications, Supportive Programs, Supportive Services, Training Course Members, and Funding.
 - Created Flow automations and Apex triggers with handler patterns to meet complex business requirements.
 - Managed complete application lifecycle from planning through implementation and ongoing enhancements.
@@ -277,8 +257,8 @@ graph TD
 
 **Creighton University | Aug 2025 – Present**
 
-> Official title: CRM Developer  
-> Functional role: Platform architecture and DevOps leadership
+_Official title: CRM Developer_  
+_Functional role: Platform architecture and DevOps leadership_
 
 - Architecting DevOps capabilities supporting two Salesforce orgs with distinct organizational domains:
   - Student success, EDA, and internal digital platforms
@@ -289,10 +269,10 @@ graph TD
 - Designed comprehensive training plan for two new CRM Developers including Trailhead, Udemy, and curated certification paths.
 - Training team members on ETL processes and Salesforce architecture dependencies.
 - Preparing for MuleSoft transition from Talend, including DEX-401 certification pursuit.
-- Acting as technical lead for complex Salesforce development beyond declarative capabilities.
+- Acting as Salesforce technical lead for complex development beyond declarative capabilities.
 - Advising IT and interdepartmental leadership on Salesforce-focused projects, incidents, and enhancements.
 
-> Note: DevOps architecture is actively evolving and not yet fully mature at enterprise scale.
+_Note: DevOps architecture is actively evolving and not yet fully mature at enterprise scale._
 
 ---
 
@@ -368,36 +348,11 @@ graph TD
 
 ### Earlier Career
 
-**First Data Corporation** — POS Technician (Jan 2016 – Oct 2016)
-
-- Primary resource for Point of Sale terminal troubleshooting related to computer programming, dial, IP (wired/Wi-Fi), and wireless connections.
-- Utilized critical thinking to troubleshoot terminal malfunctions and communication errors related to credit card activation and point of sale systems.
-
-**Max Pest Control** — IT/Network/Social Media Consultant (Oct 2014 – Mar 2016)
-
-- Maintained security and efficiency of technological hardware.
-- Set up and troubleshot network hardware.
-- Created and maintained social networking websites to attract new clientele.
-
-**Uber** — Geographic Information Systems Analyst (Aug 2015 – Nov 2015)
-
-- Assisted in implementing collection strategies of geographical imagery for Map functionality for Microsoft Bing and Uber Technologies.
-- Evenly distributed distances and workload amongst fleet vehicles using MS Project.
-- Created data to dictate collection asset duration in areas using ArcMap.
-- Trained new Geospatial Logistics Specialists on proper use of MS Project and ArcMap.
-
-**Microsoft** — Geographic Information Systems Analyst (Mar 2015 – Aug 2015)
-
-- Planned and implemented entire re-drive for state of California.
-- Identified necessary changes for collection assets to run fluidly based on evolving strategy.
-- Provided feedback to developers to create efficient working structure for MS Project.
-
-**Walmart** — Customer Service Manager (Mar 2012 – Jun 2014)
-
-- Managed and utilized teamwork to maintain stable and successful checkout service.
-- Provided excellent customer service (90%+ satisfaction).
-- Managed 50+ associates daily.
-- Handled large amounts of cash daily (100k+).
+- **First Data Corporation** — POS Technician (Jan 2016 – Oct 2016)
+- **Max Pest Control** — IT/Network/Social Media Consultant (Oct 2014 – Mar 2016)
+- **Uber** — GIS Analyst (Aug 2015 – Nov 2015)
+- **Microsoft** — GIS Analyst (Mar 2015 – Aug 2015)
+- **Walmart** — Customer Service Manager (Mar 2012 – Jun 2014)
 
 ---
 
@@ -412,13 +367,13 @@ graph TD
 - Standardizing deployment contracts and validation gates.
 - Implementing policy arbitration across organizational, team, and environment boundaries with immutable audit trails.
 
-> Note: GlassOps is experimental and not deployed in enterprise production environments.
+_Note: GlassOps is experimental and not deployed in enterprise production environments._
 
 ---
 
 ### Salesforce Platform Architect Portfolio
 
-- Authored Architectural Decision Records, Systems Architecture Specification, and four other documentation artifacts.
+- Authored 26 Architectural Decision Records, Systems Architecture Specification, and four other documentation artifacts.
 - Designed API-first integration architectures using OpenAPI 3.0.
 - Architected contract-first APIs with Apex orchestration.
 - Planned Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
@@ -429,6 +384,8 @@ graph TD
 
 ### Resume as Code
 
+**Status: Released (v2.0.0)**
+
 - Built an event-driven pipeline converting Markdown into immutable PDF artifacts.
 - Decoupled PII using GitHub Secrets for safe public repository visibility.
 - Implemented automated formatting and link validation.
@@ -436,12 +393,23 @@ graph TD
 
 ---
 
+### Setup Salesforce CLI (GitHub Marketplace)
+
+**Status: Released (v3.0.0)**
+
+- Engineered an enterprise-grade composite GitHub Action for initializing deterministic Salesforce CI/CD environments.
+- Implemented exponential backoff strategies and robust error handling.
+- Designed intelligent caching engine generating SHA-256 hash keys based on tooling inputs, reducing pipeline setup time by ~80%.
+- Built invariant validation logic to ensure “fail-fast” behavior.
+- Validated cross-platform compatibility across Ubuntu, macOS, and Windows runners.
+
+---
+
 ## Education & Certifications
 
-**Associate's Degree in General Studies**  
-Metropolitan Community College (Completed 2025)
+**Associate's Degree in General Studies** — Metropolitan Community College (Completed 2025)
 
-**Salesforce Certifications**
+**Salesforce Certifications:**
 
 - Platform Administrator I & II
 - Platform App Builder
@@ -451,10 +419,10 @@ Metropolitan Community College (Completed 2025)
 - AI Associate
 - Marketing Cloud Engagement Foundations
 
-**MuleSoft Training**
+**MuleSoft Training:**
 
 - DEX-401: Essentials of Anypoint Platform Development (Completed)
 
-**Trailhead**
+**Trailhead:**
 
 - 3x Ranger

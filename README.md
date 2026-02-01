@@ -11,33 +11,61 @@ Every commit to `src/` triggers a GitHub Actions workflow that executes the foll
 
 ```mermaid
 graph TD
+    %% ========= PIPELINE STAGE STYLES =========
+    classDef import fill:#FB8C00,stroke:#E65100,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef input fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef build fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef output fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
+
     subgraph Import ["Legacy Import (Local)"]
-        Docx["imports/*.docx"] --> ImportScript["npm run import"]
-        ImportScript --> Detect["Detect Title & Body"]
-        Detect --> InjectFM["Inject Frontmatter"]
-        InjectFM --> Sanitize["Sanitize PII"]
-        Sanitize --> Src["src/*.md"]
+        Docx["imports/*.docx"]
+        ImportScript["npm run import"]
+        Detect["Detect Title & Body"]
+        InjectFM["Inject Frontmatter"]
+        Sanitize["Sanitize PII"]
     end
 
     subgraph Input ["Source Layer"]
-        Src --> Config["resume.config.json"]
-        Config --> Vars["GitHub Variables<br/>(Title, Name, Links)"]
-        Config --> Secrets["GitHub Secrets<br/>(Phone, Email)"]
+        Src["src/*.md"]
+        Config["resume.config.json"]
+        Vars["GitHub Variables<br/>(Title, Name, Links)"]
+        Secrets["GitHub Secrets<br/>(Phone, Email)"]
     end
 
     subgraph Build ["Assembly Layer"]
-        Src --> Assemble["npm run build / assemble.js"]
-        Vars --> Assemble
-        Secrets --> Assemble
-        Assemble --> Header["Inject Golden Header"]
-        Header --> Replace["Replace Variables"]
+        Assemble["npm run build / assemble.js"]
+        Header["Inject Golden Header"]
+        Replace["Replace Variables"]
     end
 
-    subgraph Output ["Distribution Layer"]
-        Replace --> Dist["dist/*.md"]
-        Dist --> PDF["pdf/*.pdf"]
-        Dist --> Safe["markdown/*.md<br/>(Safe Mode / Web)"]
+    subgraph Output ["Artifacts"]
+        direction TB
+        PDF["Release Artifact<br/>(Enriched with PII)"]
+        Safe["Safe Mode MD<br/>(Public Web View)"]
     end
+
+    %% ========= FLOWS =========
+    Docx --> ImportScript
+    ImportScript --> Detect
+    Detect --> InjectFM
+    InjectFM --> Sanitize
+    Sanitize --> Src
+
+    Src --> Assemble
+    Config --> Assemble
+    Vars --> Assemble
+    Secrets --> Assemble
+
+    Assemble --> Header
+    Header --> Replace
+    Replace --> PDF
+    Replace --> Safe
+
+    %% ========= APPLY STYLES =========
+    class Docx,ImportScript,Detect,InjectFM,Sanitize import;
+    class Src,Config,Vars,Secrets input;
+    class Assemble,Header,Replace build;
+    class PDF,Safe output;
 ```
 
 ### Pipeline Stages

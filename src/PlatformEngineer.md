@@ -33,6 +33,7 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 - Go, Python, YAML
 - JSON Schema, SARIF
 - Docker, Terraform, Kubernetes
+- Pandoc, XeLaTeX, Mermaid.js
 
 ### Platforms
 
@@ -49,34 +50,27 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 - Leading DevOps modernization and governance for a multi-team Salesforce environment.
 - Defined and implemented the organization's first formal Salesforce DevOps governance model with deterministic validation and controlled promotion paths.
 - Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
-- Designed comprehensive training plan for two new CRM Developers including Trailhead, Udemy, and curated certification paths.
-- Training team members on ETL processes and Salesforce architecture dependencies.
+- Designed training plan for two new CRM Developers and trained team on ETL processes and Salesforce architecture dependencies.
 - Acting as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
-
----
 
 ### Salesforce Solutions Architect (Freelance)
 
 **Independent Consultant** | Oct 2021 – Present
 
 - Principal architect for Salesforce implementations across nonprofit and higher education organizations.
-- Architected grant management platforms with strict auditability, least-privilege access, and compliance-driven design.
-- Led platform evaluations, proofs of concept, and architectural tradeoff analyses to support executive decision-making.
-- Designed scalable Experience Cloud solutions supporting thousands of external users with governed customization boundaries.
+- Architected grant management platforms with auditability, least-privilege access, and compliance-driven design.
+- Led platform evaluations, proofs of concept, and architectural tradeoff analyses for executive decision-making.
+- Designed scalable Experience Cloud solutions supporting thousands of external users.
 - Developed custom workforce development application managing complete lifecycle from requirements to production.
-
----
 
 ### Application Administrator
 
 **Creighton University** | Jun 2021 – Aug 2025
 
-- Administered Service Cloud for 400+ internal users and Experience Cloud sites serving 10,000+ external users.
-- Automated identity, onboarding, and provisioning workflows, reducing setup time by approximately 90 percent.
-- Implemented Flow automations and custom Apex solutions to improve operations.
+- Administered Service Cloud for 400+ internal users and Experience Cloud sites for 10,000+ external users.
+- Automated identity, onboarding, and provisioning workflows, reducing setup time by ~90%.
+- Implemented Flow automations and custom Apex solutions.
 - Led Talend upgrade to version 8.0 and managed Change Data Capture operations.
-
----
 
 ### CAET Services Specialist II
 
@@ -91,62 +85,48 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 
 ## Selected Platform & Engineering Projects
 
-### GlassOps Governance Protocol
+### GlassOps Governance Protocol (Open Source)
 
-Open Source | Jan 2026 – Present
-
-- Designed a governance control plane decoupled from execution tooling.
+- Designed governance control plane decoupled from execution tooling.
 - Defined normalized deployment contracts for heterogeneous CI/CD runners.
-- Implemented policy arbitration across organizational, team, and environment boundaries with immutable audit trails.
+- Architected policy arbitration with immutable audit trails.
 
-> Note: GlassOps is in active development and not yet deployed in enterprise production environments.
+_Note: GlassOps is experimental and not yet deployed in enterprise production environments._
 
----
+**Status: Active Development**
 
 ### GlassOps Runtime & Adapter Ecosystem
 
-Jan 2026 – Present
-
-- Developing a TypeScript runtime for deterministic execution environments.
+- Developing Go runtime for deterministic execution environments.
 - Engineering adapter-based integrations for scanners, simulators, and CI/CD runners.
 - Enforcing strict separation where governance authority never resides in execution tooling.
 
----
-
 ### Setup Salesforce CLI
 
-GitHub Marketplace | Jan 2026 – Present
+**GitHub Marketplace | Jan 2026 – Present**
 
-- Built an enterprise-grade GitHub Action for deterministic Salesforce CLI environments.
-- Reduced setup time by approximately 80 percent through intelligent caching and self-healing execution.
-
----
+- Built enterprise-grade GitHub Action for strictly version-pinned Salesforce CLI environments.
+- Reduced setup time by ~80% through intelligent caching and fault-tolerant execution.
 
 ### Salesforce Platform Architect Portfolio
-
-Nov 2025 – Present
 
 - Production-grade reference implementation demonstrating enterprise Salesforce architecture patterns.
 - Contract-first APIs using OpenAPI 3.0 with Apex orchestration.
 - Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
 - Zero-touch CI/CD with automated validation and controlled failure testing.
 
----
-
 ### Resume as Code
 
-Dec 2025 – Present
-
-- Markdown-first resume source with automated PDF compilation.
-- Governance enforcing formatting, link integrity, and immutable artifact generation.
+- Engineered custom Node.js assembly engine injecting job titles ("Golden Headers") and PII at runtime.
+- Security-first pipeline ensures sensitive data exists only in compiled release artifacts.
+- High-fidelity PDF compilation using Pandoc and XeLaTeX.
 
 ---
 
 ## Education & Certifications
 
-**Associate's Degree, General Studies**  
-Metropolitan Community College, Completed 2025
+**Associate's Degree, General Studies** — Metropolitan Community College, Completed 2025
 
-**Salesforce Certifications:** Platform Administrator I and II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, Marketing Cloud Engagement Foundations, AI Associate
+**Salesforce Certifications:** Platform Administrator I & II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, Marketing Cloud Engagement Foundations, AI Associate
 
 **MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)
