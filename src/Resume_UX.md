@@ -16,7 +16,7 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 ## Professional Experience
 
-**Salesforce Solutions Architect (Freelance)** | Oct 2021 – Present
+**Salesforce Solutions Architect (Freelance Consulting)** | Oct 2021 – Present
 
 - Designed Experience and Service Cloud solutions focused on usability, clarity, and operational scale.
 - Led design and proof-of-concept efforts validating Flow automation and AI-assisted workflows.
@@ -27,7 +27,7 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 - Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
 - Defining governed DevOps model establishing deterministic validation and controlled release promotion.
 - Designing structured certification and training paths, including Salesforce fundamentals and MuleSoft curriculum (DEX-401).
-- Lead Apex and LWC development enabling experiences beyond declarative platform limits.
+- Leading Apex and LWC development enabling experiences beyond declarative platform limits.
 
 **Application Administrator** | Creighton University | Jun 2021 – Aug 2025
 

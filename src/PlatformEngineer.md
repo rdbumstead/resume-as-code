@@ -19,6 +19,7 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 - Event-driven architecture
 - Multi-environment promotion strategies
 - Architectural Decision Records
+- Systems Architecture Specification
 
 ### DevOps & Delivery
 
@@ -32,7 +33,7 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 - TypeScript, JavaScript, Apex, SQL
 - Go, Python, YAML
 - JSON Schema, SARIF
-- Docker, Terraform, Kubernetes
+- Infrastructure as Code and container orchestration tooling
 - Pandoc, XeLaTeX, Mermaid.js
 
 ### Platforms
@@ -53,7 +54,7 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 - Designed training plan for two new CRM Developers and trained team on ETL processes and Salesforce architecture dependencies.
 - Acting as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
 
-### Salesforce Solutions Architect (Freelance)
+### Salesforce Solutions Architect (Freelance Consulting)
 
 **Independent Consultant** | Oct 2021 – Present
 
@@ -87,13 +88,13 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 
 ### GlassOps Governance Protocol (Open Source)
 
+**Status: Active Development**
+
 - Designed governance control plane decoupled from execution tooling.
 - Defined normalized deployment contracts for heterogeneous CI/CD runners.
 - Architected policy arbitration with immutable audit trails.
 
 _Note: GlassOps is experimental and not yet deployed in enterprise production environments._
-
-**Status: Active Development**
 
 ### GlassOps Runtime & Adapter Ecosystem
 
