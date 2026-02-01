@@ -11,7 +11,9 @@ const LIBERATION_DIR = path.join(FONTS_DIR, 'liberation');
 
 // Ensure directories exist
 if (!fs.existsSync(FONTS_DIR)) fs.mkdirSync(FONTS_DIR);
-if (!fs.existsSync(TEMP_DIR)) fs.mkdirSync(TEMP_DIR);
+// Ensure clean temp directory
+if (fs.existsSync(TEMP_DIR)) fs.rmSync(TEMP_DIR, { recursive: true, force: true });
+fs.mkdirSync(TEMP_DIR);
 
 /**
  * Check if Liberation fonts are already installed in our local folder.
@@ -19,7 +21,7 @@ if (!fs.existsSync(TEMP_DIR)) fs.mkdirSync(TEMP_DIR);
  */
 const areFontsInstalled = () => {
     if (!fs.existsSync(LIBERATION_DIR)) return false;
-    const required = ['LICENSE', 'LiberationSerif-Regular.ttf'];
+    const required = ['LICENSE', 'LiberationSerif-Regular.ttf', 'LiberationSans-Regular.ttf'];
     for (const file of required) {
         if (!fs.existsSync(path.join(LIBERATION_DIR, file))) return false;
     }

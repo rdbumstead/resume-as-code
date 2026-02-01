@@ -43,7 +43,7 @@ jobs:
                 return 1
              fi
           }
-          fc-check-smoke-test
+          fc-check-smoke-test || exit 1
           fc-cache -f -v
 
       # --- MACOS VERIFICATION ---
