@@ -40,14 +40,9 @@ Focuses on architecture-first delivery, governance-driven DevOps, and sustainabl
 - Branching strategies and release management
 - Governance-first deployment models
 
-### Integration & Systems Architecture
+### Systems Architecture, Languages & Data
 
 - REST APIs, OpenAPI 3.0, event-driven patterns
-- MuleSoft and AWS Lambda integration
-- Identity and access architecture
-
-### Languages & Data
-
 - JavaScript, TypeScript, SQL, HTML/CSS
 - Go, Python, YAML
 - Docker containerization
@@ -235,7 +230,7 @@ flowchart LR
 
 ## Professional Experience
 
-### Salesforce Solutions Architect (Freelance)
+### Salesforce Solutions Architect (Freelance Consulting)
 
 **Oct 2021 – Present**
 
@@ -359,7 +354,7 @@ _Note: DevOps architecture is actively evolving and not yet fully mature at ente
 
 ## Technical Projects
 
-### [GlassOps Governance Protocol](https://github.com/glassops-platform/glassops) (Open Source)
+### GlassOps Governance Protocol (Open Source)
 
 **Status: Active Development**
 
@@ -372,7 +367,7 @@ _Note: GlassOps is experimental and not deployed in enterprise production enviro
 
 ---
 
-### [Salesforce Platform Architect Portfolio](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
+### Salesforce Platform Architect Portfolio
 
 - Authored 26 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr), [Systems Architecture Specification](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md), and four other documentation artifacts.
 - Designed API-first integration architectures using OpenAPI 3.0.
@@ -383,9 +378,9 @@ _Note: GlassOps is experimental and not deployed in enterprise production enviro
 
 ---
 
-### [Resume as Code](https://github.com/rdbumstead/resume-as-code)
+### Resume as Code
 
-**Status: Released (v2.0.0)**
+**Status: Released (v2.1.0)**
 
 - Built an event-driven pipeline converting Markdown into immutable PDF artifacts.
 - Decoupled PII using GitHub Secrets for safe public repository visibility.

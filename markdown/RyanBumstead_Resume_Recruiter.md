@@ -18,7 +18,7 @@ Salesforce Platform Architect with 7+ years designing governed Salesforce ecosys
 
 ## Professional Experience
 
-**Salesforce Solutions Architect (Freelance)** | Oct 2021 – Present
+**Salesforce Solutions Architect (Freelance Consulting)** | Oct 2021 – Present
 
 - Principal architect for Salesforce implementations in nonprofit and higher education environments.
 - Architected grant management platforms with auditability, least-privilege access, and compliance-driven design.
