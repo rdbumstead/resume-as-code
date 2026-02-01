@@ -60,4 +60,7 @@ files.forEach(file => {
     }
 });
 
-console.log('\n✅ Build Complete! Artifacts are in /dist');
+// 6. Final PDF Render
+run('render-pdf.js');
+
+console.log('\n✅ Build Complete! Artifacts are in /dist and /pdf');
