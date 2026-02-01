@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "import": "node scripts/import-local.js",
+    "download-fonts": "node scripts/download-fonts.js",
     "build": "node scripts/build.js",
     "preview": "node scripts/assemble.js preview src/RyanBumstead_Resume.md RyanBumstead_PREVIEW.md"
   },
