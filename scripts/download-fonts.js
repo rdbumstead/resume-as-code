@@ -93,7 +93,7 @@ const main = () => {
             console.log("Cleaning up...");
             fs.rmSync(TEMP_DIR, { recursive: true, force: true });
             
-            console.log("Liberation fonts downloaded successfully.");
+            console.log(`Liberation fonts downloaded successfully to ${LIBERATION_DIR}`);
         }
 
         // 2. Instructions (Always show this to be helpful)
