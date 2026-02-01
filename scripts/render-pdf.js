@@ -16,11 +16,11 @@ let namePrefix = 'Resume';
 try {
     namePrefix = execSync(`node "${path.join(SCRIPTS_DIR, 'get-name.js')}"`).toString().trim() || 'Resume';
 } catch (e) {
-    console.warn('⚠️ Could not determine name prefix, using default "Resume"');
+    console.warn('Could not determine name prefix, using default "Resume"');
 }
 
-const MAIN_FONT = "Source Serif 4";
-const SANS_FONT = "Inter 24pt";
+const MAIN_FONT = "Liberation Serif";
+const SANS_FONT = "Liberation Sans";
 const HEAD_INCLUDES = "-V \"header-includes=\\usepackage{enumitem} \\usepackage[none]{hyphenat} \\raggedright \\setlist{nosep,leftmargin=*}\"";
 
 const filesToRender = [
@@ -31,18 +31,18 @@ const filesToRender = [
     { md: 'PlatformEngineer.md', pdf: `${namePrefix}_PlatformEngineer.pdf` }
 ];
 
-console.log('📄 Rendering PDFs with Pandoc...');
+console.log('Rendering PDFs with Pandoc...');
 
 filesToRender.forEach(file => {
     const inputPath = path.join(DIST_DIR, file.md);
     const outputPath = path.join(PDF_DIR, file.pdf);
 
     if (!fs.existsSync(inputPath)) {
-        console.warn(`⚠️  Skipping ${file.md}: Source file not found in dist/`);
+        console.warn(`Skipping ${file.md}: Source file not found in dist/`);
         return;
     }
 
-    console.log(`▶️  Building ${file.pdf}...`);
+    console.log(`Building ${file.pdf}...`);
 
     const command = [
         'pandoc',
@@ -61,8 +61,8 @@ filesToRender.forEach(file => {
 
     try {
         execSync(command, { stdio: 'inherit' });
-        console.log(`✅ Success: ${file.pdf}`);
+        console.log(`Success: ${file.pdf}`);
     } catch (e) {
-        console.error(`❌ Failed to render ${file.pdf}`);
+        console.error(`Failed to render ${file.pdf}`);
     }
 });

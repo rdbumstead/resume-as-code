@@ -45,18 +45,19 @@ fs.readdir(TARGET_DIR, (err, files) => {
 });
 
 function processFile(filePath, fileName) {
-    console.log(`📄 Document: ${fileName}`);
+    console.log(`Document: ${fileName}`);
     const originalContent = fs.readFileSync(filePath, 'utf8');
     let content = originalContent;
 
-    // 1. Mask Mermaid Blocks
+    // Mask Mermaid Blocks
     const mermaidBlocks = [];
     content = content.replace(/```mermaid[\s\S]*?```/g, (block) => {
         mermaidBlocks.push(block);
         return `__MERMAID_BLOCK_${mermaidBlocks.length - 1}__`;
     });
     
-    // 2. Existing Link Fixer
+    // Existing Link Fixer
+    const injectedKeys = new Set();
     content = content.replace(/\[([\s\S]*?)\]\(([\s\S]*?)\)/g, (match, text, currentUrl) => {
         const cleanText = text.replace(/[*_]/g, '').trim();
         if (!cleanText) return match; 
@@ -64,6 +65,7 @@ function processFile(filePath, fileName) {
         const matchedKey = Object.keys(LINKS).find(key => key.toLowerCase() === cleanText.toLowerCase());
 
         if (matchedKey) {
+            injectedKeys.add(matchedKey);
             const targetUrl = LINKS[matchedKey];
             if (currentUrl.trim() !== targetUrl) {
                 console.log(`   [FIXED]      "${cleanText}" (Updated URL)`);
@@ -77,9 +79,10 @@ function processFile(filePath, fileName) {
         return match;
     });
 
-    // 3. Injection Logic
+    // Injection Logic
     const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
     const parts = content.split(linkSplitRegex);
+
 
     const processedParts = parts.map((part) => {
         if (part.match(/^\[.*\]\(.*\)$/)) return part;
@@ -89,10 +92,12 @@ function processFile(filePath, fileName) {
 
         sortedKeys.forEach(keyword => {
             if (IGNORE_LIST.includes(keyword)) return;
+            if (injectedKeys.has(keyword)) return;
 
             const keywordRegex = new RegExp(`\\b(${escapeRegExp(keyword)})\\b`, 'gi');
             
             textBlock = textBlock.replace(keywordRegex, (match, p1, offset, fullString) => {
+                if (injectedKeys.has(keyword)) return match;
                 let start = offset;
                 while (start > 0 && !/\s/.test(fullString[start - 1])) start--;
                 let end = offset + match.length;
@@ -106,6 +111,7 @@ function processFile(filePath, fileName) {
                     return match;
                 }
 
+                injectedKeys.add(keyword);
                 stats.linksInjected++;
                 console.log(`   [INJECTED]   "${match}"`);
                 return `[${match}](${LINKS[keyword]})`;
@@ -116,7 +122,7 @@ function processFile(filePath, fileName) {
 
     let finalContent = processedParts.join('');
 
-    // 4. Unmask Mermaid Blocks
+    // Unmask Mermaid Blocks
     mermaidBlocks.forEach((block, index) => {
         finalContent = finalContent.replace(`__MERMAID_BLOCK_${index}__`, block);
     });

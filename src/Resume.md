@@ -44,7 +44,7 @@ Work includes greenfield platform builds, multi-org DevOps modernization, and ar
 
 ## Professional Experience
 
-### Salesforce Solutions Architect (Freelance)
+### Salesforce Solutions Architect (Freelance Consulting)
 
 **Oct 2021 – Present**
 
@@ -65,7 +65,7 @@ _Official title: CRM Developer | Functional role: Platform architecture and DevO
 - Defining platform standards for Apex, LWC, asynchronous processing, and integration design.
 - Designed training plan for two CRM Developers including Trailhead, Udemy, and curated certification paths.
 - Preparing for MuleSoft transition from Talend.
-- Acting as Salesforce technical lead for complex development beyond declarative capabilities.
+- Acting as technical lead for complex development beyond declarative capabilities.
 
 _Note: DevOps architecture is actively evolving and not yet a fully mature enterprise-scale implementation._
 
@@ -104,7 +104,7 @@ _Note: DevOps architecture is actively evolving and not yet a fully mature enter
 
 - Designed multi-org Salesforce platform architectures aligned to organizational domains and team structures.
 - Built governance-first DevOps models balancing developer velocity with platform stability.
-- Defined enterprise documentation standards including ADRs and system architecture specifications.
+- Defined enterprise documentation standards including ADRs and Systems Architecture Specification.
 - Designed integration architectures spanning Salesforce, MuleSoft, and AWS.
 
 ---

@@ -24,7 +24,7 @@ if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR);
 const inputFile = process.argv[2];
 
 if (!inputFile) {
-    console.error("❌ Usage: node scripts/import-local.js <filename.docx>");
+    console.error("Usage: node scripts/import-local.js <filename.docx>");
     process.exit(1);
 }
 
@@ -33,11 +33,11 @@ const baseName = path.basename(inputFile, path.extname(inputFile));
 const outputPath = path.join(OUTPUT_DIR, `${baseName}.md`);
 
 if (!fs.existsSync(inputPath)) {
-    console.error(`❌ File not found: ${inputPath}`);
+    console.error(`File not found: ${inputPath}`);
     process.exit(1);
 }
 
-console.log(`\n🔄 Converting ${inputFile} to Markdown...`);
+console.log(`\nConverting ${inputFile} to Markdown...`);
 
 try {
     // 1. Run Pandoc
@@ -58,7 +58,7 @@ try {
         if (!IGNORE_TITLES.includes(upperTitle) && 
             !upperTitle.includes(MY_LAST)) { 
             extractedTitle = toTitleCase(potentialTitle);
-            console.log(`   🎯 Strategy A (Header): Found "${extractedTitle}"`);
+            console.log(`Strategy A (Header): Found "${extractedTitle}"`);
         }
     }
 
@@ -79,7 +79,7 @@ try {
                 }
 
                 extractedTitle = toTitleCase(cleanLine);
-                console.log(`   🎯 Strategy B (All Caps): Found "${extractedTitle}"`);
+                console.log(`Strategy B (All Caps): Found "${extractedTitle}"`);
                 break;
             }
         }
@@ -87,8 +87,8 @@ try {
 
     if (!extractedTitle) extractedTitle = "Salesforce Platform Architect";
 
-    // 4. SANITIZE PII (Do this EARLY to make cleanup easier)
-    console.log("   🛡️  Sanitizing Data...");
+    // SANITIZE PII (Do this EARLY to make cleanup easier)
+    console.log("Sanitizing Data...");
     content = content.replace(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g, "{{ RESUME_PHONE }}");
     content = content.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, "{{ RESUME_EMAIL }}");
     content = content.replace(/linkedin\.com\/in\/[a-zA-Z0-9-]+/g, "{{ RESUME_LINKEDIN }}");
@@ -120,7 +120,7 @@ try {
         // Check for Long Paragraph (The Summary)
         // Heuristic: > 60 chars, and not a variable line
         if (line.length > 60 && !line.includes('{{ RESUME_')) {
-            console.log("   📝 Detected Summary Paragraph (No Header)");
+            console.log("Detected Summary Paragraph (No Header)");
             startIndex = i;
             injectSummaryHeader = true;
             break;
@@ -136,8 +136,8 @@ try {
         content = bodyLines.join('\n');
     }
 
-    // 6. INJECT: Frontmatter
-    console.log("   ✨ Injecting Frontmatter...");
+    // INJECT: Frontmatter
+    console.log("Injecting Frontmatter...");
     const fileContent = `---
 title: ${extractedTitle}
 ---
@@ -146,8 +146,8 @@ ${content}`;
 
     content = fileContent;
 
-    // 7. FINAL CLEANUP
-    console.log("   🧹 Cleaning up artifacts...");
+    // FINAL CLEANUP
+    console.log("Cleaning up artifacts...");
     content = content.replace(/^Omaha, NE$/gm, ''); 
     content = content.replace(/\n{3,}/g, '\n\n');
 
@@ -156,10 +156,10 @@ ${content}`;
     try {
         execSync(`npx prettier --write "${outputPath}"`);
     } catch (e) {
-        console.warn("   ⚠️  Prettier failed, but file is saved.");
+        console.warn("Prettier failed, but file is saved.");
     }
 
-    console.log(`\n✅ Success! Saved to: ${outputPath}`);
+    console.log(`\nSuccess! Saved to: ${outputPath}`);
 
 } catch (error) {
     console.error("❌ Conversion Failed:", error.message);
