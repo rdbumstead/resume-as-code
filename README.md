@@ -1,6 +1,7 @@
 # Resume as Code
 
 ![Build Status](https://github.com/rdbumstead/resume-as-code/actions/workflows/resume-pipeline.yml/badge.svg)
+![Font Test Status](https://github.com/rdbumstead/resume-as-code/actions/workflows/test-font-install.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 **This repository treats my professional career documentation as a software product.** Instead of manually editing Word documents, this project uses a **fully automated CI/CD pipeline** to compile resumes from clean Markdown source, inject live metadata, and enforce strict governance on PII and formatting.
@@ -106,7 +107,7 @@ graph TD
 > Liberation fonts are licensed under GPL v2 with a font exception.
 > See [fonts/liberation/LICENSE](fonts/liberation/LICENSE) for details.
 
-## 🚀 Usage
+## Usage
 
 ### 1. Install Prerequisites
 
@@ -120,7 +121,7 @@ The build requires **Liberation Serif** and **Liberation Sans**.
 
 1.  Run the downloader script:
     ```bash
-    node scripts/download-fonts.js
+    npm run download-fonts
     ```
 2.  Install the fonts manually:
     - **Windows**: Open `fonts/liberation`, select all `.ttf` files, Right-click -> **Install**.
