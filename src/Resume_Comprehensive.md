@@ -379,7 +379,7 @@ _Note: GlassOps is experimental and not deployed in enterprise production enviro
 
 ### Resume as Code
 
-**Status: Released (v2.0.0)**
+**Status: Released (v2.1.0)**
 
 - Built an event-driven pipeline converting Markdown into immutable PDF artifacts.
 - Decoupled PII using GitHub Secrets for safe public repository visibility.

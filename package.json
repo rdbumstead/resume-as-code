@@ -1,6 +1,6 @@
 {
   "name": "resume-as-code",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Zero-Touch CI/CD pipeline for architecture portfolios",
   "main": "scripts/assemble.js",
   "scripts": {
