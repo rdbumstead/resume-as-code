@@ -57,6 +57,7 @@ function processFile(filePath, fileName) {
     });
     
     // 2. Existing Link Fixer
+    const injectedKeys = new Set();
     content = content.replace(/\[([\s\S]*?)\]\(([\s\S]*?)\)/g, (match, text, currentUrl) => {
         const cleanText = text.replace(/[*_]/g, '').trim();
         if (!cleanText) return match; 
@@ -64,6 +65,7 @@ function processFile(filePath, fileName) {
         const matchedKey = Object.keys(LINKS).find(key => key.toLowerCase() === cleanText.toLowerCase());
 
         if (matchedKey) {
+            injectedKeys.add(matchedKey);
             const targetUrl = LINKS[matchedKey];
             if (currentUrl.trim() !== targetUrl) {
                 console.log(`   [FIXED]      "${cleanText}" (Updated URL)`);
@@ -81,6 +83,7 @@ function processFile(filePath, fileName) {
     const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
     const parts = content.split(linkSplitRegex);
 
+
     const processedParts = parts.map((part) => {
         if (part.match(/^\[.*\]\(.*\)$/)) return part;
 
@@ -89,10 +92,12 @@ function processFile(filePath, fileName) {
 
         sortedKeys.forEach(keyword => {
             if (IGNORE_LIST.includes(keyword)) return;
+            if (injectedKeys.has(keyword)) return;
 
             const keywordRegex = new RegExp(`\\b(${escapeRegExp(keyword)})\\b`, 'gi');
             
             textBlock = textBlock.replace(keywordRegex, (match, p1, offset, fullString) => {
+                if (injectedKeys.has(keyword)) return match;
                 let start = offset;
                 while (start > 0 && !/\s/.test(fullString[start - 1])) start--;
                 let end = offset + match.length;
@@ -106,6 +111,7 @@ function processFile(filePath, fileName) {
                     return match;
                 }
 
+                injectedKeys.add(keyword);
                 stats.linksInjected++;
                 console.log(`   [INJECTED]   "${match}"`);
                 return `[${match}](${LINKS[keyword]})`;
