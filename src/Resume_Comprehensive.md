@@ -57,7 +57,7 @@ Focuses on architecture-first delivery, governance-driven DevOps, and sustainabl
 
 The following diagrams illustrate multi-org architecture, governance protocols, platform portfolios, and automated resume generation pipelines. Each diagram is provided as a separate `.mermaid` file for clarity and maintainability.
 
-### University Salesforce Multi‐Org Platform Architectur
+### University Salesforce Multi‐Org Platform Architecture
 
 ```mermaid
 flowchart LR

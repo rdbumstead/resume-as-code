@@ -23,10 +23,10 @@ graph TD
         Detect["Detect Title & Body"]
         InjectFM["Inject Frontmatter"]
         Sanitize["Sanitize PII"]
-        Src["src/*.md"]
     end
 
     subgraph Input ["Source Layer"]
+        Src["src/*.md"]
         Config["resume.config.json"]
         Vars["GitHub Variables<br/>(Title, Name, Links)"]
         Secrets["GitHub Secrets<br/>(Phone, Email)"]
@@ -38,10 +38,10 @@ graph TD
         Replace["Replace Variables"]
     end
 
-    subgraph Output ["Distribution Layer"]
-        Dist["dist/*.md"]
-        PDF["pdf/*.pdf"]
-        Safe["markdown/*.md<br/>(Safe Mode / Web)"]
+    subgraph Output ["Artifacts"]
+        direction TB
+        PDF["Release Artifact<br/>(Enriched with PII)"]
+        Safe["Safe Mode MD<br/>(Public Web View)"]
     end
 
     %% ========= FLOWS =========
@@ -51,22 +51,21 @@ graph TD
     InjectFM --> Sanitize
     Sanitize --> Src
 
+    Src --> Assemble
     Config --> Assemble
     Vars --> Assemble
     Secrets --> Assemble
-    Src --> Assemble
 
     Assemble --> Header
     Header --> Replace
-    Replace --> Dist
-    Dist --> PDF
-    Dist --> Safe
+    Replace --> PDF
+    Replace --> Safe
 
     %% ========= APPLY STYLES =========
-    class Docx,ImportScript,Detect,InjectFM,Sanitize,Src import;
-    class Config,Vars,Secrets input;
+    class Docx,ImportScript,Detect,InjectFM,Sanitize import;
+    class Src,Config,Vars,Secrets input;
     class Assemble,Header,Replace build;
-    class Dist,PDF,Safe output;
+    class PDF,Safe output;
 ```
 
 ### Pipeline Stages
