@@ -114,4 +114,4 @@ content = content.replace(/\n{3,}/g, '\n\n');
 const outputPath = path.join(TARGET_DIR, OUTPUT_FILE);
 fs.writeFileSync(outputPath, content, 'utf8');
 
-console.log(`✅ Assembled: ${OUTPUT_FILE}`);
+console.log(`Assembled: ${OUTPUT_FILE}`);

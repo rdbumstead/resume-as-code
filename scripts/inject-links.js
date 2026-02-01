@@ -45,18 +45,18 @@ fs.readdir(TARGET_DIR, (err, files) => {
 });
 
 function processFile(filePath, fileName) {
-    console.log(`📄 Document: ${fileName}`);
+    console.log(`Document: ${fileName}`);
     const originalContent = fs.readFileSync(filePath, 'utf8');
     let content = originalContent;
 
-    // 1. Mask Mermaid Blocks
+    // Mask Mermaid Blocks
     const mermaidBlocks = [];
     content = content.replace(/```mermaid[\s\S]*?```/g, (block) => {
         mermaidBlocks.push(block);
         return `__MERMAID_BLOCK_${mermaidBlocks.length - 1}__`;
     });
     
-    // 2. Existing Link Fixer
+    // Existing Link Fixer
     const injectedKeys = new Set();
     content = content.replace(/\[([\s\S]*?)\]\(([\s\S]*?)\)/g, (match, text, currentUrl) => {
         const cleanText = text.replace(/[*_]/g, '').trim();
@@ -79,7 +79,7 @@ function processFile(filePath, fileName) {
         return match;
     });
 
-    // 3. Injection Logic
+    // Injection Logic
     const linkSplitRegex = /(\[[^\]]+\]\([^)]+\))/g;
     const parts = content.split(linkSplitRegex);
 
@@ -122,7 +122,7 @@ function processFile(filePath, fileName) {
 
     let finalContent = processedParts.join('');
 
-    // 4. Unmask Mermaid Blocks
+    // Unmask Mermaid Blocks
     mermaidBlocks.forEach((block, index) => {
         finalContent = finalContent.replace(`__MERMAID_BLOCK_${index}__`, block);
     });
