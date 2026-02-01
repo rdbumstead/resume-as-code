@@ -51,16 +51,13 @@ graph TD
     InjectFM --> Sanitize
     Sanitize --> Src
 
-    Src --> Config
-    Config --> Vars
-    Config --> Secrets
-
-    Src --> Assemble
+    Config --> Assemble
     Vars --> Assemble
     Secrets --> Assemble
+    Src --> Assemble
+
     Assemble --> Header
     Header --> Replace
-
     Replace --> Dist
     Dist --> PDF
     Dist --> Safe
