@@ -1,0 +1,74 @@
+name: Test Font Installation
+
+on:
+  push:
+    paths:
+      - "scripts/download-fonts.js"
+      - ".github/workflows/test-font-install.yml"
+  workflow_dispatch:
+
+jobs:
+  test-matrix:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Downloader Script
+        run: node scripts/download-fonts.js
+
+      # --- LINUX VERIFICATION ---
+      - name: Verify Linux Install
+        if: runner.os == 'Linux'
+        run: |
+          mkdir -p ~/.local/share/fonts
+          cp fonts/liberation/*.ttf ~/.local/share/fonts/
+          fc-check-smoke-test() {
+             if [ -f "$HOME/.local/share/fonts/LiberationSerif-Regular.ttf" ]; then
+                echo "Font file found in target directory"
+                return 0
+             else
+                echo "Font file missing"
+                return 1
+             fi
+          }
+          fc-check-smoke-test
+          fc-cache -f -v
+
+      # --- MACOS VERIFICATION ---
+      - name: Verify macOS Install
+        if: runner.os == 'macOS'
+        run: |
+          mkdir -p ~/Library/Fonts
+          cp fonts/liberation/*.ttf ~/Library/Fonts/
+          if [ -f "$HOME/Library/Fonts/LiberationSerif-Regular.ttf" ]; then
+             echo "Font file installed to User Fonts"
+          else
+             echo "Font file missing"
+             exit 1
+          fi
+
+      # --- WINDOWS VERIFICATION ---
+      - name: Verify Windows Download
+        if: runner.os == 'Windows'
+        run: |
+          # Verify files exist in the repo structure (simulating successful download)
+          if (Test-Path "fonts\liberation\LiberationSerif-Regular.ttf") {
+              Write-Output "Font file downloaded successfully"
+          } else {
+              Write-Error "Font file missing"
+              exit 1
+          }
+          # Note: We cannot easily 'Install' fonts to C:\Windows\Fonts in CI without admin/reboot,
+          # but we have verified the downloader script worked and files are ready for user.
