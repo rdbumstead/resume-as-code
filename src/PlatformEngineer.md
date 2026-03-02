@@ -116,6 +116,12 @@ _Note: GlassOps is experimental and not yet deployed in enterprise production en
 - Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
 - Zero-touch CI/CD with automated validation and controlled failure testing.
 
+### Education Cloud Reference Architecture
+
+- Designed a K-12 admissions reference implementation on Salesforce Education Cloud with OmniStudio orchestration, Flow automation, and a role-optimized advisor console.
+- Modeled an end-to-end applicant lifecycle (`Inquiry -> Enrolled`) with deterministic identity handling and idempotent submission behavior.
+- Authored architecture decisions and trade-off records in a published documentation site to demonstrate governance-first implementation patterns.
+
 ### Resume as Code
 
 - Engineered custom Node.js assembly engine injecting job titles ("Golden Headers") and PII at runtime.

@@ -57,6 +57,11 @@ Salesforce Platform Architect with 7+ years designing governed Salesforce ecosys
 - Authored enterprise architecture artifacts including Systems Architecture Specifications and ADRs.
 - Implemented contract-first APIs and zero-touch CI/CD pipelines with resilience testing.
 
+**Education Cloud Reference Architecture**
+
+- Designed a Salesforce Education Cloud admissions reference architecture with OmniStudio and Flow to standardize applicant processing from inquiry through enrollment.
+- Demonstrated governance and decision rigor by publishing architectural trade-offs and implementation standards in a public documentation set.
+
 **Resume as Code**
 
 - Automated governance pipeline ensuring brand consistency ("Golden Header") across all document versions.
