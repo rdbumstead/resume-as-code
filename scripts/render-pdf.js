@@ -2,8 +2,10 @@ const { execSync, spawnSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-const DIST_DIR = path.join(__dirname, '../dist');
-const PDF_DIR = DIST_DIR;
+const DEFAULT_DIST_DIR = path.join(__dirname, '../dist');
+const DEFAULT_PDF_DIR = DEFAULT_DIST_DIR;
+const DIST_DIR = path.resolve(process.env.RESUME_DIST_DIR || DEFAULT_DIST_DIR);
+const PDF_DIR = path.resolve(process.env.RESUME_PDF_DIR || DEFAULT_PDF_DIR);
 const SCRIPTS_DIR = __dirname;
 
 // Ensure PDF directory exists

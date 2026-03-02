@@ -106,31 +106,13 @@ jobs:
             node scripts/mermaid-render.js "$f"
           done
 
-      - name: Build PDFs with Pandoc
+      - name: Render PDFs via render-pdf.js
         run: |
-          NAME_PREFIX=$(node scripts/get-name.js)
-          MAIN_FONT="Liberation Serif"
-          SANS_FONT="Liberation Sans"
-
-          for FILE_PATH in temp_processed/*.md; do
-            FILE_NAME=$(basename "$FILE_PATH")
-            BASE_NAME="${FILE_NAME%.*}" 
-            
-            echo "Building PDF for $BASE_NAME..."
-            OUTPUT_FILE="${NAME_PREFIX}_${BASE_NAME}.pdf"
-            
-            pandoc "$FILE_PATH" \
-              -V geometry:margin=0.5in \
-              -V mainfont="$MAIN_FONT" \
-              -V sansfont="$SANS_FONT" \
-              -V fontsize=10pt \
-              -V linestretch=1.15 \
-              -V "header-includes=\usepackage{enumitem} \usepackage[none]{hyphenat} \raggedright \setlist{nosep,leftmargin=*}" \
-              --resource-path=temp_processed \
-              -V linkcolor=blue -V urlcolor=blue \
-              --pdf-engine=xelatex \
-              -o "pdf/$OUTPUT_FILE"
-          done
+          RESUME_DIST_DIR=temp_processed \
+          RESUME_PDF_DIR=pdf \
+          MAIN_FONT="Liberation Serif" \
+          SANS_FONT="Liberation Sans" \
+          node scripts/render-pdf.js
 
       - name: Commit and Push Safe Markdown Only
         run: |

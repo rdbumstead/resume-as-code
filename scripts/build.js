@@ -63,4 +63,4 @@ files.forEach(file => {
 // 6. Final PDF Render
 run('render-pdf.js');
 
-console.log('\nBuild Complete! Artifacts are in /dist and /pdf');
+console.log('\nBuild Complete! Artifacts are in /dist');
