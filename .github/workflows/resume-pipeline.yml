@@ -110,8 +110,8 @@ jobs:
         run: |
           RESUME_DIST_DIR=temp_processed \
           RESUME_PDF_DIR=pdf \
-          MAIN_FONT="Liberation Serif" \
-          SANS_FONT="Liberation Sans" \
+          RESUME_MAIN_FONT="Liberation Serif" \
+          RESUME_SANS_FONT="Liberation Sans" \
           node scripts/render-pdf.js
 
       - name: Commit and Push Safe Markdown Only
