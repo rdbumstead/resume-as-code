@@ -122,6 +122,14 @@ _Note: DevOps architecture is actively evolving and not yet a fully mature enter
 
 _Note: GlassOps is experimental and not yet deployed in enterprise production environments._
 
+### [Education Cloud Reference Architecture](https://rdbumstead.github.io/smart-education-group-sf-edcloud/)
+
+- Designed a K-12 admissions platform on Salesforce Education Cloud using OmniStudio orchestration (7 OmniScripts, 14 DataRaptors, 2 Integration Procedures), Flow automation, and a custom Lightning Console advisor app.
+- Implemented a canonical student lifecycle model (Inquiry → Enrolled) with deterministic applicant identity and idempotent application submission design.
+- Established least-privileged access architecture using Permission Set Groups and a persona-based advisor workspace.
+- Produced 17 Architecture Decision Records documenting design choices, trade-offs, and superseded decisions; published as a MkDocs GitHub Pages site with Mermaid diagrams.
+- Automated Salesforce metadata documentation generation using GlassOps Knowledge Module.
+
 ### [Setup Salesforce CLI](https://github.com/marketplace/actions/setup-salesforce-cli) (GitHub Marketplace)
 
 - Built enterprise-grade GitHub Action for strictly version-pinned Salesforce CLI environments.
