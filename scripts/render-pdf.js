@@ -1,4 +1,4 @@
-const { execSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -19,9 +19,42 @@ try {
     console.warn('Could not determine name prefix, using default "Resume"');
 }
 
-const MAIN_FONT = "Liberation Serif";
-const SANS_FONT = "Liberation Sans";
-const HEAD_INCLUDES = "-V \"header-includes=\\usepackage{enumitem} \\usepackage[none]{hyphenat} \\raggedright \\setlist{nosep,leftmargin=*}\"";
+const MAIN_FONT = process.env.RESUME_MAIN_FONT || "Times New Roman";
+const SANS_FONT = process.env.RESUME_SANS_FONT || "Arial";
+const HEAD_INCLUDES = "-V \"header-includes=\\usepackage{enumitem} \\usepackage[none]{hyphenat} \\usepackage{titlesec} \\raggedright \\setlist{nosep,leftmargin=*} \\titlespacing*{\\section}{0pt}{*0.8}{*0.4} \\titlespacing*{\\subsection}{0pt}{*0.7}{*0.35} \\titlespacing*{\\subsubsection}{0pt}{*0.6}{*0.3}\"";
+
+function hasCommand(command) {
+    const lookup = process.platform === 'win32' ? 'where' : 'which';
+    const result = spawnSync(lookup, [command], { stdio: 'ignore' });
+    return result.status === 0;
+}
+
+function resolvePdfEngine() {
+    const engines = ['xelatex', 'lualatex'];
+    const engineOnPath = engines.find(hasCommand);
+
+    if (engineOnPath) {
+        return engineOnPath;
+    }
+
+    if (process.platform === 'win32') {
+        const localAppData = process.env.LOCALAPPDATA || '';
+        const candidates = [
+            path.join(localAppData, 'Programs', 'MiKTeX', 'miktex', 'bin', 'x64', 'xelatex.exe'),
+            path.join(localAppData, 'Programs', 'MiKTeX', 'miktex', 'bin', 'x64', 'lualatex.exe'),
+            'C:\\Program Files\\MiKTeX\\miktex\\bin\\x64\\xelatex.exe',
+            'C:\\Program Files\\MiKTeX\\miktex\\bin\\x64\\lualatex.exe'
+        ];
+
+        const installedEngine = candidates.find(fs.existsSync);
+        if (installedEngine) {
+            return installedEngine;
+        }
+    }
+
+    console.error('No LaTeX PDF engine found. Install TeX Live or MiKTeX and ensure xelatex or lualatex is available.');
+    process.exit(1);
+}
 
 const filesToRender = [
     { md: 'Resume_Recruiter.md', pdf: `${namePrefix}_Resume_Recruiter.pdf` },
@@ -32,6 +65,9 @@ const filesToRender = [
 ];
 
 console.log('Rendering PDFs with Pandoc...');
+const pdfEngine = resolvePdfEngine();
+console.log(`Using PDF engine: ${pdfEngine}`);
+let failures = 0;
 
 filesToRender.forEach(file => {
     const inputPath = path.join(DIST_DIR, file.md);
@@ -55,7 +91,7 @@ filesToRender.forEach(file => {
         HEAD_INCLUDES,
         `--resource-path="${DIST_DIR}"`,
         '-V linkcolor=blue -V urlcolor=blue',
-        '--pdf-engine=xelatex',
+        `--pdf-engine="${pdfEngine}"`,
         `-o "${outputPath}"`
     ].join(' ');
 
@@ -63,6 +99,12 @@ filesToRender.forEach(file => {
         execSync(command, { stdio: 'inherit' });
         console.log(`Success: ${file.pdf}`);
     } catch (e) {
+        failures += 1;
         console.error(`Failed to render ${file.pdf}`);
     }
 });
+
+if (failures > 0) {
+    console.error(`PDF rendering failed for ${failures} file(s).`);
+    process.exit(1);
+}
