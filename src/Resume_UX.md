@@ -53,6 +53,11 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 - Designed Experience Cloud (LWR) frontends backed by governed APIs.
 - Implemented chaos engineering to validate graceful UX degradation during failures.
 
+**Education Cloud Reference Architecture**
+
+- Designed a student admissions journey in Salesforce Education Cloud with OmniStudio and Flow, emphasizing clear handoffs from inquiry to enrollment.
+- Built a persona-based advisor console experience to reduce navigation friction and support consistent case handling patterns.
+
 **Resume as Code**
 
 - Designed a pipeline using XeLaTeX for pixel-perfect PDF rendering.
