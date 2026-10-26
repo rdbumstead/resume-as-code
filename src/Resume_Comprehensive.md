@@ -310,7 +310,7 @@ _Note: The DevOps model was in its first phase at the time of transition, not ye
 
 - **First Data Corporation (now Fiserv)**, POS Technician (Jan 2016 – Oct 2016)
 - **Max Pest Control**, IT/Network/Social Media Consultant (Oct 2014 – Mar 2016)
-- **Insight Global**, GIS Analyst contracted to Microsoft Bing Maps, continuing with Uber after it acquired Bing's mapping assets (Mar 2015 – Nov 2015)
+- **Insight Global**, GIS Analyst contracted to Microsoft Bing Maps, continuing with Uber after it acquired Bing's mapping assets (Mar 2015 – Aug 2015)
 - **Walmart**, Customer Service Manager (Mar 2012 – Jun 2014)
 
 ---
