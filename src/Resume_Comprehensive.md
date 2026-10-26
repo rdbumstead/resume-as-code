@@ -6,7 +6,7 @@ _Extended Technical Portfolio. This profile represents a comprehensive technical
 
 ## Professional Identity
 
-Salesforce Platform Architect with 7+ years designing, governing, and evolving Salesforce platforms in higher education and nonprofit environments. Experienced in multi-org architecture, DevOps platform engineering, and integration design across complex organizational domains.
+Salesforce Platform Architect with nearly a decade on the platform, focused on higher education. At TELUS Digital, leads Education Cloud implementations from recruitment and admissions through student success, spanning OmniStudio application flows, Experience Cloud portals, SIS integration, and security and sharing design. Previously ran Service Cloud for 400+ staff and Experience Cloud for 10,000+ external users at Creighton University, led DevOps and CI/CD across two orgs, and designed applications supporting multimillion-dollar fund management.
 
 Focuses on architecture-first delivery, governance-driven DevOps, and sustainable platform operating models that balance developer velocity with system integrity.
 
@@ -50,7 +50,7 @@ Focuses on architecture-first delivery, governance-driven DevOps, and sustainabl
 
 ## Platform Architecture Diagrams
 
-The following diagrams illustrate multi-org architecture, governance protocols, platform portfolios, and automated resume generation pipelines. Each diagram is provided as a separate `.mermaid` file for clarity and maintainability.
+The following diagrams illustrate multi-org architecture, platform portfolios, and automated resume generation pipelines. Each diagram is provided as a separate `.mermaid` file for clarity and maintainability.
 
 ### University Salesforce Multi‐Org Platform Architecture
 
@@ -93,40 +93,6 @@ flowchart LR
     class USERS users;
 ```
 
-### GlassOps Governance Protocol Flow
-
-```mermaid
-flowchart LR
-    %% ========= STANDARD STYLES =========
-    classDef actor fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef policy fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef action fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef gate fill:#FB8C00,stroke:#E65100,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef record fill:#24292E,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
-
-    %% ========= NODES =========
-    Intent[User Intent]
-    Policy[Policy Resolution]
-    Adapter[Execution Adapter]
-    Contract[Deployment Contract]
-    Enforce[Governance Enforcement]
-    Audit[Audit Trail]
-
-    %% ========= FLOWS =========
-    Intent --> Policy
-    Policy --> Adapter
-    Adapter --> Contract
-    Contract --> Enforce
-    Enforce --> Audit
-
-    %% ========= APPLY STYLES =========
-    class Intent actor;
-    class Policy policy;
-    class Adapter action;
-    class Enforce gate;
-    class Contract,Audit record;
-```
-
 ### Salesforce Platform Architect Portfolio Architecture
 
 ```mermaid
@@ -135,25 +101,19 @@ graph LR
     %% ========= BRAND STYLES =========
     classDef user fill:#424242,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
     classDef sfdc fill:#00A1E0,stroke:#005FB2,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef aws fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#ffffff,font-weight:bold;
     classDef jira fill:#0052CC,stroke:#003A8F,stroke-width:2px,color:#ffffff,font-weight:bold;
     classDef github fill:#24292E,stroke:#000000,stroke-width:2px,color:#ffffff,font-weight:bold;
     classDef data fill:#8E24AA,stroke:#4A148C,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef future fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,stroke-dasharray:5 5;
 
     %% ========= NODES =========
     User((User))
     LWR[Experience Cloud<br/>LWR]
     GQL[Salesforce<br/>GraphQL]
-    Apex[Apex Runtime]
+    Apex[Apex Runtime<br/>with the Local Template]
     DB[(Custom Objects)]
-    AI[Agentforce]
+    AI[Gemini API]
     Jira[Jira Cloud API]
     GitHub[GitHub API]
-
-    subgraph Roadmap ["Future Roadmap (Phase 2)"]
-        Lambda[AWS Lambda<br/>Offload Compute]
-    end
 
     %% ========= FLOWS =========
     User --> LWR
@@ -164,17 +124,12 @@ graph LR
     Apex --> Jira
     Apex --> GitHub
 
-    %% ========= FUTURE =========
-    LWR -.-> Lambda
-    Lambda -.-> Apex
-
     %% ========= APPLY STYLES =========
     class User user;
     class LWR,GQL,Apex,AI sfdc;
     class DB data;
     class Jira jira;
     class GitHub github;
-    class Lambda aws;
 
     %% ========= CRITICAL PATH =========
     linkStyle 0,1,2 stroke:#2ECC71,stroke-width:3px;
@@ -229,7 +184,17 @@ flowchart LR
 
 ## Professional Experience
 
-### Salesforce Solutions Architect (Freelance Consulting)
+### Senior Solution Consultant
+
+**TELUS Digital | Apr 2026 – Present**
+
+- Delivers implementation and optimization of Salesforce solutions for higher education institutions across the student lifecycle.
+- Guides discovery, architecture, and implementation for Education Cloud engagements, with a focus on admissions and student success.
+- Brings a practitioner perspective built across nearly a decade of hands-on Salesforce experience at higher education institutions, including administration, development, architecture, and platform rollout.
+
+---
+
+### Salesforce Application Architect (Independent Consultant)
 
 **Oct 2021 – Present**
 
@@ -250,24 +215,24 @@ flowchart LR
 
 ### CRM Developer / Technical Leadership Responsibilities
 
-**Creighton University | Aug 2025 – Present**
+**Creighton University | Aug 2025 – Apr 2026**
 
 _Official title: CRM Developer_  
 _Functional role: Platform architecture and DevOps leadership_
 
-- Architecting DevOps capabilities supporting two Salesforce orgs with distinct organizational domains:
+- Architected DevOps capabilities supporting two Salesforce orgs with distinct organizational domains:
   - Student success, EDA, and internal digital platforms
   - Advancement and donor relations systems
-- Designing governance-driven DevOps models for multiple teams with different release cadences and priorities.
-- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated validation gates.
-- Defining architectural standards for Apex, LWC, asynchronous processing, and integration design.
+- Designed governance-driven DevOps models for multiple teams with different release cadences and priorities.
+- Engineered CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated validation gates.
+- Defined architectural standards for Apex, LWC, asynchronous processing, and integration design.
 - Designed comprehensive training plan for two new CRM Developers including Trailhead, Udemy, and curated certification paths.
-- Training team members on ETL processes and Salesforce architecture dependencies.
-- Preparing for MuleSoft transition from Talend, including DEX-401 certification pursuit.
-- Acting as Salesforce technical lead for complex development beyond declarative capabilities.
-- Advising IT and interdepartmental leadership on Salesforce-focused projects, incidents, and enhancements.
+- Trained team members on ETL processes and Salesforce architecture dependencies.
+- Prepared for the MuleSoft transition from Talend, completing DEX-401 training.
+- Acted as Salesforce technical lead for complex development beyond declarative capabilities.
+- Advised IT and interdepartmental leadership on Salesforce-focused projects, incidents, and enhancements.
 
-_Note: DevOps architecture is actively evolving and not yet fully mature at enterprise scale._
+_Note: The DevOps model was in its first phase at the time of transition, not yet fully mature at enterprise scale._
 
 ---
 
@@ -343,37 +308,38 @@ _Note: DevOps architecture is actively evolving and not yet fully mature at ente
 
 ### Earlier Career
 
-- **First Data Corporation** — POS Technician (Jan 2016 – Oct 2016)
-- **Max Pest Control** — IT/Network/Social Media Consultant (Oct 2014 – Mar 2016)
-- **Uber** — GIS Analyst (Aug 2015 – Nov 2015)
-- **Microsoft** — GIS Analyst (Mar 2015 – Aug 2015)
-- **Walmart** — Customer Service Manager (Mar 2012 – Jun 2014)
+- **First Data Corporation (now Fiserv)**, POS Technician (Jan 2016 – Oct 2016)
+- **Max Pest Control**, IT/Network/Social Media Consultant (Oct 2014 – Mar 2016)
+- **Insight Global**, GIS Analyst contracted to Microsoft Bing Maps, continuing with Uber after it acquired Bing's mapping assets (Mar 2015 – Nov 2015)
+- **Walmart**, Customer Service Manager (Mar 2012 – Jun 2014)
 
 ---
 
 ## Technical Projects
 
-### GlassOps Governance Protocol (Open Source)
+### GlassOps (Open Source)
 
-**Status: Active Development**
+**Status: Rebuilding as a CLI, not yet released**
 
-- Designing a governance-first DevOps framework for Salesforce.
+- Rebuilding a governance-first Salesforce DevOps tool as a CI-agnostic command line tool that acts as the CI/CD layer for Salesforce delivery.
 - Defining control-plane architecture independent of CI/CD tooling.
-- Standardizing deployment contracts and validation gates.
-- Implementing policy arbitration across organizational, team, and environment boundaries with immutable audit trails.
+- Developing a Go runtime, packaged as a Docker container action, that checks freeze windows, runs static analysis, authenticates with JWT, and writes a permit and a deployment contract for the deploy step that follows.
+- Archived the first TypeScript runtime and carried its design into the rebuild.
 
-_Note: GlassOps is experimental and not deployed in enterprise production environments._
+_Note: GlassOps is early work, with nothing released yet. The permit and contract are not yet signed records._
 
 ---
 
 ### Salesforce Platform Architect Portfolio
 
-- Authored 26 Architectural Decision Records, Systems Architecture Specification, and four other documentation artifacts.
-- Designed API-first integration architectures using OpenAPI 3.0.
-- Architected contract-first APIs with Apex orchestration.
-- Planned Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
-- Implemented automated CI/CD workflows with controlled failure testing.
-- Integrated Agentforce within defined governance boundaries.
+- Launched ryanbumstead.com in October 2026, an Experience Cloud (LWR) site that runs on the platform it describes.
+- Authored 34 Architectural Decision Records, a Systems Architecture Specification, and five other enterprise guides.
+- Designed API-first integration architectures using OpenAPI 3.0, with a System API and a Process API served by Apex REST behind OAuth 2.0 client credentials.
+- Built token vending so any reviewer can call the live APIs with a short-lived token.
+- Built the Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
+- Built a governed AI dispatch with Gemini grounded on portfolio records and a deterministic local template fallback.
+- Built live observability of governor limits, org quotas, and circuit breakers, plus an outage simulation that shows the cached fallback.
+- Automated delivery with pull request validation against production, delta deploys, and a read only live smoke test after each deploy and once a day.
 
 ---
 
@@ -404,7 +370,7 @@ _Note: GlassOps is experimental and not deployed in enterprise production enviro
 
 - Engineered an enterprise-grade composite GitHub Action for initializing deterministic Salesforce CI/CD environments.
 - Implemented exponential backoff strategies and robust error handling.
-- Designed intelligent caching engine generating SHA-256 hash keys based on tooling inputs, reducing pipeline setup time by ~80%.
+- Designed intelligent caching engine generating SHA-256 hash keys based on tooling inputs, cutting setup from 1.5 to 3 minutes cold to 20 to 60 seconds cached.
 - Built invariant validation logic to ensure “fail-fast” behavior.
 - Validated cross-platform compatibility across Ubuntu, macOS, and Windows runners.
 
@@ -416,13 +382,14 @@ _Note: GlassOps is experimental and not deployed in enterprise production enviro
 
 **Salesforce Certifications:**
 
-- Platform Administrator I & II
-- Platform App Builder
-- Agentforce Specialist
-- Data Cloud Consultant
-- Education Cloud Consultant
-- AI Associate
-- Marketing Cloud Engagement Foundations
+- Education Cloud Consultant (Mar 2025)
+- Data 360 Consultant (Mar 2025)
+- Agentforce Specialist (Jan 2025)
+- Marketing Cloud Engagement Foundations (Jan 2025)
+- Platform App Builder (Sep 2024)
+- Platform Administrator II (Jul 2024)
+- Platform Administrator (Jun 2024)
+- AI Associate (Jul 2024, retired)
 
 **MuleSoft Training:**
 

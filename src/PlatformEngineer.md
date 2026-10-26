@@ -4,7 +4,7 @@ title: Platform Engineer
 
 ## Professional Summary
 
-Platform Engineer with 7+ years designing governed Salesforce platforms for higher education and nonprofit organizations. Specializes in governance-first architecture, deterministic CI/CD systems, and policy-driven delivery models. Applies proven platform patterns to internal developer platforms and emerging control-plane architectures.
+Platform Engineer with nearly a decade designing governed Salesforce platforms for higher education and nonprofit organizations, currently delivering Education Cloud implementations at TELUS Digital. Specializes in governance-first architecture, deterministic CI/CD systems, and policy-driven delivery models. Applies proven platform patterns to internal developer platforms and emerging control-plane architectures.
 
 ---
 
@@ -44,17 +44,24 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 
 ## Professional Experience
 
+### Senior Solution Consultant
+
+**TELUS Digital** | Apr 2026 – Present
+
+- Delivers implementation and optimization of Salesforce solutions for higher education institutions across the student lifecycle.
+- Brings a practitioner perspective built across nearly a decade of hands-on Salesforce experience at higher education institutions, including administration, development, architecture, and platform rollout.
+
 ### CRM Developer (Salesforce)
 
-**Creighton University** | Aug 2025 – Present
+**Creighton University** | Aug 2025 – Apr 2026
 
-- Leading DevOps modernization and governance for a multi-team Salesforce environment.
+- Led DevOps modernization and governance for a multi-team Salesforce environment.
 - Defined and implemented the organization's first formal Salesforce DevOps governance model with deterministic validation and controlled promotion paths.
-- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
+- Engineered CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, automated testing, and quality gates.
 - Designed training plan for two new CRM Developers and trained team on ETL processes and Salesforce architecture dependencies.
-- Acting as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
+- Acted as technical lead for Apex, asynchronous processing, and LWC development beyond declarative platform limits.
 
-### Salesforce Solutions Architect (Freelance Consulting)
+### Salesforce Application Architect
 
 **Independent Consultant** | Oct 2021 – Present
 
@@ -86,35 +93,30 @@ Platform Engineer with 7+ years designing governed Salesforce platforms for high
 
 ## Selected Platform & Engineering Projects
 
-### GlassOps Governance Protocol (Open Source)
+### GlassOps (Open Source)
 
-**Status: Active Development**
+**Status: Rebuilding as a CLI, not yet released**
 
-- Designed governance control plane decoupled from execution tooling.
-- Defined normalized deployment contracts for heterogeneous CI/CD runners.
-- Architected policy arbitration with immutable audit trails.
+- Rebuilding GlassOps as a CI-agnostic command line tool that acts as the CI/CD layer for Salesforce delivery.
+- Designed a governance control plane decoupled from execution tooling.
+- Developing a Go runtime, packaged as a Docker container action, that checks freeze windows, runs static analysis, authenticates with JWT, and writes a permit and a deployment contract.
+- Archived the first TypeScript runtime and carried its design into the rebuild.
 
-_Note: GlassOps is experimental and not yet deployed in enterprise production environments._
-
-### GlassOps Runtime & Adapter Ecosystem
-
-- Developing Go runtime for deterministic execution environments.
-- Engineering adapter-based integrations for scanners, simulators, and CI/CD runners.
-- Enforcing strict separation where governance authority never resides in execution tooling.
+_Note: GlassOps is early work, with nothing released yet._
 
 ### Setup Salesforce CLI
 
 **GitHub Marketplace | Jan 2026 – Present**
 
 - Built enterprise-grade GitHub Action for strictly version-pinned Salesforce CLI environments.
-- Reduced setup time by ~80% through intelligent caching and fault-tolerant execution.
+- Cut setup from 1.5 to 3 minutes cold to 20 to 60 seconds cached through intelligent caching and fault-tolerant execution.
 
 ### Salesforce Platform Architect Portfolio
 
-- Production-grade reference implementation demonstrating enterprise Salesforce architecture patterns.
+- Live reference implementation of enterprise Salesforce architecture patterns at ryanbumstead.com since October 2026.
 - Contract-first APIs using OpenAPI 3.0 with Apex orchestration.
 - Experience Cloud LWR frontend with GraphQL data access and governed customization boundaries.
-- Zero-touch CI/CD with automated validation and controlled failure testing.
+- CI/CD with check only validation against production, delta deploys, a daily live smoke test, and deploy evidence published as platform events.
 
 ### Education Cloud Reference Architecture
 
@@ -134,6 +136,6 @@ _Note: GlassOps is experimental and not yet deployed in enterprise production en
 
 **Associate's Degree, General Studies** — Metropolitan Community College, Completed 2025
 
-**Salesforce Certifications:** Platform Administrator I & II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, Marketing Cloud Engagement Foundations, AI Associate
+**Salesforce Certifications:** Education Cloud Consultant, Data 360 Consultant, Agentforce Specialist, Marketing Cloud Engagement Foundations, Platform App Builder, Platform Administrator I & II
 
 **MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)

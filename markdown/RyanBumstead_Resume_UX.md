@@ -5,7 +5,7 @@
 
 ## Professional Summary
 
-Salesforce Platform Architect with 7+ years designing customer-centric, scalable enterprise systems. Specializes in bridging complex backend architecture with intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a design-first approach combining rigorous DevOps governance with high-performance customer journeys.
+Salesforce Platform Architect with nearly a decade on the platform, designing customer-centric, scalable enterprise systems for higher education. At TELUS Digital, leads Education Cloud implementations from recruitment and admissions through student success. Specializes in bridging complex backend architecture with intuitive user experiences using Experience Cloud (LWR) and Service Cloud. Known for a design-first approach combining rigorous DevOps governance with high-performance customer journeys.
 
 ## Technical Skills
 
@@ -17,18 +17,24 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 ## Professional Experience
 
-**Salesforce Solutions Architect (Freelance Consulting)** | Oct 2021 – Present
+**Senior Solution Consultant** | TELUS Digital | Apr 2026 – Present
+
+- Delivers implementation and optimization of Salesforce solutions for higher education institutions across the student lifecycle.
+- Guides discovery, architecture, and implementation for Education Cloud engagements, with a focus on admissions and student success.
+- Brings a practitioner perspective built across nearly a decade of hands-on Salesforce experience at higher education institutions, including administration, development, architecture, and platform rollout.
+
+**Salesforce Application Architect (Independent Consultant)** | Oct 2021 – Present
 
 - Designed Experience and Service Cloud solutions focused on usability, clarity, and operational scale.
 - Led design and proof-of-concept efforts validating Flow automation and AI-assisted workflows.
 - Developed custom workforce development application emphasizing user experience and workflow efficiency.
 
-**CRM Developer (Salesforce)** | Creighton University | Aug 2025 – Present
+**CRM Developer (Salesforce)** | Creighton University | Aug 2025 – Apr 2026
 
-- Championing DevOps modernization and architectural standards adoption for the university Salesforce platform.
-- Defining governed DevOps model establishing deterministic validation and controlled release promotion.
-- Designing structured certification and training paths, including Salesforce fundamentals and MuleSoft curriculum (DEX-401).
-- Leading Apex and LWC development enabling experiences beyond declarative platform limits.
+- Championed DevOps modernization and architectural standards adoption for the university Salesforce platform.
+- Defined a governed DevOps model establishing deterministic validation and controlled release promotion.
+- Designed structured certification and training paths, including Salesforce fundamentals and MuleSoft curriculum (DEX-401).
+- Led Apex and LWC development enabling experiences beyond declarative platform limits.
 
 **Application Administrator** | Creighton University | Jun 2021 – Aug 2025
 
@@ -44,15 +50,15 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 ## Selected Work
 
-**[GlassOps Governance Protocol](https://github.com/glassops-platform/glassops)**
+**[GlassOps](https://github.com/glassops-platform/glassops) (Open Source)**
 
-- Designed governance as a developer experience with clear pass/fail feedback.
-- Active development; not yet deployed in enterprise production environments.
+- Designing governance as a developer experience with clear pass/fail feedback, now being rebuilt as a CI-agnostic command line tool.
+- Early work, with nothing released yet.
 
 **[Salesforce Platform Architect Portfolio](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)**
 
-- Designed Experience Cloud (LWR) frontends backed by governed APIs.
-- Implemented chaos engineering to validate graceful UX degradation during failures.
+- Designed and launched ryanbumstead.com on Experience Cloud (LWR), with a recruiter-first home page backed by governed APIs.
+- Built an outage simulation that shows visitors the cached fallback, so failures degrade gracefully.
 
 **[Education Cloud Reference Architecture](https://rdbumstead.github.io/smart-education-group-sf-edcloud/)**
 
@@ -69,6 +75,6 @@ Salesforce Platform Architect with 7+ years designing customer-centric, scalable
 
 **Associate's Degree in General Studies** — Metropolitan Community College (Completed 2025)
 
-**Salesforce Certifications:** Platform Administrator I & II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations
+**Salesforce Certifications:** Education Cloud Consultant, Data 360 Consultant, Agentforce Specialist, Marketing Cloud Engagement Foundations, Platform App Builder, Platform Administrator I & II
 
 **MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)
