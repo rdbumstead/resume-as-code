@@ -5,7 +5,7 @@
 
 ## Professional Summary
 
-Salesforce Platform Architect with 7+ years designing, governing, and evolving Salesforce platforms in higher education and nonprofit environments. Specializes in platform architecture, DevOps governance, and scalable integration design across multi-org Salesforce ecosystems. Experienced in translating organizational goals into enforceable technical standards, resilient deployment pipelines, and sustainable platform operating models.
+Salesforce Platform Architect with nearly a decade on the platform, focused on higher education. At TELUS Digital, leads Education Cloud implementations from recruitment and admissions through student success, spanning OmniStudio application flows, Experience Cloud portals, SIS integration, and security and sharing design. Previously ran Service Cloud for 400+ staff and Experience Cloud for 10,000+ external users at Creighton University, led DevOps and CI/CD across two orgs, and designed applications supporting multimillion-dollar fund management.
 
 Work includes greenfield platform builds, multi-org DevOps modernization, and architecture-first delivery in regulated, audit-sensitive, and stakeholder-driven environments.
 
@@ -31,7 +31,7 @@ Work includes greenfield platform builds, multi-org DevOps modernization, and ar
 
 - API-first design, REST, OpenAPI 3.0
 - Event-driven architecture and integration patterns
-- MuleSoft and AWS Lambda integration patterns
+- MuleSoft integration patterns
 - Identity and access architecture across platforms
 
 ### Languages & Tooling
@@ -45,7 +45,15 @@ Work includes greenfield platform builds, multi-org DevOps modernization, and ar
 
 ## Professional Experience
 
-### Salesforce Solutions Architect (Freelance Consulting)
+### Senior Solution Consultant
+
+**TELUS Digital | Apr 2026 – Present**
+
+- Delivers implementation and optimization of Salesforce solutions for higher education institutions across the student lifecycle.
+- Guides discovery, architecture, and implementation for Education Cloud engagements, with a focus on admissions and student success.
+- Brings a practitioner perspective built across nearly a decade of hands-on Salesforce experience at higher education institutions, including administration, development, architecture, and platform rollout.
+
+### Salesforce Application Architect (Independent Consultant)
 
 **Oct 2021 – Present**
 
@@ -57,18 +65,18 @@ Work includes greenfield platform builds, multi-org DevOps modernization, and ar
 
 ### CRM Developer / Salesforce Technical Lead
 
-**Creighton University | Aug 2025 – Present**  
+**Creighton University | Aug 2025 – Apr 2026**  
 _Official title: CRM Developer | Functional role: Platform architecture and DevOps leadership_
 
-- Architecting and implementing DevOps capabilities supporting two Salesforce orgs with distinct domains: student success, EDA, internal digital platforms, and advancement/donor systems.
-- Designing a governance-driven DevOps model to support multiple teams with different operational priorities and release cadences.
-- Engineering CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated validation gates.
-- Defining platform standards for Apex, LWC, asynchronous processing, and integration design.
+- Architected and implemented DevOps capabilities supporting two Salesforce orgs with distinct domains: student success, EDA, internal digital platforms, and advancement/donor systems.
+- Designed a governance-driven DevOps model to support multiple teams with different operational priorities and release cadences.
+- Engineered CI/CD pipelines using GitHub Actions, SFDX CLI, JWT authentication, LWC/Jest testing, and automated validation gates.
+- Defined platform standards for Apex, LWC, asynchronous processing, and integration design.
 - Designed training plan for two CRM Developers including Trailhead, Udemy, and curated certification paths.
-- Preparing for MuleSoft transition from Talend.
-- Acting as technical lead for complex development beyond declarative capabilities.
+- Prepared for the MuleSoft transition from Talend.
+- Acted as technical lead for complex development beyond declarative capabilities.
 
-_Note: DevOps architecture is actively evolving and not yet a fully mature enterprise-scale implementation._
+_Note: The DevOps model was in its first phase at the time of transition, not a fully mature enterprise-scale implementation._
 
 ### Application Administrator
 
@@ -106,21 +114,21 @@ _Note: DevOps architecture is actively evolving and not yet a fully mature enter
 - Designed multi-org Salesforce platform architectures aligned to organizational domains and team structures.
 - Built governance-first DevOps models balancing developer velocity with platform stability.
 - Defined enterprise documentation standards including [ADRs](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) and [Systems Architecture Specification](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/blob/main/docs/guides/03-SAS.md).
-- Designed integration architectures spanning Salesforce, MuleSoft, and AWS.
+- Designed integration architectures spanning Salesforce and MuleSoft.
 
 ---
 
 ## Technical Projects
 
-### [GlassOps Governance Protocol](https://github.com/glassops-platform/glassops) (Open Source)
+### [GlassOps](https://github.com/glassops-platform/glassops) (Open Source)
 
-**Status: Active Development**
+**Status: Rebuilding as a CLI, not yet released**
 
-- Designing a governance-first framework for Salesforce DevOps independent of specific CI/CD tooling.
-- Developing a Go runtime to enforce deployment contracts and validation gates across heterogeneous pipelines.
-- Standardizing control-plane concepts separating governance logic from execution engines.
+- Rebuilding a governance-first Salesforce DevOps tool as a CI-agnostic command line tool.
+- Developing a Go runtime that checks freeze windows, runs static analysis, authenticates with JWT, and writes a deployment contract for the deploy step that follows.
+- Keeping governance logic separate from the tools that run the deploy.
 
-_Note: GlassOps is experimental and not yet deployed in enterprise production environments._
+_Note: GlassOps is early work, with nothing released yet._
 
 ### [Education Cloud Reference Architecture](https://rdbumstead.github.io/smart-education-group-sf-edcloud/)
 
@@ -133,13 +141,15 @@ _Note: GlassOps is experimental and not yet deployed in enterprise production en
 ### [Setup Salesforce CLI](https://github.com/marketplace/actions/setup-salesforce-cli) (GitHub Marketplace)
 
 - Built enterprise-grade GitHub Action for strictly version-pinned Salesforce CLI environments.
-- Implemented intelligent caching and fault-tolerant execution to reduce setup time by ~80%.
+- Implemented intelligent caching and fault-tolerant execution, cutting setup from 1.5 to 3 minutes cold to 20 to 60 seconds cached.
 
 ### [Salesforce Platform Architect Portfolio](https://github.com/rdbumstead/salesforce-platform-architect-portfolio)
 
-- Authored architecture artifacts including ADRs, system diagrams, and platform governance models.
-- Designed API-first integration patterns using OpenAPI 3.0.
-- Implemented automated CI/CD workflows with controlled failure testing.
+- Launched ryanbumstead.com in October 2026, an Experience Cloud (LWR) site that runs on the platform it describes.
+- Authored 34 [Architectural Decision Records](https://github.com/rdbumstead/salesforce-platform-architect-portfolio/tree/main/docs/adr) and six enterprise guides, including a Systems Architecture Specification.
+- Built contract-first System and Process APIs in OpenAPI 3.0, served by Apex REST behind OAuth 2.0 client credentials.
+- Shipped a governed AI dispatch with Gemini grounded on portfolio records and a deterministic local template fallback.
+- Automated delivery with pull request validation against production, delta deploys, and a daily live smoke test.
 
 ### [Resume as Code](https://github.com/rdbumstead/resume-as-code)
 
@@ -153,6 +163,6 @@ _Note: GlassOps is experimental and not yet deployed in enterprise production en
 
 **Associate's Degree in General Studies** — Metropolitan Community College, Completed 2025
 
-**Salesforce Certifications:** Platform Administrator I & II, Platform App Builder, Agentforce Specialist, Data Cloud Consultant, Education Cloud Consultant, AI Associate, Marketing Cloud Engagement Foundations
+**Salesforce Certifications:** Education Cloud Consultant, Data 360 Consultant, Agentforce Specialist, Marketing Cloud Engagement Foundations, Platform App Builder, Platform Administrator I & II
 
 **MuleSoft Training:** DEX-401: Essentials of Anypoint Platform Development (Completed)
